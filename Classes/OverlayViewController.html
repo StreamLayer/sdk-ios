@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SLRStreamsHostAppModel Structure Reference</title>
+    <title>OverlayViewController Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/SLRStreamsHostAppModel" class="dashAnchor"></a>
-    <a title="SLRStreamsHostAppModel Structure Reference"></a>
+    <a name="//apple_ref/swift/Class/OverlayViewController" class="dashAnchor"></a>
+    <a title="OverlayViewController Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (37% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        SLRStreamsHostAppModel Structure Reference
+        OverlayViewController Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -76,14 +76,15 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>SLRStreamsHostAppModel</h1>
+            <h1>OverlayViewController</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">SLRStreamsHostAppModel</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">OverlayViewController</span> <span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="kt">Connectable</span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">OverlayViewController</span><span class="p">:</span> <span class="kt">StoreSubscriber</span></code></pre>
 
                 </div>
               </div>
-            <p>Demo model data</p>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
@@ -92,9 +93,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV7eventIdSivp"></a>
-                    <a name="//apple_ref/swift/Property/eventId" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV7eventIdSivp">eventId</a>
+                    <a name="/s:15StreamLayerCore21OverlayViewControllerC8delegateAA18SLROverlayDelegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15StreamLayerCore21OverlayViewControllerC8delegateAA18SLROverlayDelegate_pSgvp">delegate</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -109,7 +110,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">eventId</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">weak</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -119,9 +120,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV19eventImageUrlStringSSvp"></a>
-                    <a name="//apple_ref/swift/Property/eventImageUrlString" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV19eventImageUrlStringSSvp">eventImageUrlString</a>
+                    <a name="/c:@M@StreamLayerCore@objc(cs)OverlayViewController(im)loadView"></a>
+                    <a name="//apple_ref/swift/Method/loadView()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@StreamLayerCore@objc(cs)OverlayViewController(im)loadView">loadView()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -136,7 +137,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">eventImageUrlString</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">loadView</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -146,9 +147,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV6isLiveSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isLive" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV6isLiveSbvp">isLive</a>
+                    <a name="/c:@M@StreamLayerCore@objc(cs)OverlayViewController(im)viewDidLoad"></a>
+                    <a name="//apple_ref/swift/Method/viewDidLoad()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@StreamLayerCore@objc(cs)OverlayViewController(im)viewDidLoad">viewDidLoad()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -163,7 +164,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">isLive</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -173,9 +174,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV9titleTextSSvp"></a>
-                    <a name="//apple_ref/swift/Property/titleText" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV9titleTextSSvp">titleText</a>
+                    <a name="/s:15StreamLayerCore21OverlayViewControllerC24StoreSubscriberStateTypea"></a>
+                    <a name="//apple_ref/swift/Alias/StoreSubscriberStateType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15StreamLayerCore21OverlayViewControllerC24StoreSubscriberStateTypea">StoreSubscriberStateType</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -190,7 +191,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">titleText</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">StoreSubscriberStateType</span> <span class="o">=</span> <span class="kt">SLRMenuState</span></code></pre>
 
                         </div>
                       </div>
@@ -200,9 +201,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV12subTitleTextSSvp"></a>
-                    <a name="//apple_ref/swift/Property/subTitleText" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV12subTitleTextSSvp">subTitleText</a>
+                    <a name="/s:15StreamLayerCore21OverlayViewControllerC8newState5stateyAA07SLRMenuH0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/newState(state:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15StreamLayerCore21OverlayViewControllerC8newState5stateyAA07SLRMenuH0V_tF">newState(state:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -217,7 +218,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">subTitleText</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">newState</span><span class="p">(</span><span class="nv">state</span><span class="p">:</span> <span class="kt">SLRMenuState</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -227,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV8timeTextSSvp"></a>
-                    <a name="//apple_ref/swift/Property/timeText" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV8timeTextSSvp">timeText</a>
+                    <a name="/c:@CM@StreamLayerCore@objc(cs)OverlayViewController(im)viewDidAppear:"></a>
+                    <a name="//apple_ref/swift/Method/viewDidAppear(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@StreamLayerCore@objc(cs)OverlayViewController(im)viewDidAppear:">viewDidAppear(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -244,7 +245,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">timeText</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidAppear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -254,9 +255,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:15StreamLayerCore22SLRStreamsHostAppModelV9streamURLSSvp"></a>
-                    <a name="//apple_ref/swift/Property/streamURL" class="dashAnchor"></a>
-                    <a class="token" href="#/s:15StreamLayerCore22SLRStreamsHostAppModelV9streamURLSSvp">streamURL</a>
+                    <a name="/s:15StreamLayerCore21OverlayViewControllerC06changeA5Event7eventId10PromiseKit0K0Cy12SLProtofiles034Streamlayer_SdkSettings_Client_GetA8ResponseVGSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/changeStreamEvent(eventId:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:15StreamLayerCore21OverlayViewControllerC06changeA5Event7eventId10PromiseKit0K0Cy12SLProtofiles034Streamlayer_SdkSettings_Client_GetA8ResponseVGSS_tF">changeStreamEvent(eventId:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -271,7 +272,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">internal(set)</span> <span class="k">var</span> <span class="nv">streamURL</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">changeStreamEvent</span><span class="p">(</span><span class="nv">eventId</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Promise</span><span class="o">&lt;</span><span class="kt"><a href="../Typealiases.html#/s:15StreamLayerCore9SLRStreama">SLRStream</a></span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
