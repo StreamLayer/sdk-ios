@@ -79,7 +79,7 @@
             <h1 id='streamlayer-ios-sdk' class='heading'>StreamLayer iOS SDK</h1>
 <h2 id='installation' class='heading'>Installation</h2>
 
-<p>The SDK is distributed as a static library. Currently the easiest way to integrate the SDK is via Carthage package manager.</p>
+<p>The SDK is distributed as a static library. Now the easiest way to integrate the SDK is via Carthage package manager.</p>
 <h3 id='carthage' class='heading'>Carthage</h3>
 
 <ol>
@@ -89,12 +89,60 @@
 <li>Drag StreamLayer.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings.</li>
 </ol>
 <h2 id='requirements' class='heading'>Requirements</h2>
+<h2 id='getting-started' class='heading'>Getting started</h2>
+<h3 id='init-sl-overlay' class='heading'>Init SL Overlay</h3>
+
+<p>After the integration of the framework you have to import StreamLayer module, initialize overlay classes and implement a few delegate methods to give the SDK a possibility to fit in into application natural user flows.</p>
+
+<ol>
+<li><code>import StreamLayer</code> - import the <a href="https://streamlayer.github.io/sdk-ios/Classes/StreamLayer.html">StreamLayer module</a> in a ViewController. The choice of a view controller depends on your application structure, in general it might be the root view controller since overlay is drawn on top on all the other interfaces.</li>
+<li><p>Init the overlay view controller using <a href="https://streamlayer.github.io/sdk-ios/Classes/StreamLayer.html#/s:15StreamLayerCore0aB0C13createOverlay_15overlayDelegate6sdkKeyAA0E14ViewControllerCSo6UIViewCSg_AA010SLROverlayG0_pSStFZ">StreamLayer.createOverlay</a> method: </p>
+<pre class="highlight swift"><code>  <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">overlayVC</span> <span class="o">=</span> <span class="kt">StreamLayer</span><span class="o">.</span><span class="nf">createOverlay</span><span class="p">(</span>
+    <span class="n">overlayView</span><span class="p">,</span>
+    <span class="nv">overlayDelegate</span><span class="p">:</span> <span class="n">delegateObject</span><span class="p">,</span>
+    <span class="nv">sdkKey</span><span class="p">:</span> <span class="n">sdkKey</span>
+  <span class="p">)</span>
+</code></pre></li>
+<li><p>Add StreamLayer view controller to view hierarchy. Code sample: </p>
+<pre class="highlight swift"><code>  <span class="nf">addChild</span><span class="p">(</span><span class="n">overlayVC</span><span class="p">)</span>
+  <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</code></pre></li>
+<li><p>Position the Overlay button. Code sample:</p>
+<pre class="highlight swift"><code>  <span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
+    <span class="nv">$0</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
+  <span class="p">}</span>
+</code></pre></li>
+</ol>
+<h3 id='configure-delegate' class='heading'>Configure Delegate</h3>
+
+<p>The communication between the a host application and the StreamLayer Framework is implemented via various delegate methods. The following delegate methods have to be implemented:</p>
+
+<p>Voice chat</p>
+
+<ul>
+<li><a href="https://streamlayer.github.io/sdk-ios/Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19requestAudioDuckingyyF">requestAudioDucking</a></li>
+<li><a href="https://streamlayer.github.io/sdk-ios/Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19disableAudioDuckingyyF">disableAudioDucking</a></li>
+</ul>
+
+<p>Audio notifications us used by the SDK in various ways. They used for voice chat, messaging and other features. There is a limitation in the iOS platform which allows each application to use only one audio session, hence the host app and the SDK use the same audio session. To minimize interference between host app&rsquo;s and SDK&rsquo;s audio modes following delegate methods have to be implemented:</p>
+
+<ul>
+<li><a href="https://streamlayer.github.io/sdk-ios/Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19prepareAudioSession3foryAA08SLRAudioH4TypeO_tF">prepareAudioSession</a></li>
+<li><a href="https://streamlayer.github.io/sdk-ios/Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19disableAudioSession3foryAA08SLRAudioH4TypeO_tF">disableAudioSession</a></li>
+</ul>
+<h2 id='active-calls' class='heading'>Active calls</h2>
+
+<p>Active calls can be used by the host app, for controlling the SDK:</p>
+
+<ul>
+<li><a href="https://streamlayer.github.io/sdk-ios/Classes/StreamLayer.html#/s:15StreamLayerCore0aB0C06changeA5Event3for10PromiseKit0G0Cy12SLProtofiles034Streamlayer_SdkSettings_Client_GetA8ResponseVGx_ts25LosslessStringConvertibleRzlFZ">changeStreamEvent</a></li>
+</ul>
 <h2 id='support' class='heading'>Support</h2>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2019-12-12)</p>
+          <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2019-12-13)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
