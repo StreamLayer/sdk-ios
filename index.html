@@ -94,9 +94,11 @@
 
 <ol>
 <li>Install <a href="https://github.com/Carthage/Carthage">Carthage 0.34.0</a> or later.</li>
-<li>Add <code>github &quot;StreamLayer/ios-sdk&quot;</code> to your Cartfile.</li>
+<li>Add <code>binary &quot;https://raw.githubusercontent.com/StreamLayer/sdk-ios/master/StreamLayer.json&quot;</code> to your Cartfile.</li>
 <li>Run <code>carthage update</code>.</li>
 <li>Drag StreamLayer.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings.</li>
+<li>Carthage doesn't support specifying dependencies for binary distributions. We only require that you add WebRTC as an additional dependency.
+WebRTC (M78) - prebuilt binary available at https://github.com/signalapp/signal-webrtc-ios-artifacts or you may build your own</li>
 </ol>
 <h3 id='additional-distributions' class='heading'>Additional distributions</h3>
 
