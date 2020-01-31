@@ -30,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplication .LaunchOptionsKey: Any]?) -> Bool {
 
-    _ = StreamLayer.createOverlay(UIView(), overlayDelegate: self, sdkKey: "key")
+    window = UIWindow()
+    window?.makeKeyAndVisible()
+    window?.rootViewController = StreamLayer.createOverlay(UIView(), overlayDelegate: self, sdkKey: "key")
 
     return true
   }
