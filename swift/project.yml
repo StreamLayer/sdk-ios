@@ -11,11 +11,10 @@ targets:
     type: application
     sources:
       - path: Source
-    transitivelyLinkDependencies: false
-    directlyEmbedCarthageDependencies: false
+    requiresObjCLinking: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.streamlayer.swift-demo
     dependencies:
-      - framework: Frameworks/StreamLayer.framework
+      - carthage: StreamLayer
       - framework: Frameworks/WebRTC.framework
