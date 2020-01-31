@@ -1,0 +1,21 @@
+name: SwiftDemo
+
+include:
+  - project.base.yml
+
+targets:
+  Demo:
+    platform: iOS
+    deploymentTarget:
+      iOS: 11.0
+    type: application
+    sources:
+      - path: Source
+    transitivelyLinkDependencies: false
+    directlyEmbedCarthageDependencies: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.streamlayer.swift-demo
+    dependencies:
+      - framework: Frameworks/StreamLayer.framework
+      - framework: Frameworks/WebRTC.framework
