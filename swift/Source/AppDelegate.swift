@@ -10,7 +10,7 @@ import StreamLayer
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, SLROverlayDelegate {
 
   func requestAudioDucking() {
-  
+
   }
 
   func disableAudioDucking() {
