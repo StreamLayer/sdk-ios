@@ -16,5 +16,13 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.streamlayer.swift-demo
     dependencies:
-      - carthage: StreamLayer
+      - framework: Frameworks/BoringSSL.framework
+      - framework: Frameworks/CgRPC.framework
+      - framework: Frameworks/Realm.framework
+      - framework: Frameworks/RealmSwift.framework
+      - framework: Frameworks/SLProtofiles.framework
+      - framework: Frameworks/StreamLayer.framework
+      - framework: Frameworks/StreamLayerVendor.framework
+      - framework: Frameworks/SwiftGRPC.framework
+      - framework: Frameworks/SwiftProtobuf.framework
       - framework: Frameworks/WebRTC.framework
