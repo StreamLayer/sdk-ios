@@ -4,26 +4,9 @@
 
 import UIKit
 import UserNotifications
-import StreamLayer
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, SLROverlayDelegate {
-
-  func requestAudioDucking() {
-
-  }
-
-  func disableAudioDucking() {
-
-  }
-
-  func prepareAudioSession(for type: SLRAudioSessionType) {
-
-  }
-
-  func disableAudioSession(for type: SLRAudioSessionType) {
-
-  }
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
   var window: UIWindow?
 
@@ -32,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     window = UIWindow()
     window?.makeKeyAndVisible()
-    window?.rootViewController = StreamLayer.createOverlay(UIView(), overlayDelegate: self, sdkKey: "key")
+    window?.rootViewController = ViewController()
 
     return true
   }

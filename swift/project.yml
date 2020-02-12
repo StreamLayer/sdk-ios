@@ -19,3 +19,14 @@ targets:
       - carthage: StreamLayer
       - carthage: StreamLayerVendor
       - carthage: WebRTC
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: SLProtofiles
+      - carthage: SwiftGRPC
+      - carthage: CgRPC
+      - carthage: BoringSSL
+      - carthage: SwiftProtobuf
+      - carthage: SnapKit # sample implementation only
+      - carthage: RxSwift # sample implementation only
+      - carthage: RxRelay # sample implementation only
+      - carthage: RxCocoa # sample implementation only
