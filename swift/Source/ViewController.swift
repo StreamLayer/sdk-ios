@@ -17,7 +17,7 @@ import SnapKit
 import RxSwift
 
 // Ensure your SDK key is used here
-let kStreamLayerKey = "5f2d644a12ab635f36ec339b67524ec9901a3239c473311ebef90704659c3ad1"
+let kStreamLayerKey = "29d0c798269575c4335f06a4a38318002e20029c5301f38e222874fa66e712b3"
 
 class ViewController: UIViewController {
   // sample video player
@@ -163,11 +163,7 @@ class ViewController: UIViewController {
       videoPlayer.setNewStreamURL(withURL: streamURLString,
                                   providerType: Int(streamURLString) != nil ? .vimeo : .youtube)
 
-      StreamLayerVendor.firstly {
-        StreamLayer.changeStreamEvent(for: String(eventId))
-      }.catch { _ in
-        //
-      }
+      StreamLayer.changeStreamEvent(for: eventId)
     }
   }
   
