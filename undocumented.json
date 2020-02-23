@@ -1,37 +1,37 @@
 {
   "warnings": [
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/OverlayViewController.swift",
-      "line": 22,
-      "symbol": "OverlayViewController",
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 14,
+      "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/OverlayViewController.swift",
-      "line": 83,
-      "symbol": "OverlayViewController.delegate",
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 75,
+      "symbol": "SLROverlayViewController.delegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/OverlayViewController.swift",
-      "line": 328,
-      "symbol": "OverlayViewController",
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 332,
+      "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/OverlayViewController.swift",
-      "line": 432,
-      "symbol": "OverlayViewController",
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 438,
+      "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/OverlayViewController.swift",
-      "line": 433,
-      "symbol": "OverlayViewController.changeStreamEvent(eventId:)",
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 439,
+      "symbol": "SLROverlayViewController.changeStreamEvent(eventId:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
