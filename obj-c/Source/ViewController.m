@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
-#import <StreamLayer/StreamLayer-Swift.h>
+// these must be imported
+#import "StreamLayer-Swift.h"
+#import "StreamLayerVendor-Swift.h"
 
 @interface ViewController ()
 
@@ -17,28 +19,8 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  
-  [self setViewGuide:[[UIView alloc] init]];
-  [self setOverlayVC:[StreamLayer createOverlay:[self viewGuide] overlayDelegate:self sdkKey:@"key"]];
-
   // Do any additional setup after loading the view.
 }
 
-
-- (void)disableAudioDucking {
-  
-}
-
-- (void)disableAudioSessionFor:(enum SLRAudioSessionType)type {
-  
-}
-
-- (void)prepareAudioSessionFor:(enum SLRAudioSessionType)type {
-  
-}
-
-- (void)requestAudioDucking {
-  
-}
 
 @end

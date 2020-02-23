@@ -7,12 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <StreamLayer/StreamLayer.h>
 
-@interface ViewController : UIViewController <SLROverlayDelegate>
+@interface ViewController : UIViewController
 
-@property (strong, nonatomic) OverlayViewController * overlayVC;
-@property (strong, nonatomic) UIView * viewGuide;
 
 @end
 
