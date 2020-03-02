@@ -14,7 +14,7 @@
     <a title="SLROverlayDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (48% documented)</p>
+        <p><a href="../index.html"> Docs</a> (57% documented)</p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fstreamlayer%2Egithub%2Eio%2Fsdk%2Dios%2Fdocsets%2F%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
@@ -120,7 +120,8 @@ video player to enable comfortable voice call environment</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">requestAudioDucking</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">requestAudioDucking</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -148,7 +149,8 @@ to where they were at the time of ducking request</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disableAudioDucking</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">disableAudioDucking</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -179,7 +181,8 @@ When an existing audio session is already active - it must be a noop</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">prepareAudioSession</span><span class="p">(</span><span class="k">for</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRAudioSessionType.html">SLRAudioSessionType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">prepareAudioSession</span><span class="p">(</span><span class="k">for</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRAudioSessionType.html">SLRAudioSessionType</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -227,7 +230,8 @@ settings</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">disableAudioSession</span><span class="p">(</span><span class="k">for</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRAudioSessionType.html">SLRAudioSessionType</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">disableAudioSession</span><span class="p">(</span><span class="k">for</span> <span class="nv">type</span><span class="p">:</span> <span class="kt"><a href="../Enums/SLRAudioSessionType.html">SLRAudioSessionType</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -253,12 +257,69 @@ settings</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)shareInviteMessage"></a>
+                    <a name="//apple_ref/swift/Method/shareInviteMessage()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)shareInviteMessage">shareInviteMessage()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method must return custom text for a share message that is used
+to invite other people to use the app</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">shareInviteMessage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)waveMessage"></a>
+                    <a name="//apple_ref/swift/Method/waveMessage()" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)waveMessage">waveMessage()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Used when pinging your friends from who is watching quick access menu</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">waveMessage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-02-23)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-03-02)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

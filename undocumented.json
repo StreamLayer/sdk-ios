@@ -2,35 +2,35 @@
   "warnings": [
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 14,
+      "line": 16,
       "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 75,
+      "line": 95,
       "symbol": "SLROverlayViewController.delegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 332,
+      "line": 380,
       "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 438,
+      "line": 486,
       "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 439,
+      "line": 487,
       "symbol": "SLROverlayViewController.changeStreamEvent(eventId:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -58,49 +58,49 @@
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 54,
+      "line": 61,
       "symbol": "SLRStreamsHostAppModel.eventId",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 55,
+      "line": 62,
       "symbol": "SLRStreamsHostAppModel.eventImageUrlString",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 56,
+      "line": 63,
       "symbol": "SLRStreamsHostAppModel.isLive",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 57,
+      "line": 64,
       "symbol": "SLRStreamsHostAppModel.titleText",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 58,
+      "line": 65,
       "symbol": "SLRStreamsHostAppModel.subTitleText",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 59,
+      "line": 66,
       "symbol": "SLRStreamsHostAppModel.timeText",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 60,
+      "line": 67,
       "symbol": "SLRStreamsHostAppModel.streamURL",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
