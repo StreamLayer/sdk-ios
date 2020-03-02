@@ -16,9 +16,6 @@ import StreamLayerVendor
 import SnapKit
 import RxSwift
 
-// Ensure your SDK key is used here
-let kStreamLayerKey = "29d0c798269575c4335f06a4a38318002e20029c5301f38e222874fa66e712b3"
-
 class ViewController: UIViewController {
   // sample video player
   private let videoPlayer = SLRVideoPlayer()
@@ -35,8 +32,7 @@ class ViewController: UIViewController {
   // Initializes StreamLayer ViewController Singleton
   private lazy var overlayVC = StreamLayer.createOverlay(
     overlayView,
-    overlayDelegate: videoPlayer,
-    sdkKey: kStreamLayerKey
+    overlayDelegate: videoPlayer
   )
 
   override var preferredStatusBarStyle: UIStatusBarStyle {

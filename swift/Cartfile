@@ -1,4 +1,4 @@
-binary "https://raw.githubusercontent.com/StreamLayer/sdk-ios/master/StreamLayer.json" == 0.0.7
+binary "https://raw.githubusercontent.com/StreamLayer/sdk-ios/master/StreamLayer.json" == 0.0.9
 # used only for sample purposes
 github "SnapKit/SnapKit" ~> 5.0.0
 github "ReactiveX/RxSwift" ~> 5.0
