@@ -14,7 +14,7 @@
     <a title="Documentation  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (57% documented)</p>
+        <p><a href="index.html"> Docs</a> (60% documented)</p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fstreamlayer%2Egithub%2Eio%2Fsdk%2Dios%2Fdocsets%2F%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
@@ -33,6 +33,15 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="about-streamlayer.html">About StreamLayer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="architecture-overview.html">Architecture Overview</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="getting-started.html">Getting Started</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="sample-integrations.html">Sample Integrations</a>
               </li>
             </ul>
           </li>
@@ -61,6 +70,9 @@
               <li class="nav-group-task">
                 <a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SLROverlayLoggerDelegate.html">SLROverlayLoggerDelegate</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -85,318 +97,15 @@
         <section>
           <section class="section">
             <h1>Documentation</h1>
-            <h1 id='streamlayer-ios-sdk' class='heading'>StreamLayer iOS SDK</h1>
-<h2 id='prerequisites' class='heading'>Prerequisites</h2>
-
-<ul>
-<li>XCode 11.2.1 or higher</li>
-<li>Target of iOS 11 or higher</li>
-</ul>
-<h2 id='installation' class='heading'>Installation</h2>
-
-<p>The SDK is distributed as a dynamic framework. Above you will find a list of currently available ways to integrate the SDK framework into your project.</p>
-<h3 id='carthage' class='heading'>Carthage</h3>
+            <h1 id='how-to-use-this-documentation' class='heading'>How to use this documentation</h1>
 
 <ol>
-<li>Install Carthage using brew - <code>brew tap streamlayer/formulas</code>
-and <code>brew reinstall streamlayer/formulas/carthage</code>
-
-<ul>
-<li>internally we prefer to work with <a href="https://github.com/nsoperations/Carthage">https://github.com/nsoperations/Carthage</a> fork as it has numerous fixes and is much easier to work with</li>
-</ul></li>
-<li>Add <code>binary &quot;https://streamlayer.github.io/sdk-ios/releases.json&quot;</code> to your Cartfile.</li>
-<li>Run <code>carthage update</code>.</li>
-<li>Drag StreamLayer.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings or, preferably, use carthage copy-frameworks build stage to do that</li>
-<li>Carthage doesn&rsquo;t support specifying dependencies for binary distributions manually add following dependencies to your package manager of choice
-
-<ul>
-<li>WebRTC (M78) - prebuilt binary available at <a href="https://github.com/signalapp/signal-webrtc-ios-artifacts">https://github.com/signalapp/signal-webrtc-ios-artifacts</a> or you may build your own</li>
-</ul></li>
+<li>Start with <a href="">About StreamLayer</a> section, it will give you the sense of what is this SDK about.</li>
+<li>Then go the <a href="">Architecture Overview</a> section, it will give you a big picture perspective on the integration process.</li>
+<li><a href="">Getting Started</a> section will guide you through the process of the integration.</li>
+<li>Check the <a href="">Sample Integrations</a> section to see functioning example of integrated SDK.</li>
+<li>Use the rest of the reference to clarify the details of the interfaces the SDK provides.</li>
 </ol>
-<h3 id='additional-distributions' class='heading'>Additional distributions</h3>
-
-<p>Other package managers will be developed soon depending on actual demand.</p>
-<h2 id='getting-started' class='heading'>Getting started</h2>
-<h3 id='basic-terminology' class='heading'>Basic terminology</h3>
-
-<ul>
-<li>Overlay button - the button which is shown on top of the interface an activates StreamLayer menu</li>
-<li>Overlay menu - expanding menu which shows all the available overlays</li>
-<li>Overlay - interactive overlay, functionality depends on overlay type</li>
-<li>Overlay wrapper view - wrapper view for the SDK view hierarchy</li>
-<li>Host app - the app in which the SDK is being integrated</li>
-<li>Admin panel - web application where you can create SDK key, change SDK settings. Most essentials are the list of active overlays, and specific settings for each overlay (e.g. list of twitter accounts associated with the game)</li>
-</ul>
-
-<p>The general every thing works as follows:<br>
-When you press the the <code>Overlay button</code>, the <code>Overlay menu</code> opens, when you press a menu item, chosen <code>Overlay</code> will be shown.
-The <code>Overlay</code> is rendered inside the <code>Overlay wrapper view</code> the <code>Host app</code> provides to the SDK.<br>
-Which menu items are available is set up in the <code>Admin panel</code>.  </p>
-
-<p><em>Side note</em><br>
-<em>To be precise, the <code>Overlay button</code> and the <code>Overlay menu</code> technically are rendered inside the <code>Overlay wrapper view</code> you provide, in other words, it is a wrapper for the whole SDK.</em></p>
-<h3 id='introduction' class='heading'>Introduction</h3>
-
-<p>The framework provides you an overlay which is rendered on top of the host application interface. In order to make it work we have to initialize it with our SDK key during creation of the overlay (you will see sample call of the method below). Besides, as the interactive experience StreamLayer provides is tightly coupled with the video playback, interacts with audio session, some delegate methods have to be implemented to set up communication between the SDK and the host app. </p>
-<h3 id='acquire-sdk-api-key' class='heading'>Acquire SDK API key</h3>
-
-<p>Customers should provide a email, which would be used to create a new organization for them. 
-After you provide us your email, we create a personal dashboard. You receive an invitation with a link to the admin panel and credentials for authentication.<br>
-After getting an access to the admin panel, you will be able to generate an API key in the <a href="https://studio.staging.streamlayer.io/develop/">development section of the admin panel</a>.<br>
-This API key is used by the SDK to communicate with the server and is necessary for the integration.   </p>
-<h3 id='initialization-of-streamlayer-overlay' class='heading'>Initialization of StreamLayer overlay</h3>
-
-<p>After the integration of the framework you have to import StreamLayer module, initialize overlay classes and implement necessary delegate methods to give the SDK a possibility to fit in into the application natural user flows. </p>
-<h3 id='init-sl-overlay' class='heading'>Init SL Overlay</h3>
-
-<p>After the integration of the framework you have to import StreamLayer module, initialize overlay classes and implement a few delegate methods to give the SDK a possibility to fit in into application natural user flows.</p>
-
-<ol>
-<li><p><code>import StreamLayer</code> - import the <a href="Classes/StreamLayer.html">StreamLayer module</a> in a ViewController. The choice of a view controller depends on your application structure, in general it might be the root view controller since overlay is drawn on top on all the other UI components.</p></li>
-<li><p>Init the overlay view controller using <a href="Classes/StreamLayer.html#/s:15StreamLayerCore0aB0C13createOverlay_15overlayDelegate6sdkKeyAA0E14ViewControllerCSo6UIViewCSg_AA010SLROverlayG0_pSStFZ">StreamLayer.createOverlay</a> method:</p>
-<pre class="highlight swift"><code>  <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">overlayViewController</span> <span class="o">=</span> <span class="kt">StreamLayer</span><span class="o">.</span><span class="nf">createOverlay</span><span class="p">(</span>
-    <span class="n">overlayView</span><span class="p">,</span>
-    <span class="nv">overlayDelegate</span><span class="p">:</span> <span class="n">delegateObject</span><span class="p">,</span>
-    <span class="nv">sdkKey</span><span class="p">:</span> <span class="s">"0fd08998-aeca-4eaa-bbba-007ed568454a"</span>
-  <span class="p">)</span>
-</code></pre></li>
-<li><p>Add StreamLayer view controller to the view hierarchy. Code sample: </p>
-<pre class="highlight swift"><code>  <span class="nf">addChild</span><span class="p">(</span><span class="n">overlayViewController</span><span class="p">)</span>
-  <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayViewController</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
-</code></pre></li>
-<li><p>Position the Overlay button. Code sample:</p>
-<pre class="highlight swift"><code>  <span class="n">overlayViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-  <span class="p">}</span> 
-</code></pre></li>
-</ol>
-<h3 id='code-example' class='heading'>Code example</h3>
-
-<p>Here is an example of SDK integration and setting up of the overlay</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
-<span class="kd">import</span> <span class="kt">UIKit</span>
-
-<span class="c1">// these must be imported</span>
-<span class="kd">import</span> <span class="kt">StreamLayer</span>
-<span class="kd">import</span> <span class="kt">StreamLayerVendor</span>
-
-<span class="c1">// these are only used by a sample implementation and are not required to be imported</span>
-<span class="kd">import</span> <span class="kt">SnapKit</span>
-<span class="kd">import</span> <span class="kt">RxSwift</span>
-
-<span class="c1">// Ensure your SDK key is used here</span>
-<span class="k">let</span> <span class="nv">kStreamLayerKey</span> <span class="o">=</span> <span class="s">"PASTE SDK KEY HERE"</span>
-
-<span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
-  <span class="c1">// sample video player</span>
-  <span class="kd">private</span> <span class="k">let</span> <span class="nv">videoPlayer</span> <span class="o">=</span> <span class="kt">SLRVideoPlayer</span><span class="p">()</span>
-
-  <span class="c1">// blank reference view</span>
-  <span class="kd">private</span> <span class="k">let</span> <span class="nv">overlayView</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span>
-
-  <span class="c1">// inlined rxswift dispose bag</span>
-  <span class="kd">private</span> <span class="k">let</span> <span class="nv">disposeBag</span> <span class="o">=</span> <span class="kt">StreamLayerVendor</span><span class="o">.</span><span class="kt">DisposeBag</span><span class="p">()</span>
-
-  <span class="c1">// sample stream selector</span>
-  <span class="kd">private</span> <span class="k">let</span> <span class="nv">streamsViewController</span> <span class="o">=</span> <span class="kt">StreamsViewController</span><span class="p">()</span>
-
-  <span class="c1">// Initializes StreamLayer ViewController Singleton</span>
-  <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">overlayVC</span> <span class="o">=</span> <span class="kt">StreamLayer</span><span class="o">.</span><span class="nf">createOverlay</span><span class="p">(</span>
-    <span class="n">overlayView</span><span class="p">,</span>
-    <span class="nv">overlayDelegate</span><span class="p">:</span> <span class="n">videoPlayer</span><span class="p">,</span>
-    <span class="nv">sdkKey</span><span class="p">:</span> <span class="n">kStreamLayerKey</span>
-  <span class="p">)</span>
-
-  <span class="k">override</span> <span class="k">var</span> <span class="nv">preferredStatusBarStyle</span><span class="p">:</span> <span class="kt">UIStatusBarStyle</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="o">.</span><span class="n">lightContent</span>
-  <span class="p">}</span>
-
-  <span class="kd">fileprivate</span> <span class="k">var</span> <span class="nv">screenWidth</span><span class="p">:</span> <span class="kt">CGFloat</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">statusBarOrientation</span> <span class="o">=</span> <span class="kt">UIApplication</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">statusBarOrientation</span>
-    <span class="c1">// it is important to do this after presentModalViewController:animated:</span>
-    <span class="k">if</span> <span class="n">statusBarOrientation</span> <span class="o">!=</span> <span class="o">.</span><span class="n">portrait</span> <span class="o">&amp;&amp;</span> <span class="n">statusBarOrientation</span> <span class="o">!=</span> <span class="o">.</span><span class="n">portraitUpsideDown</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">height</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="kt">UIScreen</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">width</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
-
-    <span class="c1">// reference view that is added to view hierarcy, must be on the same level with overlayVC</span>
-    <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayView</span><span class="p">)</span>
-
-    <span class="c1">// sample video player, this is only a part of sample implementation</span>
-    <span class="c1">// its expected that you have your own player</span>
-    <span class="n">videoPlayer</span><span class="o">.</span><span class="nf">willMove</span><span class="p">(</span><span class="nv">toParent</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-    <span class="nf">addChild</span><span class="p">(</span><span class="n">videoPlayer</span><span class="p">)</span>
-    <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
-    <span class="n">videoPlayer</span><span class="o">.</span><span class="nf">didMove</span><span class="p">(</span><span class="nv">toParent</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-
-    <span class="c1">// sample implementation of an active stream switcher, only useful for a sample implementation</span>
-    <span class="nf">setupStreamSelector</span><span class="p">()</span>
-
-    <span class="c1">// add overlay viewcontroller into the hierarchy</span>
-    <span class="c1">// this is where the UI integration takes place</span>
-    <span class="n">overlayVC</span><span class="o">.</span><span class="nf">willMove</span><span class="p">(</span><span class="nv">toParent</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-    <span class="nf">addChild</span><span class="p">(</span><span class="n">overlayVC</span><span class="p">)</span>
-    <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
-    <span class="n">overlayVC</span><span class="o">.</span><span class="nf">didMove</span><span class="p">(</span><span class="nv">toParent</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
-
-    <span class="c1">// this will initiate data fetching &amp; setup several gestures, not intended for production</span>
-    <span class="nf">setupInteractionsAndRequestData</span><span class="p">()</span>
-  <span class="p">}</span>
-
-  <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">super</span><span class="o">.</span><span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">animated</span><span class="p">)</span>
-
-    <span class="c1">// ensures that overlays take correct size regardless of device orientation</span>
-    <span class="kt">SLRStateMachine</span><span class="o">.</span><span class="nf">onOrientationChange</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">,</span> <span class="n">setupConstraints</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="c1">/// sets appropriate view sizes based on the orientation</span>
-  <span class="c1">/// - Parameter orientation: portrait or landscape</span>
-  <span class="kd">private</span> <span class="kd">func</span> <span class="nf">setupConstraints</span><span class="p">(</span><span class="n">_</span> <span class="nv">orientation</span><span class="p">:</span> <span class="kt">OrientationState</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">switch</span> <span class="n">orientation</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="o">.</span><span class="nv">horizontal</span><span class="p">:</span> <span class="nf">horizontalOrientation</span><span class="p">()</span>
-    <span class="k">default</span><span class="p">:</span> <span class="nf">verticalOrientation</span><span class="p">()</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">/// Portrait.</span>
-  <span class="c1">/// Roughly 1/3 of the screen is taken up by video player, remainder is useful content + overlay button</span>
-  <span class="c1">/// Overlays slide from the bottom</span>
-  <span class="kd">private</span> <span class="kd">func</span> <span class="nf">verticalOrientation</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="p">)</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">height</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="nf">ceil</span><span class="p">(</span><span class="n">screenWidth</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">16</span><span class="p">)))</span>
-    <span class="p">}</span>
-
-    <span class="n">overlayView</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">/// Landscape</span>
-  <span class="c1">/// Everything is taken up by video player &amp; button is visible</span>
-  <span class="c1">/// Overlays slide from the left</span>
-  <span class="kd">private</span> <span class="kd">func</span> <span class="nf">horizontalOrientation</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="n">overlayView</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span> <span class="n">make</span> <span class="k">in</span>
-      <span class="n">make</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-
-      <span class="k">if</span> <span class="kd">#available(iOS 11, *)</span> <span class="p">{</span>
-        <span class="n">make</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="mi">300</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="n">make</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="mi">300</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span> <span class="n">make</span> <span class="k">in</span>
-      <span class="n">make</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span>
-      <span class="nv">$0</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">/// Sample stream selector, is not inteded for production use</span>
-  <span class="kd">private</span> <span class="kd">func</span> <span class="nf">setupStreamSelector</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nf">addChild</span><span class="p">(</span><span class="n">streamsViewController</span><span class="p">)</span>
-
-    <span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">setContentCompressionResistancePriority</span><span class="p">(</span><span class="o">.</span><span class="n">defaultLow</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">vertical</span><span class="p">)</span>
-    <span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">setContentCompressionResistancePriority</span><span class="p">(</span><span class="o">.</span><span class="n">defaultLow</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">horizontal</span><span class="p">)</span>
-    <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
-
-    <span class="n">streamsViewController</span><span class="o">.</span><span class="n">streamSelectedHandler</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="n">videoPlayer</span><span class="p">]</span> <span class="n">streamURLString</span><span class="p">,</span> <span class="n">eventId</span> <span class="k">in</span>
-
-      <span class="n">videoPlayer</span><span class="o">.</span><span class="nf">setNewStreamURL</span><span class="p">(</span><span class="nv">withURL</span><span class="p">:</span> <span class="n">streamURLString</span><span class="p">,</span>
-                                  <span class="nv">providerType</span><span class="p">:</span> <span class="kt">Int</span><span class="p">(</span><span class="n">streamURLString</span><span class="p">)</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">?</span> <span class="o">.</span><span class="nv">vimeo</span> <span class="p">:</span> <span class="o">.</span><span class="n">youtube</span><span class="p">)</span>
-
-      <span class="kt">StreamLayer</span><span class="o">.</span><span class="nf">changeStreamEvent</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="n">eventId</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">/// Only intended as a sample implementation for gesture &amp; data requests</span>
-  <span class="kd">private</span> <span class="kd">func</span> <span class="nf">setupInteractionsAndRequestData</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">// setup player interactions</span>
-    <span class="cp">#if os(iOS)</span>
-    <span class="n">videoPlayer</span><span class="o">.</span><span class="n">onTap</span><span class="p">?</span>
-      <span class="o">.</span><span class="nf">subscribe</span><span class="p">(</span><span class="nv">onNext</span><span class="p">:</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">_</span> <span class="k">in</span>
-        <span class="k">self</span><span class="p">?</span><span class="o">.</span><span class="n">overlayVC</span><span class="o">.</span><span class="nf">close</span><span class="p">()</span>
-      <span class="p">})</span>
-      <span class="o">.</span><span class="nf">disposed</span><span class="p">(</span><span class="nv">by</span><span class="p">:</span> <span class="n">disposeBag</span><span class="p">)</span>
-
-    <span class="n">overlayVC</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">videoPlayer</span>
-    <span class="cp">#endif</span>
-
-    <span class="c1">// First stream event</span>
-    <span class="n">streamsViewController</span><span class="o">.</span><span class="n">activityIndicator</span><span class="o">.</span><span class="nf">startAnimating</span><span class="p">()</span>
-    <span class="kt">StreamLayer</span><span class="o">.</span><span class="n">requestDemoStreams</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="k">self</span><span class="p">]</span> <span class="n">error</span><span class="p">,</span> <span class="n">models</span> <span class="k">in</span>
-      <span class="k">guard</span> <span class="k">let</span> <span class="nv">self</span> <span class="o">=</span> <span class="k">self</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
-
-      <span class="k">self</span><span class="o">.</span><span class="n">streamsViewController</span><span class="o">.</span><span class="n">activityIndicator</span><span class="o">.</span><span class="nf">stopAnimating</span><span class="p">()</span>
-
-      <span class="k">if</span> <span class="n">error</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="nv">alert</span> <span class="o">=</span> <span class="kt">UIAlertController</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Error request"</span><span class="p">,</span>
-                                      <span class="nv">message</span><span class="p">:</span> <span class="n">error</span><span class="p">?</span><span class="o">.</span><span class="n">localizedDescription</span> <span class="p">??</span> <span class="s">"Please reload the app"</span><span class="p">,</span>
-                                      <span class="nv">preferredStyle</span><span class="p">:</span> <span class="o">.</span><span class="n">alert</span><span class="p">)</span>
-        <span class="n">alert</span><span class="o">.</span><span class="nf">addAction</span><span class="p">(</span><span class="kt">UIAlertAction</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Ok"</span><span class="p">,</span> <span class="nv">style</span><span class="p">:</span> <span class="o">.</span><span class="n">cancel</span><span class="p">))</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">streamsViewController</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="n">alert</span><span class="p">,</span> <span class="nv">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
-        <span class="k">return</span>
-      <span class="p">}</span>
-
-      <span class="k">self</span><span class="o">.</span><span class="n">streamsViewController</span><span class="o">.</span><span class="n">dataArray</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">StreamsViewControllerTableCellViewModel</span><span class="p">(</span><span class="nv">$0</span><span class="p">)</span> <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<h3 id='configure-delegate' class='heading'>Configure Delegate</h3>
-
-<p>The communication between the a host application and the StreamLayer Framework is implemented via various delegate methods. The following delegate methods have to be implemented:</p>
-
-<p>Voice chat</p>
-
-<ul>
-<li><a href="Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19requestAudioDuckingyyF">requestAudioDucking</a></li>
-<li><a href="Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19disableAudioDuckingyyF">disableAudioDucking</a></li>
-</ul>
-
-<p>Audio notifications are used by the SDK in various ways. They used for voice chat, messaging and other features. There is a limitation in the iOS platform which allows each application to use only one audio session, hence the host app and the SDK use the same audio session. To minimize interference between host app&rsquo;s and SDK&rsquo;s audio modes following delegate methods have to be implemented:</p>
-
-<ul>
-<li><a href="Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19prepareAudioSession3foryAA08SLRAudioH4TypeO_tF">prepareAudioSession</a></li>
-<li><a href="Protocols/SLROverlayDelegate.html#/s:15StreamLayerCore18SLROverlayDelegateP19disableAudioSession3foryAA08SLRAudioH4TypeO_tF">disableAudioSession</a></li>
-</ul>
-<h3 id='control-the-sdk-appearance' class='heading'>Control the SDK appearance</h3>
-
-<p>Since SDK provides to viewers interactive experience, it needs to fetch relevant data for the ongoing event. Since the SDK does not know by itself what user is watching at the moment, the host app have to send an event id to the SDK. This method should be called each time user switches stream.</p>
-
-<ul>
-<li><a href="Classes/StreamLayer.html#/s:15StreamLayerCore0aB0C06changeA5Event3for10PromiseKit0G0Cy12SLProtofiles034Streamlayer_SdkSettings_Client_GetA8ResponseVGx_ts25LosslessStringConvertibleRzlFZ">changeStreamEvent</a></li>
-</ul>
-<h2 id='requirements' class='heading'>Requirements</h2>
-
-<p>iOS 11+</p>
-<h2 id='support' class='heading'>Support</h2>
 
           </section>
           <section class="section task-group-section">
@@ -411,12 +120,39 @@ This API key is used by the SDK to communicate with the server and is necessary 
                     </code>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/documentation.Architecture Overview"></a>
+                    <a name="//apple_ref/swift/Guide/Architecture Overview" class="dashAnchor"></a>
+                    <a class="direct-link" href="architecture-overview.html">Architecture Overview</a>
+                    </code>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/documentation.Getting Started"></a>
+                    <a name="//apple_ref/swift/Guide/Getting Started" class="dashAnchor"></a>
+                    <a class="direct-link" href="getting-started.html">Getting Started</a>
+                    </code>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/documentation.Sample Integrations"></a>
+                    <a name="//apple_ref/swift/Guide/Sample Integrations" class="dashAnchor"></a>
+                    <a class="direct-link" href="sample-integrations.html">Sample Integrations</a>
+                    </code>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-03-02)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-03-31)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
