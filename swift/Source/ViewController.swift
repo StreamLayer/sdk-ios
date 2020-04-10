@@ -178,7 +178,7 @@ class ViewController: UIViewController {
 
     // First stream event
     streamsViewController.activityIndicator.startAnimating()
-    StreamLayer.requestDemoStreams { [weak self] error, models in
+    StreamLayer.requestDemoStreams(showAllStreams: false, completion: { [weak self] error, models in
       guard let self = self else { return }
 
       self.streamsViewController.activityIndicator.stopAnimating()
@@ -193,6 +193,6 @@ class ViewController: UIViewController {
       }
 
       self.streamsViewController.dataArray = models.map { StreamsViewControllerTableCellViewModel($0) }
-    }
+    })
   }
 }
