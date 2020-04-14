@@ -2,42 +2,42 @@
   "warnings": [
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 19,
+      "line": 18,
       "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 98,
+      "line": 97,
       "symbol": "SLROverlayViewController.delegate",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 429,
+      "line": 428,
       "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 452,
+      "line": 451,
       "symbol": "SLROverlayViewController.viewDidDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 539,
+      "line": 538,
       "symbol": "SLROverlayViewController",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 540,
+      "line": 539,
       "symbol": "SLROverlayViewController.changeStreamEvent(eventId:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

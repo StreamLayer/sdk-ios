@@ -174,64 +174,63 @@ The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overl
 <p>Initialize the overlay and implement necessary delegate methods to give the SDK a possibility to fit in into the application natural user flows. </p>
 
 <ul>
-<li><p>Import the <code><a href="Classes/StreamLayer.html">StreamLayer</a></code> and the third party dependencies packed inside the StreamLayer framework. Add this to the AppDelegate.swift file.</p>
+<li>Import the <code><a href="Classes/StreamLayer.html">StreamLayer</a></code> and the third party dependencies packed inside the StreamLayer framework. Add this to the AppDelegate.swift file.<br></li>
+</ul>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">StreamLayer</span>
 <span class="kd">import</span> <span class="kt">StreamLayerVendor</span>
 </code></pre>
 
-<p>At this point you may try to build the application to check whether you have included the framework and related dependencies into the project correctly.</p></li>
-<li><p>Init the SDK calling <code><a href="Classes/StreamLayer.html#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)initSDKWith:isDebug:loggerDelegate:error:">StreamLayer.initSDK(...)</a></code></p>
-<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span>
-<span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span> <span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
-</code></pre></li>
+<p>At this point you may try to build the application to check whether you have included the framework and related dependencies into the project correctly.</p>
+
+<ul>
+<li>Init the SDK calling <code><a href="Classes/StreamLayer.html#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)initSDKWith:isDebug:loggerDelegate:error:">StreamLayer.initSDK(...)</a></code><br></li>
 </ul>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span>
+  <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span> <span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+  <span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="kt">StreamLayer</span><span class="o">.</span><span class="nf">initSDK</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="s">"YOUR_SDK_API_KEY"</span><span class="p">)</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nf">fatalError</span><span class="p">(</span><span class="s">"failed to init StreamLayer SDK: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="o">...</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='create-streamlayer-view-controller' class='heading'>Create StreamLayer View Controller</h3>
 
-<p>do {
-    try StreamLayer.initSDK(with: &ldquo;YOUR_SDK_API_KEY&rdquo;)
-  } catch {
-    fatalError(&ldquo;failed to init StreamLayer SDK: (error)&rdquo;)
-  }</p>
+<ul>
+<li>Init the overlay view controller using <code><a href="Classes/StreamLayer.html#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)createOverlay:overlayDelegate:">StreamLayer.createOverlay(...)</a></code> method.<br></li>
+</ul>
+<pre class="highlight swift"><code><span class="c1">// blank reference view</span>
+<span class="kd">private</span> <span class="k">let</span> <span class="nv">overlayView</span> <span class="o">=</span> <span class="kt">UIView</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">overlayViewController</span> <span class="o">=</span> <span class="kt">StreamLayer</span><span class="o">.</span><span class="nf">createOverlay</span><span class="p">(</span>
+  <span class="n">overlayView</span><span class="p">,</span>
+  <span class="nv">overlayDelegate</span><span class="p">:</span> <span class="n">videoPlayer</span>
+<span class="p">)</span>
+<span class="o">...</span>
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
 
-<p>&hellip;</p>
+  <span class="c1">// reference view that is added to view hierarcy, must be on the same level with overlayVC</span>
+  <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayView</span><span class="p">)</span>
 
-<p>}</p>
-<pre class="highlight plaintext"><code>
-### Create StreamLayer View Controller
-* Init the overlay view controller using `StreamLayer.createOverlay(...)` method.
-```swift
-// blank reference view
-private let overlayView = UIView()
-...
-private lazy var overlayViewController = StreamLayer.createOverlay(
-  overlayView,
-  overlayDelegate: videoPlayer
-)
-...
-override func viewDidLoad() {
-  super.viewDidLoad()
-
-  // reference view that is added to view hierarcy, must be on the same level with overlayVC
-  view.addSubview(overlayView)
-
-  // add overlay viewcontroller into the hierarchy
-  // this is where the UI integration takes place
-  overlayVC.willMove(toParent: self)
-  addChild(overlayVC)
-  view.addSubview(overlayVC.view)
-  overlayVC.didMove(toParent: self)
-
-}   
+  <span class="c1">// add overlay viewcontroller into the hierarchy</span>
+  <span class="c1">// this is where the UI integration takes place</span>
+  <span class="n">overlayVC</span><span class="o">.</span><span class="nf">willMove</span><span class="p">(</span><span class="nv">toParent</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+  <span class="nf">addChild</span><span class="p">(</span><span class="n">overlayVC</span><span class="p">)</span>
+  <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+  <span class="n">overlayVC</span><span class="o">.</span><span class="nf">didMove</span><span class="p">(</span><span class="nv">toParent</span><span class="p">:</span> <span class="k">self</span><span class="p">)</span>
+<span class="p">}</span>   
 </code></pre>
 
 <p>We will cover implementation of <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> methods below in this guide.</p>
 
 <ul>
-<li>Add StreamLayer view controller to the view hierarchy.
-<code>swift
-addChild(overlayViewController)
-view.addSubview(overlayViewController.view)
-</code></li>
+<li>Add StreamLayer view controller to the view hierarchy.<br></li>
 </ul>
+<pre class="highlight swift"><code><span class="nf">addChild</span><span class="p">(</span><span class="n">overlayViewController</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayViewController</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
+</code></pre>
 <h3 id='positioning-the-overlay-handling-orientation-changes' class='heading'>Positioning the overlay, handling orientation changes</h3>
 
 <ul>
@@ -335,7 +334,7 @@ Please keep in mind that this is just an example, and sheer copy and paste might
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-04-09)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-04-14)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
