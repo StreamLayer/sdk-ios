@@ -40,6 +40,9 @@
                 <a href="integration-guide.html">Integration Guide</a>
               </li>
               <li class="nav-group-task">
+                <a href="constraints-guide.html">Constraints Guide</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="sample-integrations.html">Sample Integrations</a>
               </li>
             </ul>
@@ -97,11 +100,41 @@
           <section class="section">
             
             <h1 id='integration-guide' class='heading'>Integration Guide</h1>
-<h2 id='background' class='heading'>Background</h2>
+
+<ul>
+<li><a href="#integration-guide">Integration Guide</a></li>
+<li><a href="#background">Background</a></li>
+<li><a href="#prerequisites">Prerequisites</a>
+
+<ul>
+<li><a href="#system-requirements">System requirements</a></li>
+<li><a href="#get-the-sdk-api-key">Get the SDK API key</a></li>
+</ul></li>
+<li><a href="#installation">Installation</a>
+
+<ul>
+<li><a href="#using-carthage">Using Carthage</a></li>
+<li><a href="#manual-installation">Manual installation</a></li>
+<li><a href="#additional-distributions">Additional distributions</a></li>
+</ul></li>
+<li><a href="#integration">Integration</a>
+
+<ul>
+<li><a href="#basic-terminology">Basic terminology</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#initialize-of-the-sdk">Initialize of the SDK</a></li>
+<li><a href="#create-streamlayer-view-controller">Create StreamLayer View Controller</a></li>
+<li><a href="#positioning-the-overlay-handling-orientation-changes">Positioning the overlay, handling orientation changes</a></li>
+<li><a href="#implement-slroverlaydelegate-methods">Implement <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> methods</a></li>
+<li><a href="#control-the-sdk-appearance">Control the SDK appearance</a></li>
+</ul></li>
+<li><a href="#further-reading">Further Reading</a></li>
+</ul>
+<h1 id='background' class='heading'>Background</h1>
 
 <p>Before starting the integration, please read the <a href="./architecture-overview.html">Architecture Overview</a>. </p>
-<h2 id='prerequisites' class='heading'>Prerequisites</h2>
-<h3 id='system-requirements' class='heading'>System requirements</h3>
+<h1 id='prerequisites' class='heading'>Prerequisites</h1>
+<h2 id='system-requirements' class='heading'>System requirements</h2>
 
 <ul>
 <li>XCode 11.3.1</li>
@@ -110,25 +143,29 @@
 </ul>
 
 <p>If this does not meet your system, please contact our development team. We can either check if your app can host the SDK, or we may consider building additional version of the SDK.  </p>
-<h3 id='get-the-sdk-api-key' class='heading'>Get the SDK API key</h3>
+<h2 id='get-the-sdk-api-key' class='heading'>Get the SDK API key</h2>
 
 <p>If you still do not an SDK key, please follow the instruction to get it.<br>
 Provide us a email, which would be used to create a new organization for them. 
 We create a personal dashboard. You receive an invitation with a link to the admin panel and credentials for authentication.<br>
 After getting an access to the admin panel, you will be able to generate an API key in the <a href="https://studio.staging.streamlayer.io/develop/">development section of the admin panel</a>.<br>
 This API key is used by the SDK to communicate with the server and is necessary for the integration.   </p>
-<h2 id='installation' class='heading'>Installation</h2>
+<h1 id='installation' class='heading'>Installation</h1>
 
 <p>The SDK is distributed as a dynamic framework. Now we have 2 options to integrate the SDK framework - using Carthage package manager, or manually.</p>
-<h3 id='using-carthage' class='heading'>Using Carthage</h3>
+<h2 id='using-carthage' class='heading'>Using Carthage</h2>
 
 <ol>
 <li>Install Carthage using brew 
 <code>
 brew tap streamlayer/formulas
 brew reinstall streamlayer/formulas/carthage
-</code> 
-<em>Note: internally we prefer to work with <a href="https://github.com/nsoperations/Carthage">https://github.com/nsoperations/Carthage</a> fork as it has numerous fixes and is much easier to work with</em>.</li>
+</code></li>
+</ol>
+
+<p><em>Note: internally we prefer to work with <a href="https://github.com/nsoperations/Carthage">https://github.com/nsoperations/Carthage</a> fork as it has numerous fixes and is much easier to work with</em>.</p>
+
+<ol>
 <li>Add <code>binary &quot;https://streamlayer.github.io/sdk-ios/releases.json&quot;</code> to your Cartfile.</li>
 <li>Run <code>carthage update</code>.</li>
 <li>Drag StreamLayer.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings or, preferably, use carthage copy-frameworks build stage to do that</li>
@@ -142,17 +179,17 @@ brew reinstall streamlayer/formulas/carthage
 
 </div><ul>
 </ol>
-<h3 id='manual-installation' class='heading'>Manual installation</h3>
+<h2 id='manual-installation' class='heading'>Manual installation</h2>
 
 <ol>
 <li>Download latest release from the Release section in the repo: <a href="https://github.com/StreamLayer/sdk-ios/releases">https://github.com/StreamLayer/sdk-ios/releases</a><br></li>
 <li>Drag downloaded StreamLayer.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings.</li>
 </ol>
-<h3 id='additional-distributions' class='heading'>Additional distributions</h3>
+<h2 id='additional-distributions' class='heading'>Additional distributions</h2>
 
 <p>Cocoapods and other package managers are not available now. Other distributions will be developed soon depending on community requestsа.</p>
-<h2 id='integration' class='heading'>Integration</h2>
-<h3 id='basic-terminology' class='heading'>Basic terminology</h3>
+<h1 id='integration' class='heading'>Integration</h1>
+<h2 id='basic-terminology' class='heading'>Basic terminology</h2>
 
 <ul>
 <li>Host app - the app in which the SDK is being integrated</li>
@@ -166,10 +203,10 @@ brew reinstall streamlayer/formulas/carthage
 The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overlay Menu</strong> are rendered inside the <strong>Overlay Wrapper View</strong> the host app provides to the SDK.  </p>
 
 <p><em>Side note: The list of activated overlays is set in the **Admin Panel</em><em>.</em></p>
-<h3 id='introduction' class='heading'>Introduction</h3>
+<h2 id='introduction' class='heading'>Introduction</h2>
 
 <p>The framework provides you an overlay which is rendered on top of the host application interface. In order to make it work we have to initialize it with our SDK key during creation of the overlay (you will see sample call of the method below). Besides, as the interactive experience StreamLayer provides is tightly coupled with the video playback, interacts with audio session, some delegate methods have to be implemented to set up communication between the SDK and the host app. </p>
-<h3 id='initialize-of-the-sdk' class='heading'>Initialize of the SDK</h3>
+<h2 id='initialize-of-the-sdk' class='heading'>Initialize of the SDK</h2>
 
 <p>Initialize the overlay and implement necessary delegate methods to give the SDK a possibility to fit in into the application natural user flows. </p>
 
@@ -195,7 +232,7 @@ The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overl
 <span class="o">...</span>
 <span class="p">}</span>
 </code></pre>
-<h3 id='create-streamlayer-view-controller' class='heading'>Create StreamLayer View Controller</h3>
+<h2 id='create-streamlayer-view-controller' class='heading'>Create StreamLayer View Controller</h2>
 
 <ul>
 <li>Init the overlay view controller using <code><a href="Classes/StreamLayer.html#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)createOverlay:overlayDelegate:">StreamLayer.createOverlay(...)</a></code> method.<br></li>
@@ -231,7 +268,7 @@ The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overl
 <pre class="highlight swift"><code><span class="nf">addChild</span><span class="p">(</span><span class="n">overlayViewController</span><span class="p">)</span>
 <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayViewController</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
 </code></pre>
-<h3 id='positioning-the-overlay-handling-orientation-changes' class='heading'>Positioning the overlay, handling orientation changes</h3>
+<h2 id='positioning-the-overlay-handling-orientation-changes' class='heading'>Positioning the overlay, handling orientation changes</h2>
 
 <ul>
 <li>Position the Overlay ViewController.<br></li>
@@ -299,7 +336,7 @@ Please keep in mind that this is just an example, and sheer copy and paste might
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre>
-<h3 id='implement-code-slroverlaydelegate-code-methods' class='heading'>Implement <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> methods</h3>
+<h2 id='implement-code-slroverlaydelegate-code-methods' class='heading'>Implement <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> methods</h2>
 
 <p>The communication between the a host application and the StreamLayer Framework is implemented via various delegate methods. The following delegate methods have to be implemented:</p>
 
@@ -320,22 +357,22 @@ Please keep in mind that this is just an example, and sheer copy and paste might
 <p>For the rest of the methods you have to implement check the protocol reference.</p>
 
 <p><code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code></p>
-<h3 id='control-the-sdk-appearance' class='heading'>Control the SDK appearance</h3>
+<h2 id='control-the-sdk-appearance' class='heading'>Control the SDK appearance</h2>
 
 <p>Since SDK provides to viewers interactive experience, it needs to fetch relevant data for the ongoing event. Since the SDK does not know by itself what user is watching at the moment, the host app have to send an event id to the SDK. This method should be called each time user switches stream.</p>
 
 <ul>
 <li><code>SLROverlayDelegate.changeStreamEvent(...)</code></li>
 </ul>
-<h2 id='further-reading' class='heading'>Further Reading</h2>
+<h1 id='further-reading' class='heading'>Further Reading</h1>
 
 <p>Check the <a href="sample-integrations.html">Sample Integrations</a> section to see functioning example of integrated SDK.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-04-14)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>
