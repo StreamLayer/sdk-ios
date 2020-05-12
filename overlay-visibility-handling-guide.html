@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Type Aliases  Reference</title>
+    <title>Overlay Visibility Handling Guide  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,10 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Section/Type Aliases" class="dashAnchor"></a>
-    <a title="Type Aliases  Reference"></a>
+    <a title="Overlay Visibility Handling Guide  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (60% documented)</p>
+        <p><a href="index.html"> Docs</a> (72% documented)</p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fstreamlayer%2Egithub%2Eio%2Fsdk%2Dios%2Fdocsets%2F%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
@@ -22,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-        Type Aliases  Reference
+        Overlay Visibility Handling Guide  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -42,6 +41,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="constraints-guide.html">Constraints Guide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="customize-text-messages-guide.html">Customize Text Messages Guide</a>
               </li>
               <li class="nav-group-task">
                 <a href="sample-integrations.html">Sample Integrations</a>
@@ -73,25 +81,6 @@
               <li class="nav-group-task">
                 <a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a>
               </li>
-              <li class="nav-group-task">
-                <a href="Protocols/SLROverlayLoggerDelegate.html">SLROverlayLoggerDelegate</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Structs.html">Structures</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/SLRStreamsHostAppModel.html">SLRStreamsHostAppModel</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:11StreamLayer9SLRStreama">SLRStream</a>
-              </li>
             </ul>
           </li>
         </ul>
@@ -99,46 +88,35 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Type Aliases</h1>
-            <p>The following type aliases are available globally.</p>
+            
+            <h1 id='overlay-visibility-handling-guide' class='heading'>Overlay Visibility Handling Guide</h1>
 
-          </section>
-          <section class="section task-group-section">
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11StreamLayer9SLRStreama"></a>
-                    <a name="//apple_ref/swift/Alias/SLRStream" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11StreamLayer9SLRStreama">SLRStream</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
+<p>The operations you have to implement highly depends on the interplay of your app&rsquo;s interface and the SDK interface. You can hide some of your interface elements, or resize video.  </p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">SLRStream</span> <span class="o">=</span> <span class="kt">Streamlayer_SdkSettings_Client_GetStreamResponse</span></code></pre>
+<p>Here is a basic example of the delegate methods implementation.</p>
+<pre class="highlight swift"><code><span class="kt">SLRVideoPlayer</span><span class="p">:</span> <span class="kt">SLROverlayDelegate</span> <span class="p">{</span>
 
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
+<span class="o">...</span>
+
+  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">overlayOpened</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"overlay opened"</span><span class="p">)</span>
+    <span class="c1">// Put your logic here</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">overlayClosed</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"overlay closed"</span><span class="p">)</span>
+    <span class="c1">// Put your logic here</span>
+  <span class="p">}</span>
+
+<span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre>
+
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-04)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-12)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

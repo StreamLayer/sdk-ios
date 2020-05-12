@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Sample Integrations  Reference</title>
+    <title>Customize Text Messages Guide  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Sample Integrations  Reference"></a>
+    <a title="Customize Text Messages Guide  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html"> Docs</a> (72% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-        Sample Integrations  Reference
+        Customize Text Messages Guide  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -89,14 +89,32 @@
         <section>
           <section class="section">
             
-            <h1 id='sample-integrations' class='heading'>Sample Integrations</h1>
+            <h1 id='customize-text-messages-guide' class='heading'>Customize Text Messages Guide</h1>
 
-<p>To demonstrate the SDK functionality we created sample app with basic video player and basic interface for switching video channels. The app itself is quite generic, please treat it as a primitive variant of the real app you are going to integrate the SDK to.<br>
-You can walk through the source code and run it on your device.<br>
-<a href="https://github.com/StreamLayer/sdk-ios/tree/sample-apps/swift">Sample Swift app</a><br>
-<a href="https://github.com/StreamLayer/sdk-ios/tree/sample-apps/obj-c">Sample Obj-C app</a></p>
+<p>Here is an example of implementation of custom messages.</p>
+<pre class="highlight swift"><code><span class="kt">SLRVideoPlayer</span><span class="p">:</span> <span class="kt">SLROverlayDelegate</span> <span class="p">{</span>
 
-<p><strong>Important:</strong> for connection to the server demo applications use demo API-key. Do not copy it, use instead the one you <a href="asdf">received</a>.</p>
+<span class="o">...</span>
+
+  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">shareInviteMessage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s">"You have received a test message from StreamLayer. Please disregard. Thanks"</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kd">func</span> <span class="nf">waveMessage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">clientApp</span> <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">infoDictionary</span><span class="o">!</span><span class="p">[</span><span class="n">kCFBundleNameKey</span> <span class="k">as</span> <span class="kt">String</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">String</span> <span class="p">??</span> <span class="s">""</span>
+    <span class="k">let</span> <span class="nv">awayTeamName</span> <span class="o">=</span> <span class="s">"Manchester United"</span>
+    <span class="k">let</span> <span class="nv">homeTeamName</span> <span class="o">=</span> <span class="s">"Barcelona"</span>
+
+    <span class="k">return</span> <span class="s">"""
+           Hey! I’m watching the </span><span class="se">\(</span><span class="n">awayTeamName</span><span class="se">)</span><span class="s"> vs </span><span class="se">\(</span><span class="n">homeTeamName</span><span class="se">)</span><span class="s"> game right now in </span><span class="err">\</span><span class="s">
+           the </span><span class="se">\(</span><span class="n">clientApp</span><span class="se">)</span><span class="s"> app new interactive group viewing features. Let's hang out and watch together!
+           """</span>
+  <span class="p">}</span>
+
+<span class="o">...</span>
+
+<span class="p">}</span>
+</code></pre>
 
           </section>
         </section>

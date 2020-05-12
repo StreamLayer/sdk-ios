@@ -13,7 +13,7 @@
     <a title="Integration Guide  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (60% documented)</p>
+        <p><a href="index.html"> Docs</a> (72% documented)</p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fstreamlayer%2Egithub%2Eio%2Fsdk%2Dios%2Fdocsets%2F%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
@@ -41,6 +41,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="constraints-guide.html">Constraints Guide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="customize-text-messages-guide.html">Customize Text Messages Guide</a>
               </li>
               <li class="nav-group-task">
                 <a href="sample-integrations.html">Sample Integrations</a>
@@ -71,25 +80,6 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/SLROverlayLoggerDelegate.html">SLROverlayLoggerDelegate</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Structs.html">Structures</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/SLRStreamsHostAppModel.html">SLRStreamsHostAppModel</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:11StreamLayer9SLRStreama">SLRStream</a>
               </li>
             </ul>
           </li>
@@ -124,10 +114,16 @@
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#initialize-of-the-sdk">Initialize of the SDK</a></li>
 <li><a href="#create-streamlayer-view-controller">Create StreamLayer View Controller</a></li>
+</ul></li>
 <li><a href="#positioning-the-overlay-handling-orientation-changes">Positioning the overlay, handling orientation changes</a></li>
-<li><a href="#implement-slroverlaydelegate-methods">Implement <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> methods</a></li>
+<li><a href="#implement-slroverlaydelegate-methods">Implement SLROverlayDelegate methods</a>
+
+<ul>
+<li><a href="#audio-sessions-management">Audio Sessions Management</a></li>
+<li><a href="#customize-text-messages">Customize Text Messages</a></li>
 <li><a href="#control-the-sdk-appearance">Control the SDK appearance</a></li>
 </ul></li>
+<li><a href="#integration-checklist">Integration Checklist</a></li>
 <li><a href="#further-reading">Further Reading</a></li>
 </ul>
 <h1 id='background' class='heading'>Background</h1>
@@ -268,101 +264,34 @@ The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overl
 <pre class="highlight swift"><code><span class="nf">addChild</span><span class="p">(</span><span class="n">overlayViewController</span><span class="p">)</span>
 <span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">overlayViewController</span><span class="o">.</span><span class="n">view</span><span class="p">)</span>
 </code></pre>
-<h2 id='positioning-the-overlay-handling-orientation-changes' class='heading'>Positioning the overlay, handling orientation changes</h2>
+<h1 id='positioning-the-overlay-handling-orientation-changes' class='heading'>Positioning the overlay, handling orientation changes</h1>
 
 <ul>
 <li>Position the Overlay ViewController.<br></li>
 </ul>
 
-<p>Here is an example of implementation of handling of the orientation from the <a href="https://github.com/StreamLayer/sdk-ios/tree/sample-apps">Sample Integrations</a> you can find in the repo with the SDK. In this example we use SnapKit and RxSwift for simplicity, none of which is a requirement from any point. You can position the overlay as it fits better your current markup style.<br>
-Please keep in mind that this is just an example, and sheer copy and paste might not work for your case. Use it as a reference to understand what have to be done.</p>
-<pre class="highlight swift"><code><span class="k">override</span> <span class="kd">func</span> <span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">_</span> <span class="nv">animated</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">super</span><span class="o">.</span><span class="nf">viewWillAppear</span><span class="p">(</span><span class="n">animated</span><span class="p">)</span>
+<p>Please check the <a href="constraints-guide.html">Constraints Guide</a>, it covers the process of layouting the overlay.</p>
+<h1 id='implement-slroverlaydelegate-methods' class='heading'>Implement SLROverlayDelegate methods</h1>
 
-  <span class="c1">// ensures that overlays take correct size regardless of device orientation</span>
-  <span class="kt">SLRStateMachine</span><span class="o">.</span><span class="nf">onOrientationChange</span><span class="p">(</span><span class="n">disposeBag</span><span class="p">,</span> <span class="n">setupConstraints</span><span class="p">)</span>
-<span class="p">}</span>
+<p>The communication between the a host application and the StreamLayer Framework is implemented via <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> delegate methods. All of them are covered in the following guides.  </p>
+<h2 id='audio-sessions-management' class='heading'>Audio Sessions Management</h2>
 
-<span class="c1">/// sets appropriate view sizes based on the orientation</span>
-<span class="c1">/// - Parameter orientation: portrait or landscape</span>
-<span class="kd">private</span> <span class="kd">func</span> <span class="nf">setupConstraints</span><span class="p">(</span><span class="n">_</span> <span class="nv">orientation</span><span class="p">:</span> <span class="kt">OrientationState</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">switch</span> <span class="n">orientation</span> <span class="p">{</span>
-  <span class="k">case</span> <span class="o">.</span><span class="nv">horizontal</span><span class="p">:</span> <span class="nf">horizontalOrientation</span><span class="p">()</span>
-  <span class="k">default</span><span class="p">:</span> <span class="nf">verticalOrientation</span><span class="p">()</span>
-  <span class="p">}</span>
-<span class="p">}</span>
+<p>Audio notifications are used by the SDK in various ways. They used for voice chat, messaging and other features.
+<a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a>  </p>
+<h2 id='customize-text-messages' class='heading'>Customize Text Messages</h2>
 
-<span class="c1">/// Portrait.</span>
-<span class="c1">/// Roughly 1/3 of the screen is taken up by video player, remainder is useful content + overlay button</span>
-<span class="c1">/// Overlays slide from the bottom</span>
-<span class="kd">private</span> <span class="kd">func</span> <span class="nf">verticalOrientation</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">overlayView</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">)</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">/// Landscape</span>
-<span class="c1">/// Everything is taken up by video player &amp; button is visible</span>
-<span class="c1">/// Overlays slide from the left</span>
-<span class="kd">private</span> <span class="kd">func</span> <span class="nf">horizontalOrientation</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">overlayView</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span> <span class="n">make</span> <span class="k">in</span>
-    <span class="n">make</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="kd">#available(iOS 11, *)</span> <span class="p">{</span>
-      <span class="n">make</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">safeAreaLayoutGuide</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="mi">300</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="n">make</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">left</span><span class="p">)</span><span class="o">.</span><span class="nf">offset</span><span class="p">(</span><span class="mi">300</span> <span class="o">+</span> <span class="mi">40</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="n">overlayVC</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span> <span class="n">make</span> <span class="k">in</span>
-    <span class="n">make</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">view</span><span class="p">)</span>
-  <span class="p">}</span>
-
-  <span class="n">streamsViewController</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">remakeConstraints</span> <span class="p">{</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">top</span><span class="o">.</span><span class="nf">equalTo</span><span class="p">(</span><span class="n">videoPlayer</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">snp</span><span class="o">.</span><span class="n">bottom</span><span class="p">)</span>
-    <span class="nv">$0</span><span class="o">.</span><span class="n">bottom</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="nf">equalToSuperview</span><span class="p">()</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<h2 id='implement-code-slroverlaydelegate-code-methods' class='heading'>Implement <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> methods</h2>
-
-<p>The communication between the a host application and the StreamLayer Framework is implemented via various delegate methods. The following delegate methods have to be implemented:</p>
-
-<p>Voice chat</p>
-
-<ul>
-<li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)requestAudioDucking">SLROverlayDelegate.requestAudioDucking(...)</a></code></li>
-<li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)disableAudioDucking">SLROverlayDelegate.disableAudioDucking(...)</a></code></li>
-</ul>
-
-<p>Audio notifications are used by the SDK in various ways. They used for voice chat, messaging and other features. There is a limitation in the iOS platform which allows each application to use only one audio session, hence the host app and the SDK use the same audio session. To minimize interference between host app&rsquo;s and SDK&rsquo;s audio modes following delegate methods have to be implemented:</p>
-
-<ul>
-<li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)prepareAudioSessionFor:">SLROverlayDelegate.prepareAudioSession(...)</a></code></li>
-<li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)disableAudioSessionFor:">SLROverlayDelegate.disableAudioSession(...)</a></code></li>
-</ul>
-
-<p>For the rest of the methods you have to implement check the protocol reference.</p>
-
-<p><code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code></p>
+<p><a href="customize-text-messages-guide.html">Customize Text Messages Guide</a></p>
 <h2 id='control-the-sdk-appearance' class='heading'>Control the SDK appearance</h2>
 
-<p>Since SDK provides to viewers interactive experience, it needs to fetch relevant data for the ongoing event. Since the SDK does not know by itself what user is watching at the moment, the host app have to send an event id to the SDK. This method should be called each time user switches stream.</p>
+<p>Since SDK provides to viewers interactive experience, it needs to fetch relevant data for the ongoing event. Since the SDK does not know by itself what user is watching at the moment, the host app have to send an event id to the SDK. This method should be called each time user switches stream.<br>
+For the detailed explanation of how to handle that, check the <a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a></p>
+<h1 id='integration-checklist' class='heading'>Integration Checklist</h1>
 
 <ul>
-<li><code>SLROverlayDelegate.changeStreamEvent(...)</code></li>
+<li><a href="constraints-guide.html">Constraints Guide</a></li>
+<li><a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a></li>
+<li><a href="customize-text-messages-guide.html">Customize Text Messages Guide</a></li>
+<li><a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a></li>
 </ul>
 <h1 id='further-reading' class='heading'>Further Reading</h1>
 
@@ -371,7 +300,7 @@ Please keep in mind that this is just an example, and sheer copy and paste might
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-04)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-12)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
