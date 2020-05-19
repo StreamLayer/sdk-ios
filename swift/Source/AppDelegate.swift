@@ -58,6 +58,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 extension AppDelegate {
   func initiateStreamLayer() {
+    // INFO: setup for demo events date
+    UserDefaults.standard.set("2019-11-26", forKey: "EventsDemoDate")
+
     do {
       try StreamLayer.initSDK(with: sdkKey)
     } catch {
