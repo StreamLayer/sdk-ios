@@ -37,22 +37,27 @@
                 <a href="architecture-overview.html">Architecture Overview</a>
               </li>
               <li class="nav-group-task">
+                <a href="sample-integrations.html">Sample Integrations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
                 <a href="integration-guide.html">Integration Guide</a>
               </li>
               <li class="nav-group-task">
                 <a href="constraints-guide.html">Constraints Guide</a>
               </li>
               <li class="nav-group-task">
-                <a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a>
+                <a href="audio-sessions-management.html">Audio Sessions Management</a>
               </li>
               <li class="nav-group-task">
-                <a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a>
+                <a href="overlay-visibility-handling.html">Overlay Visibility Handling</a>
               </li>
               <li class="nav-group-task">
-                <a href="customize-text-messages-guide.html">Customize Text Messages Guide</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="sample-integrations.html">Sample Integrations</a>
+                <a href="customize-text-messages.html">Customize Text Messages</a>
               </li>
             </ul>
           </li>
@@ -138,17 +143,16 @@
 <li>Swift, Objective-C</li>
 </ul>
 
-<p>If this does not meet your system, please contact our development team. We can either check if your app can host the SDK, or we may consider building additional version of the SDK.  </p>
+<p>If this does not meet your current system characteristics, please contact our development team. We can check to confirm if your app can host the SDK, and if it does not, we can explore building additional versions of the SDK to accommodate your specific needs.  </p>
 <h2 id='get-the-sdk-api-key' class='heading'>Get the SDK API key</h2>
 
-<p>If you still do not an SDK key, please follow the instruction to get it.<br>
-Provide us a email, which would be used to create a new organization for them. 
-We create a personal dashboard. You receive an invitation with a link to the admin panel and credentials for authentication.<br>
-After getting an access to the admin panel, you will be able to generate an API key in the <a href="https://studio.staging.streamlayer.io/develop/">development section of the admin panel</a>.<br>
-This API key is used by the SDK to communicate with the server and is necessary for the integration.   </p>
+<p>If you do not have an SDK key, please use the instructions below to obtain one:</p>
+
+<p>Provide us with your email, which we will use to create a new organization for you, including creation of a personal dashboard. At that point, you will then receive an invitation via email with a link to the admin panel and credentials for authentication. After receiving an access to the admin panel, you will be able to generate an API key in the <a href="https://studio.staging.streamlayer.io/develop/">development section of the admin panel</a>.
+This API key is used by the SDK to communicate with the server and is required for the integration.</p>
 <h1 id='installation' class='heading'>Installation</h1>
 
-<p>The SDK is distributed as a dynamic framework. Now we have 2 options to integrate the SDK framework - using Carthage package manager, or manually.</p>
+<p>The SDK is distributed as a dynamic framework. There are two options to integrate the SDK framework: 1) Using Carthage package manager, or 2) manually.</p>
 <h2 id='using-carthage' class='heading'>Using Carthage</h2>
 
 <ol>
@@ -159,7 +163,7 @@ brew reinstall streamlayer/formulas/carthage
 </code></li>
 </ol>
 
-<p><em>Note: internally we prefer to work with <a href="https://github.com/nsoperations/Carthage">https://github.com/nsoperations/Carthage</a> fork as it has numerous fixes and is much easier to work with</em>.</p>
+<p><em>Note: Internally we prefer to work with <a href="https://github.com/nsoperations/Carthage">https://github.com/nsoperations/Carthage</a> fork because it has numerous fixes and is much easier to work with overall</em>.</p>
 
 <ol>
 <li>Add <code>binary &quot;https://streamlayer.github.io/sdk-ios/releases.json&quot;</code> to your Cartfile.</li>
@@ -167,7 +171,7 @@ brew reinstall streamlayer/formulas/carthage
 <li>Drag StreamLayer.framework from the appropriate platform directory in Carthage/Build/ to the “Linked Frameworks and Libraries” section of your Xcode project’s “General” settings or, preferably, use carthage copy-frameworks build stage to do that</li>
 </ul><div class="aside aside-since">
     <p class="aside-title">Since</p>
-    Since Carthage doesn&rsquo;t support specifying dependencies for binary distributions manually, you have to add following dependencies to your package manager of :
+    Since Carthage doesn&rsquo;t support specifying dependencies for binary distributions manually, you will need to add the following dependencies to your package manager:
 
 <ul>
 <li>WebRTC (M78) - prebuilt binary available at <a href="https://github.com/signalapp/signal-webrtc-ios-artifacts">https://github.com/signalapp/signal-webrtc-ios-artifacts</a> or you may build your own</li>
@@ -183,28 +187,27 @@ brew reinstall streamlayer/formulas/carthage
 </ol>
 <h2 id='additional-distributions' class='heading'>Additional distributions</h2>
 
-<p>Cocoapods and other package managers are not available now. Other distributions will be developed soon depending on community requestsа.</p>
+<p>Cocoapods and other package managers are not available now. Other distributions will be developed soon depending on community requests requests.</p>
 <h1 id='integration' class='heading'>Integration</h1>
 <h2 id='basic-terminology' class='heading'>Basic terminology</h2>
 
 <ul>
-<li>Host app - the app in which the SDK is being integrated</li>
-<li>Overlay button - the button which is shown on top of the interface an activates StreamLayer menu</li>
-<li>Overlay menu - expanding menu which shows all the available overlays</li>
-<li>Overlay - interactive overlay, functionality depends on overlay type (Twitter, Voice Chat, Game Statistics, etc.)</li>
-<li>Overlay wrapper view - wrapper view for the SDK view hierarchy</li>
+<li>Host App:  The app in which the SDK is being integrated</li>
+<li>Overlay:  Interactive overlay, with functionality dependent on overlay type (Twitter, Voice Chat, Game Statistics, etc.)</li>
+<li>Overlay Button:  The button which is shown on top of the interface and activates the StreamLayer menu</li>
+<li>Overlay Menu:  Expanding menu which shows all the available overlays</li>
+<li>Overlay Wrapper View:  Wrapper view for the SDK view hierarchy</li>
 </ul>
 
-<p>When you press the an <strong>Overlay Button</strong>, the <strong>Overlay Menu</strong> opens, when you press a menu item, chosen <strong>Overlay</strong> will be activated.
-The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overlay Menu</strong> are rendered inside the <strong>Overlay Wrapper View</strong> the host app provides to the SDK.  </p>
+<p>When you press the <strong>Overlay Button</strong>, the <strong>Overlay Menu</strong> will open. When you press a menu item, the chosen <strong>Overlay</strong> will be activated. The <strong>Overlay</strong>, <strong>Overlay Button</strong> and <strong>Overlay Menu</strong> are rendered inside the <strong>Overlay Wrapper View</strong> which the host app provides to the SDK.</p>
 
 <p><em>Side note: The list of activated overlays is set in the **Admin Panel</em><em>.</em></p>
 <h2 id='introduction' class='heading'>Introduction</h2>
 
-<p>The framework provides you an overlay which is rendered on top of the host application interface. In order to make it work we have to initialize it with our SDK key during creation of the overlay (you will see sample call of the method below). Besides, as the interactive experience StreamLayer provides is tightly coupled with the video playback, interacts with audio session, some delegate methods have to be implemented to set up communication between the SDK and the host app. </p>
-<h2 id='initialize-of-the-sdk' class='heading'>Initialize of the SDK</h2>
+<p>The framework provides you an overlay which is rendered on top of the host application interface. In order to activate the overlay, we have to initialize it with our SDK key during the creation of the overlay (you will see a sample call of the method below). Because the interactive experience StreamLayer provides is tightly coupled with the video playback and interacts with the audio session, some delegate methods have to be implemented to set up communication between the SDK and the host app.</p>
+<h2 id='sdk-initialization' class='heading'>SDK initialization</h2>
 
-<p>Initialize the overlay and implement necessary delegate methods to give the SDK a possibility to fit in into the application natural user flows. </p>
+<p>Initialize the overlay and implement necessary delegate methods, so the SDK can seamlessly integrate into your application’s existing scenarios. </p>
 
 <ul>
 <li>Import the <code><a href="Classes/StreamLayer.html">StreamLayer</a></code> and the third party dependencies packed inside the StreamLayer framework. Add this to the AppDelegate.swift file.<br></li>
@@ -213,7 +216,7 @@ The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overl
 <span class="kd">import</span> <span class="kt">StreamLayerVendor</span>
 </code></pre>
 
-<p>At this point you may try to build the application to check whether you have included the framework and related dependencies into the project correctly.</p>
+<p>At this point, you can build the application to check and confirm whether you have correctly included the framework and related dependencies into the project.</p>
 
 <ul>
 <li>Init the SDK calling <code><a href="Classes/StreamLayer.html#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)initSDKWith:isDebug:loggerDelegate:error:">StreamLayer.initSDK(...)</a></code><br></li>
@@ -270,37 +273,37 @@ The <strong>Overlay</strong>,  <strong>Overlay Button</strong> and <strong>Overl
 <li>Position the Overlay ViewController.<br></li>
 </ul>
 
-<p>Please check the <a href="constraints-guide.html">Constraints Guide</a>, it covers the process of layouting the overlay.</p>
+<p>Please check the <a href="constraints-guide.html">Constraints Guide</a>, which covers the process of positioning the overlay within the layout.</p>
 <h1 id='implement-slroverlaydelegate-methods' class='heading'>Implement SLROverlayDelegate methods</h1>
 
-<p>The communication between the a host application and the StreamLayer Framework is implemented via <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> delegate methods. All of them are covered in the following guides.  </p>
+<p>The communication between the host application and the StreamLayer Framework is implemented via <code><a href="Protocols/SLROverlayDelegate.html">SLROverlayDelegate</a></code> delegate methods. Each method is covered in the following guides.</p>
 <h2 id='audio-sessions-management' class='heading'>Audio Sessions Management</h2>
 
-<p>Audio notifications are used by the SDK in various ways. They used for voice chat, messaging and other features.
-<a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a>  </p>
+<p>Audio notifications are used by the SDK in various ways, including for voice chat, messaging, and other features.
+<a href="audio-sessions-management.html">Audio Sessions Management</a>  </p>
 <h2 id='customize-text-messages' class='heading'>Customize Text Messages</h2>
 
-<p><a href="customize-text-messages-guide.html">Customize Text Messages Guide</a></p>
+<p><a href="customize-text-messages.html">Customize Text Messages</a></p>
 <h2 id='control-the-sdk-appearance' class='heading'>Control the SDK appearance</h2>
 
-<p>Since SDK provides to viewers interactive experience, it needs to fetch relevant data for the ongoing event. Since the SDK does not know by itself what user is watching at the moment, the host app have to send an event id to the SDK. This method should be called each time user switches stream.<br>
-For the detailed explanation of how to handle that, check the <a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a></p>
+<p>Since the SDK delivers an interactive experience to viewers, it needs to fetch relevant data for the ongoing event. Because the SDK does not know by itself what the user is watching at a given moment, the host app must send an Event ID to the SDK. This method should be called each time the user switches video streams.<br>
+For a detailed explanation of how this is handled, please check the <a href="overlay-visibility-handling.html">Overlay Visibility Handling</a></p>
 <h1 id='integration-checklist' class='heading'>Integration Checklist</h1>
 
 <ul>
 <li><a href="constraints-guide.html">Constraints Guide</a></li>
-<li><a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a></li>
-<li><a href="customize-text-messages-guide.html">Customize Text Messages Guide</a></li>
-<li><a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a></li>
+<li><a href="audio-sessions-management.html">Audio Sessions Management</a></li>
+<li><a href="customize-text-messages.html">Customize Text Messages</a></li>
+<li><a href="overlay-visibility-handling.html">Overlay Visibility Handling</a></li>
 </ul>
 <h1 id='further-reading' class='heading'>Further Reading</h1>
 
-<p>Check the <a href="sample-integrations.html">Sample Integrations</a> section to see functioning example of integrated SDK.</p>
+<p>Please check the <a href="sample-integrations.html">Sample Integrations</a> section to see a functioning example of the integrated SDK.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-12)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-22)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

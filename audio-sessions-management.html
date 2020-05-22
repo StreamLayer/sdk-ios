@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Audio Sessions Management Guide  Reference</title>
+    <title>Audio Sessions Management  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Audio Sessions Management Guide  Reference"></a>
+    <a title="Audio Sessions Management  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html"> Docs</a> (72% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="index.html"> Reference</a>
         <img id="carat" src="img/carat.png" />
-        Audio Sessions Management Guide  Reference
+        Audio Sessions Management  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -37,22 +37,27 @@
                 <a href="architecture-overview.html">Architecture Overview</a>
               </li>
               <li class="nav-group-task">
+                <a href="sample-integrations.html">Sample Integrations</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
                 <a href="integration-guide.html">Integration Guide</a>
               </li>
               <li class="nav-group-task">
                 <a href="constraints-guide.html">Constraints Guide</a>
               </li>
               <li class="nav-group-task">
-                <a href="audio-sessions-management-guide.html">Audio Sessions Management Guide</a>
+                <a href="audio-sessions-management.html">Audio Sessions Management</a>
               </li>
               <li class="nav-group-task">
-                <a href="overlay-visibility-handling-guide.html">Overlay Visibility Handling Guide</a>
+                <a href="overlay-visibility-handling.html">Overlay Visibility Handling</a>
               </li>
               <li class="nav-group-task">
-                <a href="customize-text-messages-guide.html">Customize Text Messages Guide</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="sample-integrations.html">Sample Integrations</a>
+                <a href="customize-text-messages.html">Customize Text Messages</a>
               </li>
             </ul>
           </li>
@@ -95,9 +100,9 @@
 <li><a href="#audio-sessions-management-guide">Audio Sessions Management Guide</a></li>
 <li><a href="#handling-audio-ducking">Handling Audio Ducking</a></li>
 </ul>
-<h1 id='handling-audio-ducking' class='heading'>Handling Audio Ducking</h1>
+<h1 id='audio-ducking-handling' class='heading'>Audio Ducking Handling</h1>
 
-<p>Some overlays requires possibility to duck main video&rsquo;s audio session. For instance, the Twitter overlay may include video&rsquo;s in a twitter feed, which is playable. If we will not decrease (duck) main audio, the sound during twitter video playback will be overlap with it. If we provide the SDK methods to control our application&rsquo;s audio session, it will handle it smoothly decreasing the sound when needed. </p>
+<p>To ensure the best user experience, certain overlays may require a decrease in the main video’s audio level. For instance, the Twitter overlay may include videos within the feed which are playable with sound. If the main audio level is not reduced accordingly, the Twitter video sound will overlap with the main sound resulting in a poor user experience. However, if the host app provides the SDK methods to control the application’s audio session, the SDK will smoothly decrease the sound when needed.</p>
 
 <p>These two methods are responsible for handling audio ducking:</p>
 
@@ -106,7 +111,7 @@
 <li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)disableAudioDucking">SLROverlayDelegate.disableAudioDucking(...)</a></code></li>
 </ul>
 
-<p>Let&rsquo;s have a look on one of the possible way to implement audio ducking methods in delegate class.</p>
+<p>Let’s have a look on one of the possible ways to implement audio ducking methods in delegate class.</p>
 <pre class="highlight swift"><code><span class="kt">SLRVideoPlayer</span><span class="p">:</span> <span class="kt">SLROverlayDelegate</span> <span class="p">{</span>
 
 <span class="o">...</span>
@@ -143,16 +148,16 @@
 <span class="p">}</span>
 </code></pre>
 
-<p>Audio notifications are used by the SDK in various ways. They used for voice chat, messaging and other features. There is a limitation in the iOS platform which allows each application to use only one audio session, hence the host app and the SDK use the same audio session.   </p>
+<p>Audio notifications are used by the SDK in various ways. They are used for voice chat, messaging, and other features. There is a limitation in the iOS platform which allows each application to use only one audio session, hence the host app and the SDK use the same audio session.   </p>
 
-<p>To minimize interference between host app&rsquo;s and SDK&rsquo;s audio modes following delegate methods have to be implemented:</p>
+<p>To minimize interference between the host app’s and SDK’s audio modes, the following delegate methods have to be implemented:</p>
 
 <ul>
 <li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)prepareAudioSessionFor:">SLROverlayDelegate.prepareAudioSession(...)</a></code></li>
 <li><code><a href="Protocols/SLROverlayDelegate.html#/c:@M@StreamLayer@objc(pl)SLROverlayDelegate(im)disableAudioSessionFor:">SLROverlayDelegate.disableAudioSession(...)</a></code></li>
 </ul>
 
-<p>And here is an example of possible implementation</p>
+<p>Here is an example of one such possible implementation:</p>
 <pre class="highlight swift"><code><span class="kt">SLRVideoPlayer</span><span class="p">:</span> <span class="kt">SLROverlayDelegate</span> <span class="p">{</span>
 
 <span class="o">...</span>
@@ -271,7 +276,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-12)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-22)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
