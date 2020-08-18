@@ -23,10 +23,28 @@ targets:
       - carthage: Realm
       - carthage: RealmSwift
       - carthage: SLProtofiles
-      - carthage: SwiftGRPC
-      - carthage: CgRPC
-      - carthage: BoringSSL
       - carthage: SwiftProtobuf
+      - carthage: VoxImplant
+      - carthage: GRPC
+      - carthage: Logging
+      - carthage: NIO
+      - carthage: NIOConcurrencyHelpers
+      - carthage: NIOFoundationCompat
+      - carthage: NIOHPACK
+      - carthage: NIOHTTP1
+      - carthage: NIOHTTP2
+      - carthage: NIOSSL
+      - carthage: NIOTLS
+      - carthage: NIOTransportServices
+      - carthage: SwiftProtobuf
+      - carthage: CGRPCZlib
+      - carthage: CNIOAtomics
+      - carthage: CNIOBoringSSL
+      - carthage: CNIOBoringSSLShims
+      - carthage: CNIODarwin
+      - carthage: CNIOHTTPParser
+      - carthage: CNIOLinux
+      - carthage: CNIOSHA1
       - carthage: SnapKit # sample implementation only
       - carthage: RxSwift # sample implementation only
       - carthage: RxRelay # sample implementation only

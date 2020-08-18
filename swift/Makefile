@@ -1,7 +1,7 @@
 all: prepare_carthage prepare_xcode_project
 
 prepare_carthage:
-	carthage build
+	carthage bootstrap --platform iOS
 
 prepare_xcode_project:
 	xcodegen

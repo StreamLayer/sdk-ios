@@ -14,8 +14,7 @@ options:
   groupSortPosition: top
   deploymentTarget:
     iOS: "11.0"
-    tvOS: "11.0"
-  preGenCommand: carthage bootstrap --cache-builds
+  postGenCommand: open SwiftDemo.xcodeproj
 
 settings:
   base:

@@ -23,6 +23,14 @@ class ViewController: UIViewController {
   // blank reference view
   private let overlayView = UIView()
   
+  // Implement custom menu item
+  private var customMenuItem: SLRCustomMenuItem = {
+    let menuItem = SLRCustomMenuItem()
+    menuItem.iconImage = UIImage(named: "customMenuIcon")
+    menuItem.viewController = MyCustomOverlayViewController()
+    return menuItem
+  }()
+
   // inlined rxswift dispose bag
   private let disposeBag = StreamLayerVendor.DisposeBag()
   
@@ -154,12 +162,13 @@ class ViewController: UIViewController {
     streamsViewController.view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     view.addSubview(streamsViewController.view)
 
-    streamsViewController.streamSelectedHandler = { [videoPlayer] streamURLString, eventId in
+    streamsViewController.streamSelectedHandler = { [videoPlayer, weak self] streamURLString, eventId in
+      guard let self = self else { return }
 
       videoPlayer.setNewStreamURL(withURL: streamURLString,
                                   providerType: Int(streamURLString) != nil ? .vimeo : .youtube)
 
-      StreamLayer.changeStreamEvent(for: eventId)
+      StreamLayer.changeStreamEvent(for: eventId, andAddMenuItem: self.customMenuItem)
     }
   }
   
@@ -178,7 +187,7 @@ class ViewController: UIViewController {
 
     // First stream event
     streamsViewController.activityIndicator.startAnimating()
-    StreamLayer.requestDemoStreams(showAllStreams: false, completion: { [weak self] error, models in
+    StreamLayer.requestDemoStreams(showAllStreams: true, completion: { [weak self] error, models in
       guard let self = self else { return }
 
       self.streamsViewController.activityIndicator.stopAnimating()
@@ -194,5 +203,40 @@ class ViewController: UIViewController {
 
       self.streamsViewController.dataArray = models.map { StreamsViewControllerTableCellViewModel($0) }
     })
+  }
+}
+
+// Implement custom overlay for menu
+class MyCustomOverlayViewController: UIViewController {
+  private var contentView: UIView = {
+    let contentView = UIView()
+    return contentView
+  }()
+
+  private var customLabel: UILabel = {
+    let label = UILabel()
+    label.text = "Custom overlay"
+    label.textColor = .white
+    label.textAlignment = .center
+    return label
+  }()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    view.addSubview(contentView)
+    contentView.snp.makeConstraints { [weak view] in
+      guard let view = view else { return }
+      $0.edges.equalTo(view.safeAreaLayoutGuide)
+    }
+    contentView.clipsToBounds = true
+
+    contentView.addSubview(customLabel)
+
+    customLabel.snp.makeConstraints { [weak contentView] in
+      guard let contentView = contentView else { return }
+      $0.size.equalTo(CGSize(width: 200, height: 50))
+      $0.center.equalTo(contentView.snp.center)
+    }
   }
 }

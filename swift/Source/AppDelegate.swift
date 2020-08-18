@@ -9,7 +9,8 @@ import StreamLayer
 import StreamLayerVendor
 
 /// SDK key can be created in the StreamLayer admin panel. Check the official documentation for the relevant link.
-let sdkKey = "29d0c798269575c4335f06a4a38318002e20029c5301f38e222874fa66e712b3"
+/// You MUST use your own key.
+let sdkKey = "16ab1e23f2a8682d3c176c611c4ee2c1afaa962ee20b6f451b4293cd5a67bf5a"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -60,11 +61,12 @@ extension AppDelegate {
   func initiateStreamLayer() {
     // INFO: setup for demo events date
     UserDefaults.standard.set("2019-11-26", forKey: "EventsDemoDate")
+    StreamLayer.initSDK(with: sdkKey, isDebug: true, loggerDelegate: self)
+  }
+}
 
-    do {
-      try StreamLayer.initSDK(with: sdkKey)
-    } catch {
-      fatalError("failed to init StreamLayer SDK: \(error)")
-    }
+extension AppDelegate: SLROverlayLoggerDelegate {
+  func sendLogdata(userInfo: String) {
+    print("log: \(userInfo)")
   }
 }
