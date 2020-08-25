@@ -1,33 +1,33 @@
 {
   "warnings": [
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 451,
+      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 558,
       "symbol": "SLROverlayViewController.viewDidDisappear(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 539,
-      "symbol": "SLROverlayViewController.changeStreamEvent(eventId:)",
+      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
+      "line": 770,
+      "symbol": "SLROverlayViewController.changeStreamEvent(eventId:andAddMenuItem:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
       "line": 17,
       "symbol": "SLRAudioSessionType.generic",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
       "line": 20,
       "symbol": "SLRAudioSessionType.voice",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios"
+  "source_directory": "/Users/me/Job/XcodeProjects/sl-client-ios"
 }

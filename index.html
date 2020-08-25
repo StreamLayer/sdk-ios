@@ -33,7 +33,7 @@
     
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="dash-feed://https%3A%2F%2Fstreamlayer%2Egithub%2Eio%2Fsdk%2Dios%2Fdocsets%2F%2Exml">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Fstreamlayer.github.io%2Fsdk-ios%2Fdocsets%2F.xml">
             <img class="header-icon" src="img/dash.png"/>
             Install in Dash
           </a>
@@ -49,40 +49,6 @@
     <div class="content-wrapper">
       <nav class="navigation">
         <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Documentation.html">Documentation</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="about-streamlayer.html">About StreamLayer</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="architecture-overview.html">Architecture Overview</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="sample-integrations.html">Sample Integrations</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Guides.html">Guides</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="integration-guide.html">Integration Guide</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="constraints-guide.html">Constraints Guide</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="audio-sessions-management.html">Audio Sessions Management</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="overlay-visibility-handling.html">Overlay Visibility Handling</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="customize-text-messages.html">Customize Text Messages</a>
-              </li>
-            </ul>
-          </li>
           <li class="nav-group-name">
             <a class="nav-group-name-link" href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
@@ -114,20 +80,471 @@
         <section class="section">
           <div class="section-content top-matter">
             
-            <h1 id='how-to-use-this-documentation' class='heading'>How to use this documentation</h1>
-<h2 id='introduction' class='heading'>Introduction</h2>
+            
+<ul>
+<li><a href="#filestructure">Filestructure</a>
 
-<p>Welcome to the StreamLayer iOS documentation hub where you can find all the information you need to get started.  The StreamLayer SDK will enable you to transform the viewing experience for your users by seamlessly integrating interactive features and functionality directly into your app environment.</p>
+<ul>
+<li><a href="#build-system">Build System</a></li>
+<li><a href="#application-code">Application Code</a></li>
+<li><a href="#support-files">Support Files</a></li>
+</ul></li>
+<li><a href="#local-development">Local Development</a>
+
+<ul>
+<li><a href="#prepare-local-environment">Prepare Local Environment</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#toolset">Toolset</a></li>
+<li><a href="#installing-toolset">Installing Toolset</a></li>
+<li><a href="#Xcode">Xcode</a></li>
+<li><a href="#homebrew">Homebrew</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#ruby-bundler">Ruby bundler</a></li>
+<li><a href="#bitrise">Bitrise</a></li>
+<li><a href="#nodejs-yarn-package-manager-for-node">Node.js, yarn (package manager for Node)</a></li>
+<li><a href="#xcodegen">Xcodegen</a></li>
+<li><a href="#swiftlint">SwiftLint</a></li>
+<li><a href="#carthage">Carthage</a></li>
+<li><a href="#yarn">Yarn</a></li>
+<li><a href="#bootstrap-the-project">Bootstrap the Project</a></li>
+<li><a href="#bootstrap">Bootstrap</a></li>
+<li><a href="#certificates-for-local-development">Certificates for local development</a></li>
+<li><a href="#optional-more-details-on-the-bootsrapping-process">Optional: More details on the bootsrapping process</a></li>
+<li><a href="#optional-more-on-bitrise">Optional: More on Bitrise</a></li>
+<li><a href="#changing-xcodeproject-and-dependencies">Changing xcodeproject, and dependencies</a>
+
+<ul>
+<li><a href="#changing-the-xcode-project">Changing the Xcode project</a></li>
+<li><a href="#updating-carthage-dependencies">Updating Carthage dependencies</a></li>
+</ul></li>
+<li><a href="#updating-pods">Updating Pods</a></li>
+<li><a href="#using-code-generators">Using code generators</a></li>
+<li><a href="#write-new-ui-modules">Write new UI modules</a></li>
+</ul></li>
+<li><a href="#distributing-framework">Distributing Framework</a>
+
+<ul>
+<li><a href="#manual-distribution">Manual distribution</a></li>
+<li><a href="#prerequisites-1">Prerequisites</a></li>
+<li><a href="#build-the-framework-and-creating-the-releases">Build the framework and creating the releases</a></li>
+</ul></li>
+<li><a href="#ci-information">CI Information</a>
+
+<ul>
+<li><a href="#platform">Platform</a></li>
+<li><a href="#frequent-ci-operations">Frequent CI Operations</a></li>
+</ul></li>
+<li><a href="#external-documentation">External Documentation</a>
+
+<ul>
+<li><a href="#sources-and-toolset">Sources and toolset</a></li>
+<li><a href="#add-a-new-guide">Add a new Guide</a></li>
+<li><a href="#publishing">Publishing</a></li>
+</ul></li>
+<li><a href="#additional-information">Additional information</a>
+
+<ul>
+<li><a href="#code-signing">Code Signing</a></li>
+<li><a href="#framework-distribution">Framework Distribution</a></li>
+</ul></li>
+</ul>
+<h1 id='filestructure' class='heading'>Filestructure</h1>
+<h2 id='build-system' class='heading'>Build System</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Directory / File</th>
+<th style="text-align: left">Use</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/configs/</td>
+<td style="text-align: left">Xcode configuration files</td>
+</tr>
+<tr>
+<td style="text-align: left">/fastlane/</td>
+<td style="text-align: left">Fastlane set up</td>
+</tr>
+<tr>
+<td style="text-align: left">/hooks/</td>
+<td style="text-align: left">Hooks to be integrated via <a href="https://github.com/typicode/husky">husky</a></td>
+</tr>
+<tr>
+<td style="text-align: left">/Podfiles/</td>
+<td style="text-align: left">Cocoapods setup</td>
+</tr>
+<tr>
+<td style="text-align: left">/.bitrise.secrets.yml</td>
+<td style="text-align: left">Bitrise secrets</td>
+</tr>
+<tr>
+<td style="text-align: left">/.gitattributes</td>
+<td style="text-align: left">Set up for correct lfs usage, we upload one demo ad video with the demo app</td>
+</tr>
+<tr>
+<td style="text-align: left">/.gitmodules</td>
+<td style="text-align: left">Signal-webrtc-ios-artifacts is used as a git module</td>
+</tr>
+<tr>
+<td style="text-align: left">/.releaserc.json</td>
+<td style="text-align: left"><a href="https://github.com/semantic-release/semantic-release">Semantic-release</a> configuration</td>
+</tr>
+<tr>
+<td style="text-align: left">/.bitrise</td>
+<td style="text-align: left">Bitrise configuration (it is used remotely on CI as well)</td>
+</tr>
+<tr>
+<td style="text-align: left">/Cartfile.project</td>
+<td style="text-align: left">Selective build for <code>carthage build --no-skip-current</code> included only in <a href="https://github.com/nsoperations/Carthage#0410nsoperations">nsoperations/carthage</a></td>
+</tr>
+<tr>
+<td style="text-align: left">/<a href="mailto:Cartfile@5.0.1">Cartfile@5.0.1</a></td>
+<td style="text-align: left">Carthage config for Swift 5.0.1</td>
+</tr>
+<tr>
+<td style="text-align: left">/<a href="mailto:Cartfile@5.1.3">Cartfile@5.1.3</a></td>
+<td style="text-align: left">Carthage config for Swift 5.1.3</td>
+</tr>
+<tr>
+<td style="text-align: left">/<a href="mailto:Cartfile.resolved@5.0.1">Cartfile.resolved@5.0.1</a></td>
+<td style="text-align: left">Carthage config resolved for Swift 5.0.1</td>
+</tr>
+<tr>
+<td style="text-align: left">/<a href="mailto:Cartfile.resolved@5.1.3">Cartfile.resolved@5.1.3</a></td>
+<td style="text-align: left">Carthage config resolved for Swift 5.1.3</td>
+</tr>
+<tr>
+<td style="text-align: left">/Gemfile</td>
+<td style="text-align: left">Set of tools for local development</td>
+</tr>
+<tr>
+<td style="text-align: left">/jazzy.yml</td>
+<td style="text-align: left">Settings for <a href="https://github.com/realm/jazzy">jazzy</a> - external documentation generator</td>
+</tr>
+<tr>
+<td style="text-align: left">/package.json</td>
+<td style="text-align: left">Node.js toolset used for project bootstrap settings (used by <code>yarn</code> command)</td>
+</tr>
+<tr>
+<td style="text-align: left">/project.base.yml</td>
+<td style="text-align: left"><a href="https://github.com/yonaskolb/XcodeGen">XcodeGen</a> config, used to project file generation. Work with this file instead of directly editing of .xcodeproj.</td>
+</tr>
+<tr>
+<td style="text-align: left">/project.yml</td>
+<td style="text-align: left"><a href="https://github.com/yonaskolb/XcodeGen">XcodeGen</a> config, used to project file generation. Work with this file instead of directly editing of .xcodeproj.</td>
+</tr>
+</tbody></table>
+<h2 id='application-code' class='heading'>Application Code</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Directory / File</th>
+<th style="text-align: left">Use</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/Example iOS/</td>
+<td style="text-align: left">Sample iOS host app on top of which the SDK being developed and tested</td>
+</tr>
+<tr>
+<td style="text-align: left">/Example tvOS/</td>
+<td style="text-align: left">Sample tvOS host app on top of which the SDK being developed and tested</td>
+</tr>
+<tr>
+<td style="text-align: left">/signal-webrtc-ios-artifacts/</td>
+<td style="text-align: left">Submodule, webrtc-ios library being copied during the build process</td>
+</tr>
+<tr>
+<td style="text-align: left">/Vendor/</td>
+<td style="text-align: left">Third party libraries which are compiled and packed with the SDK</td>
+</tr>
+<tr>
+<td style="text-align: left">/StreamLayer/</td>
+<td style="text-align: left">StreamLayer SDK source code</td>
+</tr>
+</tbody></table>
+<h2 id='support-files' class='heading'>Support Files</h2>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Directory / File</th>
+<th style="text-align: left">Use</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">/docs/</td>
+<td style="text-align: left">Documentation</td>
+</tr>
+<tr>
+<td style="text-align: left">/RFC/</td>
+<td style="text-align: left">Requests for comments</td>
+</tr>
+<tr>
+<td style="text-align: left">/DevResources/PaintCode.pcvd</td>
+<td style="text-align: left">Source for generated vector graphic</td>
+</tr>
+<tr>
+<td style="text-align: left">/Templates/</td>
+<td style="text-align: left">Reswift viper templates</td>
+</tr>
+<tr>
+<td style="text-align: left">/.commitlintrc.js</td>
+<td style="text-align: left">Setup for <a href="https://github.com/conventional-changelog/commitlint">commitlint</a></td>
+</tr>
+<tr>
+<td style="text-align: left">/.editorconfig</td>
+<td style="text-align: left">Universal IDE configuration</td>
+</tr>
+<tr>
+<td style="text-align: left">/.swiftlint.autocorrect.yml</td>
+<td style="text-align: left">More info on how to <a href="https://github.com/realm/SwiftLint#format-on-save-xcode-plugin">run autocorrect</a></td>
+</tr>
+<tr>
+<td style="text-align: left">/.swiftlint.yml</td>
+<td style="text-align: left"><a href="https://github.com/realm/SwiftLint">Swiftlint</a> configuration</td>
+</tr>
+<tr>
+<td style="text-align: left">CHANGELOG.md</td>
+<td style="text-align: left">Change log, autogenerated</td>
+</tr>
+<tr>
+<td style="text-align: left">Rambafile</td>
+<td style="text-align: left"><a href="https://github.com/strongself/Generamba">Generamba</a> config, used for generation of some UI modules</td>
+</tr>
+</tbody></table>
+<h1 id='local-development' class='heading'>Local Development</h1>
+<h2 id='prepare-local-environment' class='heading'>Prepare Local Environment</h2>
+<h3 id='prerequisites' class='heading'>Prerequisites</h3>
+
+<p>Xcode11.3.1<br>
+Swift 5.1.3</p>
+<h3 id='toolset' class='heading'>Toolset</h3>
+<h2 id='installing-toolset' class='heading'>Installing Toolset</h2>
+<h3 id='xcode' class='heading'>Xcode</h3>
+
+<p>Download and install xcode 11.3.1. Then</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>sudo xcode-select -s /Applications/Xcode.app
+</code></pre>
+<h3 id='homebrew' class='heading'>Homebrew</h3>
+
+<p>In the instruction above we use brew for most packages we install. It is not mandatory from any sense though.</p>
+<pre class="highlight shell"><code><span class="c"># Fetch the newest versions of formulas </span>
+<span class="gp">$ </span>brew update
+</code></pre>
+<h3 id='ruby' class='heading'>Ruby</h3>
+<pre class="highlight shell"><code><span class="c"># Check ruby version</span>
+<span class="gp">$ </span>ruby --version
+<span class="c"># &gt; ruby 2.6.3p62 (2019-04-16 revision 67580) [universal.x86_64-darwin19]</span>
+
+<span class="c"># If the command is not found - install ruby via brew</span>
+<span class="gp">$ </span>brew install ruby
+</code></pre>
+
+<p>Alternatively, you can install Ruby via <a href="https://get.rvm.io">RVM</a><br>
+In this case it will look something like this (for details follow the <a href="https://get.rvm.io">official instructions</a>)</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>curl -sSL https://get.rvm.io | bash -s stable
+
+<span class="c"># Check list of available rubies</span>
+<span class="gp">$ </span>rvm list known
+
+<span class="c"># Install something like that - it will be listed in the available rubies</span>
+<span class="gp">$ </span>rvm install ruby-2.5.5
+
+<span class="c"># Create gemset, which is a standalone bucket of gems</span>
+<span class="gp">$ </span>rvm gemset create core
+<span class="gp">$ </span>rvm --default use ruby-2.5.5@core
+</code></pre>
+<h3 id='ruby-a-href-https-bundler-io-bundler-a' class='heading'>Ruby <a href="https://bundler.io/">bundler</a></h3>
+<pre class="highlight shell"><code><span class="gp">$ </span>gem install bundler
+<span class="gp">$ </span>bundle install <span class="c"># Install the dependencies according to Gemfile.lock</span>
+</code></pre>
+
+<p>To update Gemfile follow the <a href="https://bundler.io/v2.0/man/bundle-update.1.html#RECOMMENDED-WORKFLOW">recommended workflow</a></p>
+<h3 id='bitrise' class='heading'>Bitrise</h3>
+<pre class="highlight plaintext"><code>$ brew install bitrise
+</code></pre>
+<h3 id='node-js-yarn-package-manager-for-node' class='heading'>Node.js, yarn (package manager for Node)</h3>
+<pre class="highlight shell"><code><span class="c"># Install nvm - Node version manager</span>
+<span class="gp">$ </span>brew install nvm
+<span class="c"># Install latest long time support version of Node.js</span>
+<span class="gp">$ </span>nvm install --lts
+<span class="c"># Install yarn, without node</span>
+<span class="gp">$ </span>curl -o- -L https://yarnpkg.com/instalcdl.sh | bash 
+</code></pre>
+<h3 id='xcodegen' class='heading'>Xcodegen</h3>
+
+<p>Used to generate project from a project.yml file. That&rsquo;s why you do not see the <code>*.xcodeproj</code> file in the repository.</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew install xcodegen
+</code></pre>
+<h3 id='swiftlint' class='heading'>SwiftLint</h3>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew install swiftlint
+</code></pre>
+<h3 id='weaver' class='heading'>Weaver</h3>
+
+<p>For DI, we use a Weaver framework</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>brew install weaver
+</code></pre>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>Actually we need to use custom carthage:</p>
+<pre class="highlight plaintext"><code>$ brew tap nsoperations/formulas &amp;&amp; brew install nsoperations/formulas/carthage
+</code></pre>
+<h3 id='yarn' class='heading'>Yarn</h3>
+<pre class="highlight plaintext"><code>$ brew install yarn
+</code></pre>
+<h2 id='bootstrap-the-project' class='heading'>Bootstrap the Project</h2>
+<h3 id='bootstrap' class='heading'>Bootstrap</h3>
+
+<p>Check Swift 5.1.3 toolset version via</p>
+<pre class="highlight shell"><code><span class="gp">$ </span>carthage swift-version
+</code></pre>
+
+<p>Output should be <code>5.1.3+d6c4ba50e84722a815542bda2b6e8a42</code></p>
+
+<p>Once all is installed, issue </p>
+<pre class="highlight plaintext"><code>yarn
+</code></pre>
+
+<p>This should bootstrap everything you need for local development.
+In the end <code>StreamLayer.xcworkspace</code> file should appear in the root project folder. You can open it with Xcode and compile.</p>
+
+<p>Besides, <code>yarn:prepare</code> script should run on checkout and merge, this hooks are initialised via <a href="https://github.com/typicode/husky">husky</a>, this config you can find in <code>package.json</code> file.</p>
+<h3 id='certificates-for-local-development' class='heading'>Certificates for local development</h3>
+
+<p>Going further you&rsquo;d want to run tests &amp; add certs, here are
+the commands:</p>
+
+<ul>
+<li><code>fastlane add_device udid:urUDID6a9df9dc440a14e54de1f0b655b0b2404b name:&#39;Bimawa iPhone 5s&#39;</code> - this for add developer device to Developer account (replace udid and device name with yours)</li>
+<li><code>fastlane dev_certs</code> - fetch certificates for local development</li>
+</ul>
+<h3 id='optional-more-details-on-the-bootsrapping-process' class='heading'>Optional: More details on the bootsrapping process</h3>
+
+<p><code>yarn</code> runs <code>prepare</code> script, which initiates webrtc submodule, and then run&rsquo;s <code>xcodegen</code> script to bootstrap the project. The details you can check in the <code>./package.json</code> file.<br>
+Important note: xcodegen has following hooks to bootstrap the project:</p>
+<pre class="highlight yaml"><code><span class="na">preGenCommand</span><span class="pi">:</span> <span class="s">bitrise run bootstrap</span>
+<span class="na">postGenCommand</span><span class="pi">:</span> <span class="s">cd Podfiles &amp;&amp; pod install</span>
+</code></pre>
+
+<p>If you need more details on building process, check the following files:</p>
+<pre class="highlight yaml"><code><span class="s">./project.yml and ./project.base.yml for xcodegen configs</span>
+<span class="s">./bitrise.yml for bitrise scripts (which runc remotely on bitries CI as well)</span>
+</code></pre>
+<h3 id='optional-more-on-bitrise' class='heading'>Optional: More on Bitrise</h3>
+
+<ul>
+<li><code>bitrise setup</code> - makes sure local machine is able to run bitrise commands</li>
+<li><code>bitrise --help</code> - shows available commands</li>
+<li><code>bitrise run test</code> - runs test workflow</li>
+<li><code>bitrise run deploy</code> - runs deploy workflow which push the build to the App Store Connect. You do not need to run it locally usually, since the app is deployed via CI system on bitrise.</li>
+</ul>
+
+<p>Put <code>MATCH_KEYCHAIN_PASSWORD=passwrod</code> into <code>fastlane/.env.beta.local</code> so that certificates
+may be installed into your local keychain when calling <code>fastlane certs</code> or <code>fastlane dev_certs</code></p>
+<h3 id='changing-xcodeproject-and-dependencies' class='heading'>Changing xcodeproject, and dependencies</h3>
+<h4 id='changing-the-xcode-project' class='heading'>Changing the Xcode project</h4>
 
 <ol>
-<li>As a starting point, please read the <a href="./about-streamlayer.html">About StreamLayer</a> section, which will give you a quick overview of the SDK and its capabilities.</li>
-<li>We then recommend reading the <a href="./architecture-overview.html">Architecture Overview</a> section, which will give you a macro overview of the integration process.</li>
-<li>From there, the <a href="./integration-guide.html">Integration Guide</a> section will walk you through the specific steps involved in successfully completing the integration.</li>
-<li>Finally, as an additional resource, we offer the <a href="./sample-integrations.html">Sample Integrations</a> section where you can find functioning examples of the integrated SDK.</li>
+<li>Do changes in <code>project.**.yml</code></li>
+<li>Run <code>yarn</code></li>
 </ol>
-<h2 id='support' class='heading'>Support</h2>
+<h4 id='updating-carthage-dependencies' class='heading'>Updating Carthage dependencies</h4>
 
-<p>If you have any questions, please do not hesitate to reach out to <a href="mailto:support@streamlayer.io">support@streamlayer.io</a>. If you have already begun an integration with us, please request that we add you to our Slack channel for more immediate communication with our engineering support team.</p>
+<ol>
+<li>Open Cartfile</li>
+<li>Add dependencies</li>
+<li>Go to <code>project.base.yml</code> and add <code>carthage: FrameworkName</code> to a target it needs to link to</li>
+<li>Call <code>yarn update</code>, it will resolve dependencies, regenerate project</li>
+</ol>
+<h3 id='updating-pods' class='heading'>Updating Pods</h3>
+
+<ol>
+<li>Update dependencies in <code>./Podfiles/shared.rb</code> file. It is read by <code>./Podfiles/Podfile</code> during pods installation.</li>
+<li>Run <code>cd Podfiles; pod update</code></li>
+</ol>
+<h2 id='using-code-generators' class='heading'>Using code generators</h2>
+<h3 id='write-new-ui-modules' class='heading'>Write new UI modules</h3>
+
+<p>Use <a href="https://github.com/strongself/Generamba">Generamba</a></p>
+
+<ol>
+<li><p><code>generamba gen {moduleName} reswift_viper</code></p></li>
+<li><p>Open <code>Podfiles/shared.rb</code> - add pod to appropriate section, there are several:</p>
+
+<ul>
+<li>common -&gt; will install to all targets</li>
+<li>sdk_common -&gt; ios and tvos sdk</li>
+<li>app_common -&gt; ios and tvos app</li>
+<li>ios/sdk app/framework specific</li>
+</ul></li>
+<li><p>Run <code>yarn update</code></p></li>
+</ol>
+<h1 id='distributing-framework' class='heading'>Distributing Framework</h1>
+<h2 id='manual-distribution' class='heading'>Manual distribution</h2>
+
+<p><em>(to be automised)</em>  </p>
+<h3 id='prerequisites' class='heading'>Prerequisites</h3>
+
+<p>xcodegen version &gt;= 2.13.1<br>
+It is important, since xcodegen supports pregen and postgen commands</p>
+<pre class="highlight plaintext"><code># from project.base.yml
+  preGenCommand: bitrise run bootstrap
+  postGenCommand: cd Podfiles &amp;&amp; pod install
+</code></pre>
+
+<p>Xcodegen, in turn, runs by husky hook, described in <code>package.json</code>  </p>
+<h3 id='build-the-framework-and-creating-the-releases' class='heading'>Build the framework and creating the releases</h3>
+
+<p>After that, run the following commands<br>
+<code>bitrise run sdk</code><br>
+Create a release, upload the build (<a href="https://github.com/StreamLayer/sdk-ios/releases">https://github.com/StreamLayer/sdk-ios/releases</a>)<br>
+<code>bitrise run sdk_501</code><br>
+Create a release, upload the build (<a href="https://github.com/StreamLayer/sdk-ios/releases">https://github.com/StreamLayer/sdk-ios/releases</a>)<br>
+Update a list of releases:<br>
+<a href="https://github.com/StreamLayer/sdk-ios/blob/master/StreamLayer.json">https://github.com/StreamLayer/sdk-ios/blob/master/StreamLayer.json</a></p>
+<h1 id='ci-information' class='heading'>CI Information</h1>
+<h2 id='platform' class='heading'>Platform</h2>
+
+<p><a href="http://www.bitrise.io/">www.bitrise.io</a></p>
+<h2 id='frequent-ci-operations' class='heading'>Frequent CI Operations</h2>
+
+<ul>
+<li><strong>Custom CI build for custom branch</strong><br>
+Click on &lsquo;Start/Schedule a Build&rsquo; on the project page, there you select Branch, and workflow, and click &lsquo;Start Build&rsquo;.</li>
+</ul>
+<h1 id='external-documentation' class='heading'>External Documentation</h1>
+<h2 id='sources-and-toolset' class='heading'>Sources and toolset</h2>
+
+<p>The documentation is generated via <a href="https://github.com/realm/jazzy">jazzy</a>.
+You can find the configs in  <code>./jazzy.yml</code><br>
+Except the codebase analysys and public interfaces documentation, jazzy icludes additional guides and descriptions. It parses the files from the following directories:  </p>
+
+<ul>
+<li><code>./docs/guides</code> - Guides.<br></li>
+<li><code>./docs/sections</code> - We do not add files here in general. There is only one section and it is core Documentation description.
+## Add a new Guide
+Create a file in the <code>./docs/guides</code> folder.
+Add a child to th <code>custom_categories</code> section to the <code>./jazzy.yml</code> file.</li>
+</ul>
+<h2 id='publishing' class='heading'>Publishing</h2>
+
+<ul>
+<li><code>$ yarn docs:generate</code> - Generate the documentation and put it to <code>./docs/swift_output</code>.</li>
+<li><code>$ yarn docs:gh-pages</code> - Publish the documentation to the public gh-pages
+The documentation is being published to gh-pages branch of the <a href="https://github.com/StreamLayer/sdk-ios/">sdk-ios</a> repository. Except the documentation you can find there published releases of the SDK and sample apps (to check them out switch to the branch <code>sample-apps</code>)</li>
+</ul>
+<h1 id='additional-information' class='heading'>Additional information</h1>
+<h2 id='code-signing' class='heading'>Code Signing</h2>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/30963294/creating-ios-osx-frameworks-is-it-necessary-to-codesign-them-before-distributin">Creating ios osx frameworks is it necessary to codesign them before distributing</a></li>
+</ul>
+<h2 id='framework-distribution' class='heading'>Framework Distribution</h2>
+
+<ul>
+<li><a href="https://medium.com/@syshen/create-an-ios-universal-framework-148eb130a46c">Create universal framework</a></li>
+<li><a href="https://medium.com/@mkeremkeskin/distributing-closed-source-frameworks-with-cocoapods-and-carthage-44fd141cfd78">Distributing closed source frameworks with cocoapods and carthage</a></li>
+</ul>
 
           </div>
         </section>
@@ -136,8 +553,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-05-25)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2020-08-25)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
