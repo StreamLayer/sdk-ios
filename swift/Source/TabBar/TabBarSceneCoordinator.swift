@@ -24,3 +24,38 @@ class TabBarSceneCoordinator: BaseSceneCoordinator<TransferDataType> {
     return Observable.just(.empty)
   }
 }
+
+extension TabBarSceneCoordinator {
+    public func configure() -> [Observable<TransferDataType>] {
+        return TabBarSceneModel.allCases
+            .map {  coordinate(to: $0.coordinator(window: window, dependencies: dependency)) }
+    }
+}
+
+extension TabBarSceneModel {
+    
+    func coordinator(window: UIWindow, dependencies: DependencyProvider) -> BaseSceneCoordinator<TransferDataType> {
+           switch self {
+           case .home:
+               let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+//               coordinator.tabBarIcon = UIImage(systemName: rawValue)
+               return coordinator
+           case .scores:
+                let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+               //               coordinator.tabBarIcon = UIImage(systemName: rawValue)
+                              return coordinator
+           case .watch:
+                let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+               //               coordinator.tabBarIcon = UIImage(systemName: rawValue)
+                              return coordinator
+           case .espn:
+                let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+               //               coordinator.tabBarIcon = UIImage(systemName: rawValue)
+                              return coordinator
+           case .more:
+               let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+               //               coordinator.tabBarIcon = UIImage(systemName: rawValue)
+                              return coordinator
+           }
+       }
+}

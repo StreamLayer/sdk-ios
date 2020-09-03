@@ -1,0 +1,18 @@
+strings:
+  inputs: Source/Resources/Base.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: Source/SwiftGen/Strings.swift
+xcassets:
+  inputs:
+    - Source/Resources/Images.xcassets
+    - Source/Resources/Colors.xcassets
+  outputs:
+    - templateName: swift5
+      output: Source/SwiftGen/Assets.swift
+fonts:
+  inputs:
+    - Source/Resources/Gotham_Font
+  outputs:
+    - templateName: swift5
+      output: Source/SwiftGen/Fonts.swift
