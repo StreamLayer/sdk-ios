@@ -12,7 +12,7 @@ import RxCocoa
 class TabBarSceneViewController: BaseViewController<TabBarSceneViewModel> {
     
     override func setupUI() {
-       
+      view.backgroundColor = .white
     }
     
     override func setupBindings() {
