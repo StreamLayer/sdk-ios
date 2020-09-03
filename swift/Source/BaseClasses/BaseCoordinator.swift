@@ -32,7 +32,7 @@ extension PresentScene: RawRepresentable {
   
   var rawValue: RawValue {
     switch self {
-    case .tabBar: return BaseCoordinator()
+    case .tabBar: return TabBarSceneCoordinator()
     }
   }
 }

@@ -49,3 +49,5 @@ targets:
       - carthage: RxSwift # sample implementation only
       - carthage: RxRelay # sample implementation only
       - carthage: RxCocoa # sample implementation only
+
+      - carthage: Action
