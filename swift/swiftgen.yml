@@ -10,9 +10,3 @@ xcassets:
   outputs:
     - templateName: swift5
       output: Source/SwiftGen/Assets.swift
-fonts:
-  inputs:
-    - Source/Resources/Gotham_Font
-  outputs:
-    - templateName: swift5
-      output: Source/SwiftGen/Fonts.swift
