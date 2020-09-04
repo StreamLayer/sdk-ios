@@ -24,6 +24,11 @@ internal enum Asset {
   internal enum Images {
     internal static let live = ImageAsset(name: "Live")
     internal static let share = ImageAsset(name: "Share")
+    internal static let espn = ImageAsset(name: "espn")
+    internal static let home = ImageAsset(name: "home")
+    internal static let more = ImageAsset(name: "more")
+    internal static let score = ImageAsset(name: "score")
+    internal static let watch = ImageAsset(name: "watch")
     internal static let customMenuIcon = ImageAsset(name: "customMenuIcon")
   }
 }

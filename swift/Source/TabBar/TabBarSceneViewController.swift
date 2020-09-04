@@ -9,15 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class TabBarSceneViewController: BaseViewController<TabBarSceneViewModel> {
-    
-    override func setupUI() {
-      view.backgroundColor = .white
-    }
-    
-    override func setupBindings() {
-//        viewModel?.indicatorViewAnimating.drive(<#drive#>),
-//        viewModel?.elements.drive(<#drive#>),
-//        viewModel?.loadError.drive(onNext: {<#drive#>}),
-    }
+class TabBarSceneViewController<T>: UITabBarController, ViewModelBased, BaseInstance {
+  var viewModel: T?
+  typealias ViewModel = T
 }

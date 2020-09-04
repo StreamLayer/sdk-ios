@@ -12,7 +12,7 @@ import RxCocoa
 class WatchSceneViewController: BaseViewController<WatchSceneViewModel> {
     
     override func setupUI() {
-       
+    
     }
     
     override func setupBindings() {
