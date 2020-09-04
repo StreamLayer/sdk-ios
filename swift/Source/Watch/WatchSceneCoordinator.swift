@@ -11,7 +11,7 @@ import RxCocoa
 
 class WatchSceneCoordinator: BaseTabBarCoordinator<WatchSceneViewModel> {
     
-   override func controller() -> BaseViewController<WatchSceneViewModel> {
-       return WatchSceneViewController.instantiate(with: WatchSceneViewModel(dependencies: dependency))
-   }
+  override func controller() -> BaseViewController<WatchSceneViewModel> {
+    return WatchSceneViewController.instantiate(with: WatchSceneViewModel(dependency: dependency))
+  }
 }

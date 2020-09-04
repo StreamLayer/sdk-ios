@@ -10,6 +10,16 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// ESPN+
+  internal static let espn = L10n.tr("Base", "espn")
+  /// Home
+  internal static let home = L10n.tr("Base", "home")
+  /// More
+  internal static let more = L10n.tr("Base", "more")
+  /// Scores
+  internal static let scores = L10n.tr("Base", "scores")
+  /// Watch
+  internal static let watch = L10n.tr("Base", "watch")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

@@ -12,7 +12,7 @@ import RxCocoa
 class TabBarSceneCoordinator: BaseSceneCoordinator<TransferDataType> {
   
   override func start() -> Observable<TransferDataType> {
-    let viewModel = TabBarSceneViewModel(dependencies: dependency)
+    let viewModel = TabBarSceneViewModel(dependency: dependency)
     let viewController = TabBarSceneViewController.instantiate(with: viewModel)
     let rootViewController = UINavigationController(rootViewController: viewController)
     rootViewController.isNavigationBarHidden = true
@@ -29,34 +29,39 @@ class TabBarSceneCoordinator: BaseSceneCoordinator<TransferDataType> {
 extension TabBarSceneCoordinator {
   public func configure() -> [Observable<UINavigationController>] {
     return TabBarSceneModel.allCases
-      .map {  coordinate(to: $0.coordinator(window: window, dependencies: dependency)) }
+      .map {  coordinate(to: $0.coordinator(window: window, dependency: dependency)) }
   }
 }
 
 extension TabBarSceneModel {
   
   func coordinator(window: UIWindow,
-                   dependencies: DependencyProvider) -> BaseCoordinator<UINavigationController> {
+                   dependency: DependencyProvider) -> BaseCoordinator<UINavigationController> {
     switch self {
     case .home:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.home.image
+      coordinator.title = L10n.home
       return coordinator
     case .scores:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.score.image
+      coordinator.title = L10n.scores
       return coordinator
     case .watch:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.watch.image
+      coordinator.title = L10n.watch
       return coordinator
     case .espn:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.espn.image
+      coordinator.title = L10n.espn
       return coordinator
     case .more:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependencies)
+      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.more.image
+      coordinator.title = L10n.more
       return coordinator
     }
   }

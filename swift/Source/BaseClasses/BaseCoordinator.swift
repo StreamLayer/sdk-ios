@@ -89,6 +89,7 @@ class BaseSceneCoordinator<T>: BaseCoordinator<T> {
 
 class BaseTabBarCoordinator<C>: BaseSceneCoordinator<UINavigationController> {
   public var tabBarIcon: UIImage?
+  public var title: String?
   
   func controller() -> BaseViewController<C> {
     return BaseViewController<C>()
@@ -98,6 +99,7 @@ class BaseTabBarCoordinator<C>: BaseSceneCoordinator<UINavigationController> {
     let navigationController = UINavigationController(rootViewController: controller())
     navigationController.isNavigationBarHidden = true
     navigationController.tabBarItem.image = tabBarIcon
+    navigationController.tabBarItem.title = title
     
     return Observable<UINavigationController>.just(navigationController)
   }
