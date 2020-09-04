@@ -39,12 +39,12 @@ extension TabBarSceneModel {
                    dependency: DependencyProvider) -> BaseCoordinator<UINavigationController> {
     switch self {
     case .home:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
+      let coordinator = HomeSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.home.image
       coordinator.title = L10n.home
       return coordinator
     case .scores:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
+      let coordinator = ScoresSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.score.image
       coordinator.title = L10n.scores
       return coordinator
@@ -54,12 +54,12 @@ extension TabBarSceneModel {
       coordinator.title = L10n.watch
       return coordinator
     case .espn:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
+      let coordinator = HomeSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.espn.image
       coordinator.title = L10n.espn
       return coordinator
     case .more:
-      let coordinator = WatchSceneCoordinator(window: window, dependency: dependency)
+      let coordinator = HomeSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.more.image
       coordinator.title = L10n.more
       return coordinator
