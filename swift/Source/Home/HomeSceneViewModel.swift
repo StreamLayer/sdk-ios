@@ -9,4 +9,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class HomeSceneViewModel: BaseViewModel<HomeSceneModel> {}
+final class HomeSceneViewModel: BaseViewModel<[HomeSceneModel]> {
+
+}

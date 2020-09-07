@@ -28,7 +28,7 @@ class BaseViewModel<T> {
   init(dependency: DependencyProvider) {
     self.dependency = dependency
     loadAction = Action { .just($0) }
-    elements = loadAction.elements.asObservable()
+    elements = loadAction.elements
     indicatorViewAnimating = loadAction.executing.asDriver(onErrorJustReturn: false)
     loadError = loadAction.errors.asDriver(onErrorDriveWith: .empty())
       .flatMap { error -> Driver<Error> in

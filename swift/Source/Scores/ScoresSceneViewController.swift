@@ -11,9 +11,7 @@ import RxCocoa
 
 class ScoresSceneViewController: BaseViewController<ScoresSceneViewModel> {
     
-    override func setupUI() {
-       
-    }
+    override func setupUI() {}
     
     override func setupBindings() {
 //        viewModel?.indicatorViewAnimating.drive(<#drive#>),

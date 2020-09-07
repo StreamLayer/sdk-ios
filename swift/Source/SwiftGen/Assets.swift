@@ -22,6 +22,9 @@ internal enum Asset {
   internal enum Colors {
   }
   internal enum Images {
+    internal static let bottom = ImageAsset(name: "bottom")
+    internal static let middle = ImageAsset(name: "middle")
+    internal static let top = ImageAsset(name: "top")
     internal static let live = ImageAsset(name: "Live")
     internal static let share = ImageAsset(name: "Share")
     internal static let espnLogo = ImageAsset(name: "espn_logo")

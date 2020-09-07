@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplication .LaunchOptionsKey: Any]?) -> Bool {
     
+    UITabBar.appearance().tintColor = .black
+    
     initiateStreamLayer()
     
     let dependency = Dependency(authService: AuthService())

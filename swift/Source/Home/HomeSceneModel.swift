@@ -7,4 +7,17 @@
 
 import UIKit
 
-struct HomeSceneModel: Codable {}
+enum HomeSceneModel: CaseIterable {
+  case top, middle, bottom
+  
+  var image: UIImage {
+    switch self {
+    case .top:
+      return Asset.Images.top.image
+      case .middle:
+      return Asset.Images.middle.image
+      case .bottom:
+      return Asset.Images.bottom.image
+    }
+  }
+}
