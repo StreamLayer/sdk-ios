@@ -10,14 +10,24 @@ import RxSwift
 import RxCocoa
 
 class HomeSceneViewController: BaseViewController<HomeSceneViewModel> {
-    
-    override func setupUI() {
-       
-    }
-    
-    override func setupBindings() {
-//        viewModel?.indicatorViewAnimating.drive(<#drive#>),
-//        viewModel?.elements.drive(<#drive#>),
-//        viewModel?.loadError.drive(onNext: {<#drive#>}),
-    }
+  lazy var navigationBarView: UIView = {
+    let view = UIView()
+    view.backgroundColor = .black
+    return view
+  }()
+  
+  override func setupUI() {
+    view.backgroundColor = .white
+    view.addSubview(navigationBarView)
+    navigationBarView.snp.makeConstraints({
+      $0.leading.top.trailing.equalToSuperview()
+      $0.height.equalTo(88)
+    })
+  }
+  
+  override func setupBindings() {
+    //        viewModel?.indicatorViewAnimating.drive(<#drive#>),
+    //        viewModel?.elements.drive(<#drive#>),
+    //        viewModel?.loadError.drive(onNext: {<#drive#>}),
+  }
 }
