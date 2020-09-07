@@ -24,7 +24,7 @@ internal enum Asset {
   internal enum Images {
     internal static let live = ImageAsset(name: "Live")
     internal static let share = ImageAsset(name: "Share")
-    internal static let espn = ImageAsset(name: "espn")
+    internal static let espnLogo = ImageAsset(name: "espn_logo")
     internal static let group = ImageAsset(name: "group")
     internal static let search = ImageAsset(name: "search")
     internal static let settings = ImageAsset(name: "settings")

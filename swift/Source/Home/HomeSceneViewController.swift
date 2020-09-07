@@ -10,11 +10,7 @@ import RxSwift
 import RxCocoa
 
 class HomeSceneViewController: BaseViewController<HomeSceneViewModel> {
-  lazy var navigationBarView: UIView = {
-    let view = UIView()
-    view.backgroundColor = .black
-    return view
-  }()
+  let navigationBarView = NavigationBarView()
   
   override func setupUI() {
     view.backgroundColor = .white
