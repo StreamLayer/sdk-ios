@@ -15,12 +15,6 @@ class NavigationBarView: UIView {
     return imageView
   }()
   
-  let espnLogoImageView: UIImageView = {
-    let imageView = UIImageView()
-    imageView.image = Asset.Images.espnLogo.image
-    return imageView
-  }()
-  
   let settingsImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = Asset.Images.settings.image
@@ -33,40 +27,32 @@ class NavigationBarView: UIView {
     return imageView
   }()
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  convenience init(with title: () -> (UIView)) {
+    self.init(frame: .zero)
+    let titleView = title()
+    addSubview(titleView)
+    titleView.snp.makeConstraints({
+      $0.bottom.equalToSuperview().inset(20)
+      $0.centerX.equalToSuperview()
+    })
+    setup(titleView)
   }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setup()
-  }
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    setup()
-  }
-  
-  func setup () {
+  func setup (_ titleView: UIView) {
     backgroundColor = .black
     addSubview(searchImageView)
-    addSubview(espnLogoImageView)
     addSubview(settingsImageView)
     addSubview(groupImageView)
     searchImageView.snp.makeConstraints({
-      $0.bottom.equalToSuperview().inset(20)
+      $0.bottom.equalTo(titleView)
       $0.leading.equalToSuperview().offset(20)
     })
-    espnLogoImageView.snp.makeConstraints({
-      $0.bottom.equalTo(searchImageView)
-      $0.centerX.equalToSuperview()
-    })
     settingsImageView.snp.makeConstraints({
-      $0.bottom.equalTo(searchImageView)
+      $0.bottom.equalTo(titleView)
       $0.trailing.equalToSuperview().inset(20)
     })
     groupImageView.snp.makeConstraints({
-      $0.bottom.equalTo(searchImageView)
+      $0.bottom.equalTo(titleView)
       $0.trailing.equalTo(settingsImageView.snp.leading).inset(-10)
     })
   }

@@ -10,7 +10,14 @@ import RxSwift
 import RxCocoa
 
 class HomeSceneViewController: BaseViewController<HomeSceneViewModel> {
-  let navigationBarView = NavigationBarView()
+  let navigationBarView = NavigationBarView {
+     let espnLogoImageView: UIImageView = {
+       let imageView = UIImageView()
+       imageView.image = Asset.Images.espnLogo.image
+       return imageView
+     }()
+    return espnLogoImageView
+  }
   
   fileprivate lazy var imageListCollectionView: UICollectionView = {
     
