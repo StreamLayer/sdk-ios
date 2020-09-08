@@ -59,7 +59,7 @@ extension TabBarSceneModel {
       coordinator.title = L10n.espn
       return coordinator
     case .more:
-      let coordinator = HomeSceneCoordinator(window: window, dependency: dependency)
+      let coordinator = MoreSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.more.image
       coordinator.title = L10n.more
       return coordinator
