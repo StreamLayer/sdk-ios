@@ -31,6 +31,7 @@ internal enum Asset {
     internal static let group = ImageAsset(name: "group")
     internal static let search = ImageAsset(name: "search")
     internal static let settings = ImageAsset(name: "settings")
+    internal static let scoreBody = ImageAsset(name: "scoreBody")
     internal static let espn = ImageAsset(name: "espn")
     internal static let home = ImageAsset(name: "home")
     internal static let more = ImageAsset(name: "more")

@@ -6,5 +6,6 @@
 //
 
 import UIKit
+import RxDataSources
 
-struct ScoresSceneModel: Codable {}
+struct ScoresSceneModel {}

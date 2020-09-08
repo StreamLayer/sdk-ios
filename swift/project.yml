@@ -51,3 +51,5 @@ targets:
       - carthage: RxCocoa # sample implementation only
 
       - carthage: Action
+      - carthage: RxDataSources
+      - carthage: Differentiator

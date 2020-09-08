@@ -21,11 +21,22 @@ class ScoresSceneViewController: BaseViewController<ScoresSceneViewModel> {
     return titleLabel
   }
   
+  let bodyImageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.image = Asset.Images.scoreBody.image
+    return imageView
+  }()
+  
   override func setupUI() {
     view.addSubview(navigationBarView)
+    view.addSubview(bodyImageView)
     navigationBarView.snp.makeConstraints({
       $0.leading.top.trailing.equalToSuperview()
       $0.height.equalTo(88)
+    })
+    bodyImageView.snp.makeConstraints({
+      $0.top.equalTo(navigationBarView.snp.bottom)
+      $0.leading.trailing.bottom.equalToSuperview()
     })
   }
   
