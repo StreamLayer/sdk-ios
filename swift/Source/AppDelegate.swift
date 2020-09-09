@@ -77,3 +77,12 @@ extension AppDelegate: SLROverlayLoggerDelegate {
     print("log: \(userInfo)")
   }
 }
+
+extension AppDelegate {
+  func application(_ application: UIApplication,
+                   supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    guard let tabBarController = (window?.rootViewController as? UINavigationController)?.topViewController as? TabBarSceneViewController<TabBarSceneViewModel>,
+   let topViewController = tabBarController.viewControllers?[tabBarController.selectedIndex] as? UINavigationController,  topViewController.topViewController is WatchSceneViewController else { return [.portrait] }
+      return [.portrait, .landscapeLeft, .landscapeRight]
+  }
+}

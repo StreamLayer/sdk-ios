@@ -27,6 +27,7 @@ internal enum Asset {
     internal static let top = ImageAsset(name: "top")
     internal static let live = ImageAsset(name: "Live")
     internal static let share = ImageAsset(name: "Share")
+    internal static let moreBody = ImageAsset(name: "moreBody")
     internal static let espnLogo = ImageAsset(name: "espn_logo")
     internal static let group = ImageAsset(name: "group")
     internal static let search = ImageAsset(name: "search")
