@@ -9,4 +9,4 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class WatchSceneViewModel: BaseViewModel<WatchSceneModel> {}
+final class WatchSceneViewModel: BaseViewModel<WatchSceneSection> {}
