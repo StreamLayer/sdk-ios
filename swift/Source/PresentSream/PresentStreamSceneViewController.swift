@@ -1,5 +1,5 @@
 //  
-//  PresentSreamSceneViewController.swift
+//  PresentStreamSceneViewController.swift
 //  Demo
 //
 //  Created by Yuriy Granchenko on 09.09.2020.
@@ -13,7 +13,7 @@ import RxCocoa
 import StreamLayer
 import StreamLayerVendor
 
-class PresentSreamSceneViewController: BaseViewController<PresentSreamSceneViewModel> {
+class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneViewModel> {
   
   // sample video player
     private let videoPlayer = SLRVideoPlayer()
