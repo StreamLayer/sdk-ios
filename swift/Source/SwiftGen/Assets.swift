@@ -38,6 +38,11 @@ internal enum Asset {
     internal static let more = ImageAsset(name: "more")
     internal static let score = ImageAsset(name: "score")
     internal static let watch = ImageAsset(name: "watch")
+    internal static let watch1 = ImageAsset(name: "Watch1")
+    internal static let watch2 = ImageAsset(name: "Watch2")
+    internal static let watch3 = ImageAsset(name: "Watch3")
+    internal static let watch4 = ImageAsset(name: "Watch4")
+    internal static let watch5 = ImageAsset(name: "Watch5")
     internal static let customMenuIcon = ImageAsset(name: "customMenuIcon")
   }
 }

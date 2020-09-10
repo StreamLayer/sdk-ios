@@ -29,7 +29,7 @@ class WatchSceneViewController: BaseViewController<WatchSceneViewModel> {
     layout.minimumLineSpacing = 10
     layout.scrollDirection = .vertical
     layout.itemSize = CGSize(width: view.frame.width,
-                             height: view.frame.width/0.7)
+                             height: view.frame.width/2)
     
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.register(WatchSceneCollectionCell.self,

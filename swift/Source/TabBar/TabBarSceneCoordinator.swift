@@ -54,7 +54,7 @@ extension TabBarSceneModel {
       coordinator.title = L10n.watch
       return coordinator
     case .espn:
-      let coordinator = HomeSceneCoordinator(window: window, dependency: dependency)
+      let coordinator = ESPNSceneCoordinator(window: window, dependency: dependency)
       coordinator.tabBarIcon = Asset.Images.espn.image
       coordinator.title = L10n.espn
       return coordinator

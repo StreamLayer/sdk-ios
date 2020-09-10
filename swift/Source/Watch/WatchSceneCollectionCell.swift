@@ -33,7 +33,7 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
                                          left: 10/2,
                                          bottom: 0,
                                          right: 10/2)
-      layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+      layout.itemSize = CGSize(width: cellWidth*0.8, height: cellWidth)
       
       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
       collectionView.register(WatchStreamCell.self,

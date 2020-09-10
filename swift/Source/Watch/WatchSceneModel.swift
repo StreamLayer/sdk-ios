@@ -11,13 +11,21 @@ import RxDataSources
 let watchItems =
   WatchSceneSection(header: "",
                     items: [WatchSection(header: "Stream Now",
-                                         items: [WatchStream(image: Asset.Images.top.image),
-                                                 WatchStream(image: Asset.Images.middle.image),
-                                                 WatchStream(image: Asset.Images.bottom.image)]),
+                                         items: [WatchStream(image: Asset.Images.watch1.image),
+                                                 WatchStream(image: Asset.Images.watch2.image),
+                                                 WatchStream(image: Asset.Images.watch3.image)]),
                             WatchSection(header: "Stream Now",
-                                         items: [WatchStream(image: Asset.Images.top.image),
-                                                 WatchStream(image: Asset.Images.middle.image),
-                                                 WatchStream(image: Asset.Images.bottom.image)])] )
+                                         items: [WatchStream(image: Asset.Images.watch4.image),
+                                                 WatchStream(image: Asset.Images.watch5.image),
+                                                 WatchStream(image: Asset.Images.watch3.image)]),
+                            WatchSection(header: "Stream Now",
+                                         items: [WatchStream(image: Asset.Images.watch3.image),
+                                                 WatchStream(image: Asset.Images.watch5.image),
+                                                 WatchStream(image: Asset.Images.watch1.image)]),
+                            WatchSection(header: "Stream Now",
+                                         items: [WatchStream(image: Asset.Images.watch2.image),
+                                                 WatchStream(image: Asset.Images.watch4.image),
+                                                 WatchStream(image: Asset.Images.watch5.image)])] )
 
 struct WatchSceneSection {
   var header: String
