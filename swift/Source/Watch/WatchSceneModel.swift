@@ -8,9 +8,20 @@
 import UIKit
 import RxDataSources
 
+let watchItems =
+  WatchSceneSection(header: "",
+                    items: [WatchSection(header: "Stream Now",
+                                         items: [WatchStream(image: Asset.Images.top.image),
+                                                 WatchStream(image: Asset.Images.middle.image),
+                                                 WatchStream(image: Asset.Images.bottom.image)]),
+                            WatchSection(header: "Stream Now",
+                                         items: [WatchStream(image: Asset.Images.top.image),
+                                                 WatchStream(image: Asset.Images.middle.image),
+                                                 WatchStream(image: Asset.Images.bottom.image)])] )
+
 struct WatchSceneSection {
-    var header: String
-    var items: [Item]
+  var header: String
+  var items: [Item]
 }
 
 extension WatchSceneSection: SectionModelType {

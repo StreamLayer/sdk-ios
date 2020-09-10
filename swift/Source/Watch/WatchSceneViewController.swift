@@ -7,6 +7,7 @@
 import Foundation
 import UIKit
 import RxDataSources
+import RxSwift
 
 typealias WatchSceneDataSource = RxCollectionViewSectionedReloadDataSource<WatchSceneSection>
 
@@ -46,8 +47,9 @@ class WatchSceneViewController: BaseViewController<WatchSceneViewModel> {
   }
   
   override func setupBindings() {
-    //        viewModel?.indicatorViewAnimating.drive(<#drive#>),
-    //        viewModel?.elements.drive(<#drive#>),
-    //        viewModel?.loadError.drive(onNext: {<#drive#>}),
+    viewModel?.elements?.compactMap({ [$0] })
+      .bind(to: streamCollectionView.rx.items(dataSource: dataSource))
+      .disposed(by: self.disposeBag)
+    Observable.just(watchItems).bind(to: viewModel!.loadAction.inputs).disposed(by: disposeBag)
   }
 }
