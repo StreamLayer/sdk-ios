@@ -12,6 +12,10 @@ import RxCocoa
 class WatchSceneCoordinator: BaseTabBarCoordinator<WatchSceneViewModel> {
     
   override func controller() -> BaseViewController<WatchSceneViewModel> {
-    return WatchSceneViewController.instantiate(with: WatchSceneViewModel(dependency: dependency))
+    let viewModel = WatchSceneViewModel(dependency: dependency)
+//    viewModel.present.subscribe(onNext: { [weak self] scene in
+//      self?.presentCoordinator(<#T##coordinator: BaseSceneCoordinator<UINavigationController>##BaseSceneCoordinator<UINavigationController>#>)
+//    }).disposed(by: disposeBag)
+    return WatchSceneViewController.instantiate(with: viewModel)
   }
 }

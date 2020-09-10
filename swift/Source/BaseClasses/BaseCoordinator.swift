@@ -18,7 +18,7 @@ enum TransferDataType {
 }
 
 enum PresentScene {
-  case tabBar
+  case tabBar, presentStream
 }
 
 extension PresentScene: RawRepresentable {
@@ -33,6 +33,7 @@ extension PresentScene: RawRepresentable {
   var rawValue: RawValue {
     switch self {
     case .tabBar: return TabBarSceneCoordinator()
+    case .presentStream: return PresentStreamSceneCoordinator()
     }
   }
 }

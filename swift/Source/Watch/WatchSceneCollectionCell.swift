@@ -16,6 +16,8 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
   
   fileprivate let disposeBag = DisposeBag()
   
+  var modelSelected = PublishSubject<WatchStream>()
+  
   fileprivate let titleLabel: UILabel = {
     let label = UILabel()
     label.textColor = .white
@@ -55,7 +57,6 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
     
     fileprivate func setupTeamCollectionView(_ data: WatchSection) {
       addSubview(collectionView)
-  //    teamCollectionView.isUserInteractionEnabled = false
       collectionView.snp.makeConstraints({
         $0.leading.trailing.bottom.equalToSuperview()
         $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
@@ -63,7 +64,11 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
       Observable.just([data])
         .bind(to: collectionView.rx.items(dataSource: self.dataSource))
         .disposed(by: self.disposeBag)
-    }
+      collectionView.rx.modelSelected(WatchStream.self)
+        .subscribe(onNext: { [weak self] model in
+          self?.modelSelected.onNext(model)
+      }).disposed(by: disposeBag)
+  }
     
     fileprivate func setupTitle(_ data: WatchSection) {
       addSubview(titleLabel)

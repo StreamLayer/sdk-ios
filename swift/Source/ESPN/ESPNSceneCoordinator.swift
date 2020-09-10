@@ -11,7 +11,7 @@ import RxCocoa
 
 class ESPNSceneCoordinator: BaseTabBarCoordinator<ESPNSceneViewModel> {
   
-override func controller() -> BaseViewController<ESPNSceneViewModel> {
-  return ESPNSceneViewController.instantiate(with: ESPNSceneViewModel(dependency: dependency))
-}
+  override func controller() -> BaseViewController<ESPNSceneViewModel> {
+    return ESPNSceneViewController.instantiate(with: ESPNSceneViewModel(dependency: dependency))
+  }
 }

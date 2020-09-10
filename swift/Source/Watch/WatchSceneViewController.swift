@@ -19,6 +19,9 @@ class WatchSceneViewController: BaseViewController<WatchSceneViewModel> {
         .dequeueReusableCell(withReuseIdentifier: WatchSceneCollectionCell.identifier,
                              for: indexPath) as? WatchSceneCollectionCell else { return WatchSceneCollectionCell() }
       cell.setup(data)
+      cell.modelSelected.subscribe(onNext: { _ in
+        self.viewModel?.present.onNext(.presentStream)
+      }).disposed(by: self.disposeBag)
       return cell
     })
   }()
