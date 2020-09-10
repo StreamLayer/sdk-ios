@@ -15,7 +15,7 @@ class PresentStreamSceneCoordinator: BaseSceneCoordinator<TransferDataType> {
         let viewModel = PresentStreamSceneViewModel(dependency: dependency)
         let viewController = PresentStreamSceneViewController.instantiate(with: viewModel)
         let navigationController = window.rootViewController as? UINavigationController
-        navigationController?.pushViewController(viewController, animated: false)
+        navigationController?.pushViewController(viewController, animated: true)
         viewModel.present.subscribe(onNext: { [unowned self] scene in
             self.presentCoordinator(scene.rawValue)
         }).disposed(by: disposeBag)

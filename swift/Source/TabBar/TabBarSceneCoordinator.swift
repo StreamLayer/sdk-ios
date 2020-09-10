@@ -18,7 +18,7 @@ class TabBarSceneCoordinator: BaseSceneCoordinator<TransferDataType> {
     rootViewController.isNavigationBarHidden = true
     Observable.combineLatest(configure())
       .subscribe(onNext: { viewControllers in
-        viewController.viewControllers = viewControllers
+        viewController.viewControllers = viewControllers.compactMap({ $0 })
       }).disposed(by: disposeBag)
     window.rootViewController = rootViewController
     window.makeKeyAndVisible()
@@ -27,16 +27,24 @@ class TabBarSceneCoordinator: BaseSceneCoordinator<TransferDataType> {
 }
 
 extension TabBarSceneCoordinator {
-  public func configure() -> [Observable<UINavigationController>] {
+  public func configure() -> [Observable<UINavigationController?>] {
     return TabBarSceneModel.allCases
-      .map {  coordinate(to: $0.coordinator(window: window, dependency: dependency)) }
+      .map {  coordinate(to: $0.coordinator(window: window, dependency: dependency))
+        .map({ transferData in
+          switch transferData {
+          case .tabBarBlockValue(_ , let viewController):
+            return viewController
+          default: return nil
+          }
+        })
+    }
   }
 }
 
 extension TabBarSceneModel {
   
   func coordinator(window: UIWindow,
-                   dependency: DependencyProvider) -> BaseCoordinator<UINavigationController> {
+                   dependency: DependencyProvider) -> BaseCoordinator<TransferDataType> {
     switch self {
     case .home:
       let coordinator = HomeSceneCoordinator(window: window, dependency: dependency)

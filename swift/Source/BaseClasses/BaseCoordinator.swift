@@ -13,7 +13,8 @@ typealias TransferType = String
 typealias BlockValue<ResultType> = ((ResultType) -> ())
 
 enum TransferDataType {
-  case blockValue(BlockValue<TransferType>, String?)
+  case tabBarBlockValue(BlockValue<TransferType>, UINavigationController)
+  case blockValue(BlockValue<TransferType>, TransferType?)
   case empty
 }
 
@@ -88,7 +89,7 @@ class BaseSceneCoordinator<T>: BaseCoordinator<T> {
   }
 }
 
-class BaseTabBarCoordinator<C>: BaseSceneCoordinator<UINavigationController> {
+class BaseTabBarCoordinator<C>: BaseSceneCoordinator<TransferDataType> {
   public var tabBarIcon: UIImage?
   public var title: String?
   
@@ -96,13 +97,13 @@ class BaseTabBarCoordinator<C>: BaseSceneCoordinator<UINavigationController> {
     return BaseViewController<C>()
   }
   
-  override func start() -> Observable<UINavigationController> {
+  override func start() -> Observable<TransferDataType> {
     let navigationController = UINavigationController(rootViewController: controller())
     navigationController.isNavigationBarHidden = true
     navigationController.tabBarItem.image = tabBarIcon
     navigationController.tabBarItem.title = title
     
-    return Observable<UINavigationController>.just(navigationController)
+    return Observable.just(.tabBarBlockValue( { _ in }, navigationController))
   }
 }
 
