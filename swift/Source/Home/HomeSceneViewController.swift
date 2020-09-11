@@ -19,10 +19,10 @@ class HomeSceneViewController: BaseViewController<HomeSceneViewModel> {
     return espnLogoImageView
   }
   
-  fileprivate lazy var imageListCollectionView: UICollectionView = {
+  fileprivate var imageListCollectionView: UICollectionView = {
     
     let layout = UICollectionViewFlowLayout()
-    layout.itemSize = CGSize(width: view.frame.width, height: 350)
+    layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 350)
     layout.minimumLineSpacing = 10
     layout.scrollDirection = .vertical
     
