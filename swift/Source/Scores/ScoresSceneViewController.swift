@@ -34,7 +34,8 @@ class ScoresSceneViewController: BaseViewController<ScoresSceneViewModel> {
       $0.leading.top.trailing.equalToSuperview()
       $0.height.equalTo(88)
     })
-    bodyImageView.snp.makeConstraints({
+    bodyImageView.snp.makeConstraints({[weak navigationBarView] in
+      guard let navigationBarView = navigationBarView else { return }
       $0.top.equalTo(navigationBarView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     })

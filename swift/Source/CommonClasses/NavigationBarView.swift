@@ -43,15 +43,18 @@ class NavigationBarView: UIView {
     addSubview(searchImageView)
     addSubview(settingsImageView)
     addSubview(groupImageView)
-    searchImageView.snp.makeConstraints({
+    searchImageView.snp.makeConstraints({ [weak titleView] in
+      guard let titleView = titleView else { return }
       $0.bottom.equalTo(titleView)
       $0.leading.equalToSuperview().offset(20)
     })
-    settingsImageView.snp.makeConstraints({
+    settingsImageView.snp.makeConstraints({ [weak titleView] in
+      guard let titleView = titleView else { return }
       $0.bottom.equalTo(titleView)
       $0.trailing.equalToSuperview().inset(20)
     })
-    groupImageView.snp.makeConstraints({
+    groupImageView.snp.makeConstraints({[weak settingsImageView] in
+      guard let settingsImageView = settingsImageView else { return }
       $0.bottom.equalTo(titleView)
       $0.trailing.equalTo(settingsImageView.snp.leading).inset(-10)
     })

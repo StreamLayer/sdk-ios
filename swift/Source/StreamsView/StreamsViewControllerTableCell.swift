@@ -58,16 +58,19 @@ class StreamsViewControllerTableCell: UITableViewCell {
       $0.size.equalTo(CGSize(width: 46, height: 16))
     }
 
-    mainTitleLabel.snp.makeConstraints {
+    mainTitleLabel.snp.makeConstraints { [weak thumbnailImage] in
+      guard let thumbnailImage = thumbnailImage else { return }
       $0.left.equalTo(thumbnailImage.snp.right).offset(16)
       $0.top.equalToSuperview().offset(19)
       $0.right.equalToSuperview().offset(-16)
     }
-    subTitleLabel.snp.makeConstraints {
+    subTitleLabel.snp.makeConstraints { [weak mainTitleLabel] in
+    guard let mainTitleLabel = mainTitleLabel else { return }
       $0.top.equalTo(mainTitleLabel.snp.bottom).offset(4)
       $0.left.right.equalTo(mainTitleLabel)
     }
-    timeLabel.snp.makeConstraints {
+    timeLabel.snp.makeConstraints { [weak subTitleLabel] in
+      guard let subTitleLabel = subTitleLabel else { return }
       $0.top.equalTo(subTitleLabel.snp.bottom).offset(4)
       $0.left.right.equalTo(subTitleLabel)
     }

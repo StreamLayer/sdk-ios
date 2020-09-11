@@ -46,7 +46,8 @@ class HomeSceneViewController: BaseViewController<HomeSceneViewModel> {
       $0.leading.top.trailing.equalToSuperview()
       $0.height.equalTo(88)
     })
-    imageListCollectionView.snp.makeConstraints({
+    imageListCollectionView.snp.makeConstraints({ [weak navigationBarView] in
+      guard let navigationBarView = navigationBarView else { return }
       $0.top.equalTo(navigationBarView.snp.bottom)
       $0.leading.trailing.bottom.equalToSuperview()
     })

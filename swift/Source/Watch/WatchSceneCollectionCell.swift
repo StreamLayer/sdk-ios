@@ -31,10 +31,7 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
       let layout = UICollectionViewFlowLayout()
       layout.minimumLineSpacing = 10
       layout.scrollDirection = .horizontal
-      layout.sectionInset = UIEdgeInsets(top: 0,
-                                         left: 10/2,
-                                         bottom: 0,
-                                         right: 10/2)
+      layout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
       layout.itemSize = CGSize(width: cellWidth*0.8, height: cellWidth)
       
       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -57,7 +54,8 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
     
     fileprivate func setupTeamCollectionView(_ data: WatchSection) {
       addSubview(collectionView)
-      collectionView.snp.makeConstraints({
+      collectionView.snp.makeConstraints({ [weak titleLabel] in
+        guard let titleLabel = titleLabel else { return }
         $0.leading.trailing.bottom.equalToSuperview()
         $0.top.equalTo(titleLabel.snp.bottom).inset(-10)
       })
@@ -83,6 +81,4 @@ class WatchSceneCollectionCell: UICollectionViewCell, CellIdentifierable {
       setupTitle(data)
       setupTeamCollectionView(data)
     }
-
-  
 }
