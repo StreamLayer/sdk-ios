@@ -45,7 +45,8 @@ class StreamsViewController: UIViewController {
       $0.left.top.right.equalToSuperview()
       $0.height.equalTo(61)
     }
-    tableView.snp.makeConstraints {
+    tableView.snp.makeConstraints { [weak infoHeaderView] in
+      guard let infoHeaderView = infoHeaderView else { return }
       $0.top.equalTo(infoHeaderView.snp.bottom)
       $0.left.bottom.right.equalToSuperview()
     }

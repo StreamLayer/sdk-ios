@@ -8,22 +8,29 @@ import UserNotifications
 import StreamLayer
 import StreamLayerVendor
 
+import RxSwift
+
 /// SDK key can be created in the StreamLayer admin panel. Check the official documentation for the relevant link.
 /// You MUST use your own key.
 let sdkKey = "16ab1e23f2a8682d3c176c611c4ee2c1afaa962ee20b6f451b4293cd5a67bf5a"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-  var window: UIWindow?
-
+  
+  fileprivate let window = UIWindow()
+  fileprivate var appCoordinator: AppCoordinator?
+  fileprivate let disposeBag = RxSwift.DisposeBag()
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplication .LaunchOptionsKey: Any]?) -> Bool {
     
+    UITabBar.appearance().tintColor = .black
+    
     initiateStreamLayer()
-
-    window = UIWindow()
-    window?.makeKeyAndVisible()
-    window?.rootViewController = ViewController()
+    
+    let dependency = Dependency(authService: AuthService())
+    appCoordinator = AppCoordinator(window: window, dependency: dependency)
+    appCoordinator?.start().subscribe().disposed(by: disposeBag)
 
     return true
   }
@@ -68,5 +75,14 @@ extension AppDelegate {
 extension AppDelegate: SLROverlayLoggerDelegate {
   func sendLogdata(userInfo: String) {
     print("log: \(userInfo)")
+  }
+}
+
+extension AppDelegate {
+  func application(_ application: UIApplication,
+                   supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    guard let tabBarController = (window?.rootViewController as? UINavigationController)?.topViewController as? TabBarSceneViewController<TabBarSceneViewModel>,
+   let topViewController = tabBarController.viewControllers?[tabBarController.selectedIndex] as? UINavigationController,  topViewController.topViewController is WatchSceneViewController else { return [.portrait] }
+      return [.portrait, .landscapeLeft, .landscapeRight]
   }
 }
