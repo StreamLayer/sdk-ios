@@ -13,12 +13,12 @@ options:
   transitivelyLinkDependencies: false
   groupSortPosition: top
   deploymentTarget:
-    iOS: "11.0"
+    iOS: "12.0"
   postGenCommand: open SwiftDemo.xcodeproj
 
 settings:
   base:
-    SWIFT_VERSION: 5.1.3
+    SWIFT_VERSION: 5.3
   configs:
     release:
       ENABLE_TESTABILITY: NO

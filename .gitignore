@@ -1,5 +1,7 @@
 DerivedData
 *.xcodeproj
+*.xcworkspace
 *.dSYM
 *.framework
 **/Carthage/**
+Pods/

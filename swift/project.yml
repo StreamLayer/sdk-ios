@@ -7,7 +7,7 @@ targets:
   Demo:
     platform: iOS
     deploymentTarget:
-      iOS: 11.0
+      iOS: 12.0
     type: application
     sources:
       - path: Source
@@ -19,12 +19,11 @@ targets:
     dependencies:
       - carthage: StreamLayer
       - carthage: StreamLayerVendor
+      - carthage: VoxImplant
       - carthage: WebRTC
       - carthage: Realm
       - carthage: RealmSwift
       - carthage: SLProtofiles
-      - carthage: SwiftProtobuf
-      - carthage: VoxImplant
       - carthage: GRPC
       - carthage: Logging
       - carthage: NIO
@@ -42,14 +41,7 @@ targets:
       - carthage: CNIOBoringSSL
       - carthage: CNIOBoringSSLShims
       - carthage: CNIODarwin
+      - carthage: CNIOWindows
       - carthage: CNIOHTTPParser
       - carthage: CNIOLinux
       - carthage: CNIOSHA1
-      - carthage: SnapKit # sample implementation only
-      - carthage: RxSwift # sample implementation only
-      - carthage: RxRelay # sample implementation only
-      - carthage: RxCocoa # sample implementation only
-
-      - carthage: Action
-      - carthage: RxDataSources
-      - carthage: Differentiator
