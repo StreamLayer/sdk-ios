@@ -45,15 +45,13 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
     return .lightContent
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    // Update constraints on orientation change
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     SLRStateMachine.onOrientationChange(s_disposeBag) { [weak self] state in
       self?.setupConstraints(state)
     }
   }
-
   
   fileprivate var screenWidth: CGFloat {
     let statusBarOrientation = UIApplication.shared.statusBarOrientation

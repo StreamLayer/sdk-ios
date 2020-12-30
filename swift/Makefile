@@ -11,5 +11,6 @@ pods:
 
 cleanup:
 	rm -rf Carthage/Build
+	rm -rf Frameworks/*
 
 .PHONY: all prepare_carthage prepare_xcode_project cleanup pods
