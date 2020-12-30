@@ -2,5 +2,4 @@ DerivedData
 *.xcodeproj
 *.dSYM
 *.framework
-**/Carthage/Build/**
-obj-c/Carthage
+**/Carthage/**
