@@ -45,6 +45,14 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
     return .lightContent
   }
   
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    SLRStateMachine.onOrientationChange(s_disposeBag) { [weak self] state in
+      self?.setupConstraints(state)
+    }
+  }
+  
   fileprivate var screenWidth: CGFloat {
     let statusBarOrientation = UIApplication.shared.statusBarOrientation
     // it is important to do this after presentModalViewController:animated:
@@ -59,8 +67,16 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   /// - Parameter orientation: portrait or landscape
   private func setupConstraints(_ orientation: OrientationState) {
     switch orientation {
-    case .horizontal: horizontalOrientation()
-    default: verticalOrientation()
+    case .horizontal:
+      horizontalOrientation()
+      UIView.animate(withDuration: 0.25, animations: { [weak self]() -> Void in
+        self?.streamsViewController.view.alpha = 0
+      })
+    default:
+      verticalOrientation()
+      UIView.animate(withDuration: 0.25, animations: { [weak self] () -> Void in
+        self?.streamsViewController.view.alpha = 1
+      })
     }
   }
   
@@ -185,23 +201,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
     #endif
     
     // First stream event
-    streamsViewController.activityIndicator.startAnimating()
-    StreamLayer.requestDemoStreams(showAllStreams: true, completion: { [weak self] error, models in
-      guard let self = self else { return }
-      
-      self.streamsViewController.activityIndicator.stopAnimating()
-      
-      if error != nil {
-        let alert = UIAlertController(title: "Error request",
-                                      message: error?.localizedDescription ?? "Please reload the app",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
-        self.streamsViewController.present(alert, animated: true)
-        return
-      }
-      
-      self.streamsViewController.dataArray = models.map { StreamsViewControllerTableCellViewModel($0) }
-    })
+    self.streamsViewController.dataArray = DemoStreams.map { StreamsViewControllerTableCellViewModel($0) }
   }
 }
 
