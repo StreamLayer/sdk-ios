@@ -1,33 +1,47 @@
 {
   "warnings": [
     {
-      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 558,
-      "symbol": "SLROverlayViewController.viewDidDisappear(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/SLROverlayViewController.swift",
-      "line": 770,
-      "symbol": "SLROverlayViewController.changeStreamEvent(eventId:andAddMenuItem:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 17,
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 18,
       "symbol": "SLRAudioSessionType.generic",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/me/Job/XcodeProjects/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 20,
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 21,
       "symbol": "SLRAudioSessionType.voice",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
+    },
+    {
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 324,
+      "symbol": "StreamLayer.removeDeviceAPNsToken()",
+      "symbol_kind": "source.lang.swift.decl.function.method.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 356,
+      "symbol": "StreamLayer.isUserAuthorized()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 507,
+      "symbol": "StreamLayer.prepareSessionForGeneralAudio(reactivate:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 525,
+      "symbol": "StreamLayer.closeAudioSession()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/me/Job/XcodeProjects/sl-client-ios"
+  "source_directory": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios"
 }

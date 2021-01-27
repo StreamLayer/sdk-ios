@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SLRAudioSessionType Enumeration Reference</title>
+    <title>StreamLayerDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -14,9 +14,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/SLRAudioSessionType" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Protocol/StreamLayerDelegate" class="dashAnchor"></a>
 
-    <a title="SLRAudioSessionType Enumeration Reference"></a>
+    <a title="StreamLayerDelegate Protocol Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -44,7 +44,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html"> Reference</a>
       <img class="carat" src="../img/carat.png" />
-      SLRAudioSessionType Enumeration Reference
+      StreamLayerDelegate Protocol Reference
     </p>
 
     <div class="content-wrapper">
@@ -83,16 +83,17 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>SLRAudioSessionType</h1>
+            <h1>StreamLayerDelegate</h1>
               <div class="declaration">
                 <div class="language">
                   
                   <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">SLRAudioSessionType</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+<span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">StreamLayerDelegate</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
-            <p>Audio Session that may be requested by StreamLayer Activities</p>
+            <p>StreamLayer SDK calls these methods on the host-app delegate, they are related
+to the global state of the host app</p>
 
           </div>
         </section>
@@ -104,9 +105,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@StreamLayer@E@SLRAudioSessionType@SLRAudioSessionTypeGeneric"></a>
-                    <a name="//apple_ref/swift/Element/generic" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@StreamLayer@E@SLRAudioSessionType@SLRAudioSessionTypeGeneric">generic</a>
+                    <a name="/c:@M@StreamLayer@objc(pl)StreamLayerDelegate(im)watchPartyInviteOpenedWithInvite:completion:"></a>
+                    <a name="//apple_ref/swift/Method/watchPartyInviteOpened(invite:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@StreamLayer@objc(pl)StreamLayerDelegate(im)watchPartyInviteOpenedWithInvite:completion:">watchPartyInviteOpened(invite:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -114,43 +115,51 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>StreamLayer SDK notifies host app about accepted watch party invite and associated streamId, if any was associated
+ with a given watch party. It is expected that host app will navigate to an appropriate streaming page and will call completion
+ handler that will indicate to StreamLayer SDK that its appropriate to show prompt to join watch party now</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">generic</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">func</span> <span class="nf">watchPartyInviteOpened</span><span class="p">(</span><span class="nv">invite</span><span class="p">:</span> <span class="kt">SLRInviteData</span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="n">_</span> <span class="nv">cancel</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@StreamLayer@E@SLRAudioSessionType@SLRAudioSessionTypeVoice"></a>
-                    <a name="//apple_ref/swift/Element/voice" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@StreamLayer@E@SLRAudioSessionType@SLRAudioSessionTypeVoice">voice</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">voice</span></code></pre>
-
-                        </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>invite</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>contains information about the invite, specifically, stream id if any, user who sent the invite &amp; watch party group</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>invoke when navigation to appopriate page has been completed and streamlayer sdk
+overlay controller was added. Pass cancel: true in case you don&rsquo;t want to initiate joining the watch party</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
