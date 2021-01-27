@@ -333,13 +333,8 @@ extension SLRVideoPlayer: SLROverlayDelegate {
     case .voice:
       kVoiceSessions += 1
       if kVoiceSessions == 1 {
-        do {
-          try StreamLayer.prepareSessionForVoiceCallAudio()
-        } catch let error {
-          print("[RPC] Error: \(error)")
-          return
-        }
-        return
+        // There was some logic of reactivation of voice session, but apparently we do not need it as VoxImplant handles that.
+        // So for now we just count sessions.
       }
 
     case .generic:
