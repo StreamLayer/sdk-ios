@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
            Docs
         </a>
-         (82% documented)
+         (80% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -150,7 +150,7 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@objc</span>
-<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">weak</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">activeController</span><span class="p">:</span> <span class="kt">SLRWidgetsViewController</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+<span class="kd">private(set)</span> <span class="kd">public</span> <span class="k">weak</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">activeController</span><span class="p">:</span> <span class="kt">SLRWidgetsViewController</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -706,9 +706,9 @@ Could be used when you want to show/hide lauch button</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@StreamLayer@objc(cs)StreamLayer(cm)handlePushNotification:userInfo:"></a>
-                    <a name="//apple_ref/swift/Method/handlePushNotification(_:userInfo:)" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)handlePushNotification:userInfo:">handlePushNotification(_:<wbr>userInfo:<wbr>)</a>
+                    <a name="/c:@M@StreamLayer@objc(cs)StreamLayer(cm)handlePushNotification:userInfo:background:"></a>
+                    <a name="//apple_ref/swift/Method/handlePushNotification(_:userInfo:background:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@StreamLayer@objc(cs)StreamLayer(cm)handlePushNotification:userInfo:background:">handlePushNotification(_:<wbr>userInfo:<wbr>background:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -725,7 +725,9 @@ Could be used when you want to show/hide lauch button</p>
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
 <span class="kd">@objc</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">handlePushNotification</span><span class="p">(</span><span class="n">_</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">UNUserNotificationCenter</span><span class="p">?,</span> <span class="nv">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kd">func</span> <span class="nf">handlePushNotification</span><span class="p">(</span><span class="n">_</span> <span class="nv">center</span><span class="p">:</span> <span class="kt">UNUserNotificationCenter</span><span class="p">?,</span>
+                                         <span class="nv">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span><span class="p">:</span> <span class="kt">Any</span><span class="p">],</span>
+                                         <span class="nv">background</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -754,6 +756,18 @@ Could be used when you want to show/hide lauch button</p>
                               <td>
                                 <div>
                                   <p>associated push notification payload</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>background</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>is push notificatio opened by a user tap it from notification center</p>
                                 </div>
                               </td>
                             </tr>
@@ -823,6 +837,34 @@ Could be used when you want to show/hide lauch button</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@StreamLayer@objc(cs)StreamLayer(cm)enableHapticForAudioSession:error:"></a>
+                    <a name="//apple_ref/swift/Method/enableHapticForAudioSession(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@StreamLayer@objc(cs)StreamLayer(cm)enableHapticForAudioSession:error:">enableHapticForAudioSession(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">enableHapticForAudioSession</span><span class="p">(</span><span class="n">_</span> <span class="nv">enable</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -831,7 +873,7 @@ Could be used when you want to show/hide lauch button</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2021-01-27)</p>
+      <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2021-03-02)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>

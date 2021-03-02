@@ -30,15 +30,22 @@
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 507,
+      "line": 540,
       "symbol": "StreamLayer.prepareSessionForGeneralAudio(reactivate:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 525,
+      "line": 561,
       "symbol": "StreamLayer.closeAudioSession()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
+      "line": 568,
+      "symbol": "StreamLayer.enableHapticForAudioSession(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     }

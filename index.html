@@ -22,7 +22,7 @@
         <a class="header-link" href="index.html">
            Docs
         </a>
-         (82% documented)
+         (80% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -340,40 +340,40 @@ Swift 5.1.3</p>
 <h3 id='xcode' class='heading'>Xcode</h3>
 
 <p>Download and install xcode 11.3.1. Then</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>sudo xcode-select -s /Applications/Xcode.app
+<pre class="highlight shell"><code><span class="nv">$ </span><span class="nb">sudo </span>xcode-select <span class="nt">-s</span> /Applications/Xcode.app
 </code></pre>
 <h3 id='homebrew' class='heading'>Homebrew</h3>
 
 <p>In the instruction above we use brew for most packages we install. It is not mandatory from any sense though.</p>
 <pre class="highlight shell"><code><span class="c"># Fetch the newest versions of formulas </span>
-<span class="gp">$ </span>brew update
+<span class="nv">$ </span>brew update
 </code></pre>
 <h3 id='ruby' class='heading'>Ruby</h3>
 <pre class="highlight shell"><code><span class="c"># Check ruby version</span>
-<span class="gp">$ </span>ruby --version
+<span class="nv">$ </span>ruby <span class="nt">--version</span>
 <span class="c"># &gt; ruby 2.6.3p62 (2019-04-16 revision 67580) [universal.x86_64-darwin19]</span>
 
 <span class="c"># If the command is not found - install ruby via brew</span>
-<span class="gp">$ </span>brew install ruby
+<span class="nv">$ </span>brew <span class="nb">install </span>ruby
 </code></pre>
 
 <p>Alternatively, you can install Ruby via <a href="https://get.rvm.io">RVM</a><br>
 In this case it will look something like this (for details follow the <a href="https://get.rvm.io">official instructions</a>)</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>curl -sSL https://get.rvm.io | bash -s stable
+<pre class="highlight shell"><code><span class="nv">$ </span>curl <span class="nt">-sSL</span> https://get.rvm.io | bash <span class="nt">-s</span> stable
 
 <span class="c"># Check list of available rubies</span>
-<span class="gp">$ </span>rvm list known
+<span class="nv">$ </span>rvm list known
 
 <span class="c"># Install something like that - it will be listed in the available rubies</span>
-<span class="gp">$ </span>rvm install ruby-2.5.5
+<span class="nv">$ </span>rvm <span class="nb">install </span>ruby-2.5.5
 
 <span class="c"># Create gemset, which is a standalone bucket of gems</span>
-<span class="gp">$ </span>rvm gemset create core
-<span class="gp">$ </span>rvm --default use ruby-2.5.5@core
+<span class="nv">$ </span>rvm gemset create core
+<span class="nv">$ </span>rvm <span class="nt">--default</span> use ruby-2.5.5@core
 </code></pre>
 <h3 id='ruby-a-href-https-bundler-io-bundler-a' class='heading'>Ruby <a href="https://bundler.io/">bundler</a></h3>
-<pre class="highlight shell"><code><span class="gp">$ </span>gem install bundler
-<span class="gp">$ </span>bundle install <span class="c"># Install the dependencies according to Gemfile.lock</span>
+<pre class="highlight shell"><code><span class="nv">$ </span>gem <span class="nb">install </span>bundler
+<span class="nv">$ </span>bundle <span class="nb">install</span> <span class="c"># Install the dependencies according to Gemfile.lock</span>
 </code></pre>
 
 <p>To update Gemfile follow the <a href="https://bundler.io/v2.0/man/bundle-update.1.html#RECOMMENDED-WORKFLOW">recommended workflow</a></p>
@@ -382,29 +382,29 @@ In this case it will look something like this (for details follow the <a href="h
 </code></pre>
 <h3 id='node-js-yarn-package-manager-for-node' class='heading'>Node.js, yarn (package manager for Node)</h3>
 <pre class="highlight shell"><code><span class="c"># Install nvm - Node version manager</span>
-<span class="gp">$ </span>brew install nvm
+<span class="nv">$ </span>brew <span class="nb">install </span>nvm
 <span class="c"># Install latest long time support version of Node.js</span>
-<span class="gp">$ </span>nvm install --lts
+<span class="nv">$ </span>nvm <span class="nb">install</span> <span class="nt">--lts</span>
 <span class="c"># Install yarn, without node</span>
-<span class="gp">$ </span>curl -o- -L https://yarnpkg.com/instalcdl.sh | bash 
+<span class="nv">$ </span>curl <span class="nt">-o-</span> <span class="nt">-L</span> https://yarnpkg.com/instalcdl.sh | bash 
 </code></pre>
 <h3 id='xcodegen' class='heading'>Xcodegen</h3>
 
 <p>Used to generate project from a project.yml file. That&rsquo;s why you do not see the <code>*.xcodeproj</code> file in the repository.</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>brew install xcodegen
+<pre class="highlight shell"><code><span class="nv">$ </span>brew <span class="nb">install </span>xcodegen
 </code></pre>
 <h3 id='swiftlint' class='heading'>SwiftLint</h3>
-<pre class="highlight shell"><code><span class="gp">$ </span>brew install swiftlint
+<pre class="highlight shell"><code><span class="nv">$ </span>brew <span class="nb">install </span>swiftlint
 </code></pre>
 <h3 id='weaver' class='heading'>Weaver</h3>
 
 <p>For DI, we use a Weaver framework</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>brew install weaver
+<pre class="highlight shell"><code><span class="nv">$ </span>brew <span class="nb">install </span>weaver
 </code></pre>
 <h3 id='fugen' class='heading'>Fugen</h3>
 
 <p>Generation execution for make stylekit on figma board based.</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>brew install almazrafi/tap/fugen
+<pre class="highlight shell"><code><span class="nv">$ </span>brew <span class="nb">install </span>almazrafi/tap/fugen
 </code></pre>
 <h3 id='carthage' class='heading'>Carthage</h3>
 
@@ -418,7 +418,7 @@ In this case it will look something like this (for details follow the <a href="h
 <h3 id='bootstrap' class='heading'>Bootstrap</h3>
 
 <p>Check Swift 5.1.3 toolset version via</p>
-<pre class="highlight shell"><code><span class="gp">$ </span>carthage swift-version
+<pre class="highlight shell"><code><span class="nv">$ </span>carthage swift-version
 </code></pre>
 
 <p>Output should be <code>5.1.3+d6c4ba50e84722a815542bda2b6e8a42</code></p>
@@ -438,8 +438,14 @@ the commands:</p>
 
 <ul>
 <li><code>fastlane add_device udid:urUDID6a9df9dc440a14e54de1f0b655b0b2404b name:&#39;Bimawa iPhone 5s&#39;</code> - this for add developer device to Developer account (replace udid and device name with yours)</li>
-<li><code>fastlane dev_certs</code> - fetch certificates for local development</li>
+<li><code>fastlane dev_certs</code> - fetch certificates for local development.<br></li>
 </ul>
+
+<p>By default fastlane fetch&rsquo;s certificates from github. If you need to regenerate the certificates, use
+<code>export RECREATE_CERTS=true</code> </p>
+
+<p>Since February 2021 Apple requires all the accounts to have 2fa, please follow the instructions here to get authorised on behalf of our service account<br>
+<a href="https://www.dropbox.com/scl/fi/ecqgmq76uctp5ia74r5fv/iOS-CI_CD.paper">https://www.dropbox.com/scl/fi/ecqgmq76uctp5ia74r5fv/iOS-CI_CD.paper</a></p>
 <h3 id='optional-more-details-on-the-bootsrapping-process' class='heading'>Optional: More details on the bootsrapping process</h3>
 
 <p><code>yarn</code> runs <code>prepare</code> script, which initiates webrtc submodule, and then run&rsquo;s <code>xcodegen</code> script to bootstrap the project. The details you can check in the <code>./package.json</code> file.<br>
@@ -575,7 +581,7 @@ The documentation is being published to gh-pages branch of the <a href="https://
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2021-01-27)</p>
+      <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external">StreamLayer</a>. All rights reserved. (Last updated: 2021-03-02)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
