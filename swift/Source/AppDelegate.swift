@@ -12,7 +12,7 @@ import RxSwift
 
 /// SDK key can be created in the StreamLayer admin panel. Check the official documentation for the relevant link.
 /// You MUST use your own key.
-let sdkKey = "16ab1e23f2a8682d3c176c611c4ee2c1afaa962ee20b6f451b4293cd5a67bf5a"
+let sdkKey = "sdkKey"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     UITabBar.appearance().tintColor = .black
     
-    initiateStreamLayer()
+    initiateStreamLayer(launchOptions: launchOptions)
     
     let dependency = Dependency(authService: AuthService())
     appCoordinator = AppCoordinator(window: window, dependency: dependency)
@@ -65,10 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 }
 
 extension AppDelegate {
-  func initiateStreamLayer() {
-    // INFO: setup for demo events date
-    UserDefaults.standard.set("2019-11-26", forKey: "EventsDemoDate")
-    StreamLayer.initSDK(with: sdkKey, isDebug: true, loggerDelegate: self)
+  func initiateStreamLayer(launchOptions: [UIApplication .LaunchOptionsKey: Any]? = nil) {
+    let key = Bundle.main.object(forInfoDictionaryKey: sdkKey) as? String ?? ""
+    StreamLayer.initSDK(with: key)
+    StreamLayer.initiateLinksHandler(launchOptions: launchOptions)
   }
 }
 

@@ -9,7 +9,7 @@ import AVFoundation
 import CoreMedia
 import StreamLayer
 import StreamLayerVendor
-import GRPC
+import SwiftGRPC
 import NIOConcurrencyHelpers
 
 #if os(iOS)

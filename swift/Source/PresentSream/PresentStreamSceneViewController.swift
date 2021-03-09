@@ -53,6 +53,10 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
     }
   }
   
+  deinit {
+    StreamLayer.removeOverlay()
+  }
+  
   fileprivate var screenWidth: CGFloat {
     let statusBarOrientation = UIApplication.shared.statusBarOrientation
     // it is important to do this after presentModalViewController:animated:
