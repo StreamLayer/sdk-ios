@@ -2,50 +2,43 @@
   "warnings": [
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 18,
+      "line": 19,
       "symbol": "SLRAudioSessionType.generic",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 21,
+      "line": 22,
       "symbol": "SLRAudioSessionType.voice",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 324,
+      "line": 325,
       "symbol": "StreamLayer.removeDeviceAPNsToken()",
       "symbol_kind": "source.lang.swift.decl.function.method.class",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 356,
+      "line": 357,
       "symbol": "StreamLayer.isUserAuthorized()",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 540,
-      "symbol": "StreamLayer.prepareSessionForGeneralAudio(reactivate:)",
+      "line": 388,
+      "symbol": "StreamLayer.isAuthorizedViaBypass()",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 561,
-      "symbol": "StreamLayer.closeAudioSession()",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/kremenets/Dev/makeomatic/StreamLayer/sl-client-ios/StreamLayer/Shared/StreamLayer.swift",
-      "line": 568,
-      "symbol": "StreamLayer.enableHapticForAudioSession(_:)",
+      "line": 405,
+      "symbol": "StreamLayer.isExternalAuth()",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     }
