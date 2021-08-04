@@ -15,7 +15,7 @@ $ carthage swift-version
 ```
 $ make
 ```
-2. After pod install it will launch the app SwiftDemo.xcodeproj. We should close xcode.
+2. After pod install it will launch the app SwiftDemo.xcodeproj. We should close the xcode.
 3. Then open `SwiftDemo.xcworkspace` instead.
 4. Open the Info.plist (SwiftDemo->Targets(Demo)->Info) and change the sdkKey variable on your auth key. (replace ${key} on your key string)
 
