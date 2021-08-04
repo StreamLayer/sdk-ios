@@ -24,7 +24,6 @@ targets:
       - carthage: Realm
       - carthage: RealmSwift
       - carthage: SLProtofiles
-      - carthage: GRPC
       - carthage: Logging
       - carthage: NIO
       - carthage: NIOConcurrencyHelpers
@@ -36,6 +35,8 @@ targets:
       - carthage: NIOTLS
       - carthage: NIOTransportServices
       - carthage: SwiftProtobuf
+      - carthage: NIOExtras
+      - carthage: SwiftGRPC
       - carthage: CGRPCZlib
       - carthage: CNIOAtomics
       - carthage: CNIOBoringSSL
@@ -44,4 +45,6 @@ targets:
       - carthage: CNIOWindows
       - carthage: CNIOHTTPParser
       - carthage: CNIOLinux
-      - carthage: CNIOSHA1
+      - carthage: Lottie
+      - carthage: SwiftDraw
+      - carthage: Branch

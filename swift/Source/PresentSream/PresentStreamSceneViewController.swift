@@ -187,7 +187,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
       videoPlayer.setNewStreamURL(withURL: streamURLString,
                                   providerType: Int(streamURLString) != nil ? .vimeo : .youtube)
       
-      StreamLayer.changeStreamEvent(for: eventId, andAddMenuItem: self.customMenuItem)
+      StreamLayer.createSession(for: String(eventId), andAddMenuItems: [self.customMenuItem])
     }
   }
   
