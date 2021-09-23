@@ -62,12 +62,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
   func applicationWillTerminate(_ application: UIApplication) {
 
   }
+  
+  // MARK: App Links
+  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+    return StreamLayer.processDeepLink(app, url, options)
+  }
+
+  // MARK: Universal Links
+  func application(_ application: UIApplication,
+                   continue userActivity: NSUserActivity,
+                   restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    return StreamLayer.processUniversalLink(continue: userActivity)
+  }
 }
 
 extension AppDelegate {
   func initiateStreamLayer(launchOptions: [UIApplication .LaunchOptionsKey: Any]? = nil) {
     let key = Bundle.main.object(forInfoDictionaryKey: sdkKey) as? String ?? ""
-    StreamLayer.initSDK(with: key)
+    StreamLayer.initSDK(with: key, isDebug: false, delegate: self, loggerDelegate: self)
     StreamLayer.initiateLinksHandler(launchOptions: launchOptions)
   }
 }
@@ -84,5 +96,31 @@ extension AppDelegate {
     guard let tabBarController = (window?.rootViewController as? UINavigationController)?.topViewController as? TabBarSceneViewController<TabBarSceneViewModel>,
    let topViewController = tabBarController.viewControllers?[tabBarController.selectedIndex] as? UINavigationController,  topViewController.topViewController is WatchSceneViewController else { return [.portrait] }
       return [.portrait, .landscapeLeft, .landscapeRight]
+  }
+}
+
+extension AppDelegate: StreamLayerDelegate {
+  func watchPartyInviteOpened(invite: SLRInviteData, completion: @escaping (Bool) -> Void) {
+    guard window.isKeyWindow else {
+      completion(false)
+      return
+    }
+    
+    if let root = self.window.rootViewController as? UINavigationController,
+       let _ = root.presentedViewController as? PresentStreamSceneViewController {
+      completion(false)
+      return
+    }
+    
+    if let coordinator = appCoordinator {
+      coordinator.presentCoordinator(PresentScene.presentStream.rawValue)
+        .take(1)
+        .bind(onNext: { _ in
+          completion(false)
+        }).disposed(by: disposeBag)
+    } else {
+      completion(true)
+    }
+    
   }
 }
