@@ -60,6 +60,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>branch_key</key>
+	<string>key_live_hnN8KTW5btUZkBFhsP8QIhbdExmquc8K</string>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>6937g.app.link</string>
+		<string>6937g-alternate.app.link</string>
+		<string>6937g.test-app.link</string>
+		<string>6937g-alternate.test-app.link</string>
+	</array>
 	<key>sdkKey</key>
 	<string>${key}</string>
 </dict>
