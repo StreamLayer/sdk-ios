@@ -246,6 +246,11 @@ public class SLRVideoPlayer: UIViewController {
 }
 
 extension SLRVideoPlayer: SLROverlayDelegate {
+  
+  public func getVideoPlayerContainer() -> SLRVideoPlayerOverlayContainer? {
+    nil
+  }
+  
   public func shareInviteMessage() -> String {
     return "You have received a test message from StreamLayer. Please disregard. Thanks"
   }

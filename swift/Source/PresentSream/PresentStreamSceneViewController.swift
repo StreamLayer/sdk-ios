@@ -71,7 +71,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   /// - Parameter orientation: portrait or landscape
   private func setupConstraints(_ orientation: OrientationState) {
     switch orientation {
-    case .horizontal:
+    case .horizontalLeft, .horizontalRight:
       horizontalOrientation()
       UIView.animate(withDuration: 0.25, animations: { [weak self]() -> Void in
         self?.streamsViewController.view.alpha = 0
