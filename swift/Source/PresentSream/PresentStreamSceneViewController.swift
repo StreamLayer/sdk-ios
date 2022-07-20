@@ -23,9 +23,8 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   
   // Implement custom menu item
   private var customMenuItem: SLRCustomMenuItem = {
-    let menuItem = SLRCustomMenuItem()
+    let menuItem = SLRCustomMenuItem(viewController: MyCustomOverlayViewController())
     menuItem.iconImage = UIImage(named: "customMenuIcon")
-    menuItem.viewController = MyCustomOverlayViewController()
     return menuItem
   }()
   
