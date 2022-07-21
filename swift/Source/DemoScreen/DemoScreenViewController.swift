@@ -64,7 +64,10 @@ class DemoScreenViewController: UIViewController {
     }
     
     startPlayer()
-    setupSDK()
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+      self.setupSDK()
+    }
   }
   
   private func setupSDK() {
@@ -166,11 +169,11 @@ extension DemoScreenViewController: SLROverlayDelegate {
   }
   
   func requestAudioDucking() {
-    
+    videoPlayer.makeQuiter()
   }
   
   func disableAudioDucking() {
-    
+    videoPlayer.makeLouder()
   }
   
   func prepareAudioSession(for type: SLRAudioSessionType) {

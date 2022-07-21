@@ -15,6 +15,8 @@ import StreamLayerVendor
 public class DemoVideoPlayer: UIViewController {
   private let playerController = AVPlayerViewController()
   private var player: AVPlayer!
+  
+  private var originalVolume: CGFloat = 0.0
 
   override public func viewDidLoad() {
     super.viewDidLoad()
@@ -33,6 +35,7 @@ public class DemoVideoPlayer: UIViewController {
 
   private func loopVideo(in avPlayer: AVPlayer) {
     player = avPlayer
+    originalVolume = player.volume
     playerController.player = player
     player.actionAtItemEnd = .none
     player.automaticallyWaitsToMinimizeStalling = true
@@ -41,5 +44,14 @@ public class DemoVideoPlayer: UIViewController {
   
   public func set(url: URL) {
     loopVideo(in: AVPlayer(url: url))
+  }
+  
+  
+  func makeQuiter() {
+    player.volume = originalVolume * 0.1
+  }
+  
+  func makeLouder() {
+    player.volume = originalVolume
   }
 }
