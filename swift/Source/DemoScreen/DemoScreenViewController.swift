@@ -31,6 +31,13 @@ class DemoScreenViewController: UIViewController {
     overlayDelegate: self
   )
   
+  // Implement custom menu item
+    private var customMenuItem: SLRCustomMenuItem = {
+      let menuItem = SLRCustomMenuItem(viewController: MyCustomOverlayViewController())
+      menuItem.iconImage = UIImage(named: "customMenuIcon")
+      return menuItem
+    }()
+  
   deinit {
     StreamLayer.removeOverlay()
   }
@@ -41,7 +48,7 @@ class DemoScreenViewController: UIViewController {
   }
   
   private func setup() {
-    view.backgroundColor = .black
+    view.backgroundColor = .black.withAlphaComponent(0.8)
     
     // reference view that is added to view hierarcy, must be on the same level with overlayVC
     view.addSubview(overlayView)
@@ -64,14 +71,11 @@ class DemoScreenViewController: UIViewController {
     }
     
     startPlayer()
-    
-    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-      self.setupSDK()
-    }
+    self.setupSDK()
   }
   
   private func setupSDK() {
-    StreamLayer.createSession(for: Constants.demoEventID)
+    StreamLayer.createSession(for: Constants.demoEventID, andAddMenuItems: [customMenuItem])
     StreamLayer.hideLaunchButton(false)
   }
   
@@ -211,3 +215,41 @@ extension DemoScreenViewController: SLROverlayDelegate {
   }
   
 }
+
+
+
+// Implement custom overlay for menu
+class MyCustomOverlayViewController: UIViewController {
+  private var contentView: UIView = {
+    let contentView = UIView()
+    return contentView
+  }()
+  
+  private var customLabel: UILabel = {
+    let label = UILabel()
+    label.text = "Custom overlay"
+    label.textColor = .white
+    label.textAlignment = .center
+    return label
+  }()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    view.addSubview(contentView)
+    contentView.slr_snp.makeConstraints { [weak view] in
+      guard let view = view else { return }
+      $0.edges.equalTo(view.safeAreaLayoutGuide)
+    }
+    contentView.clipsToBounds = true
+    
+    contentView.addSubview(customLabel)
+    
+    customLabel.slr_snp.makeConstraints { [weak contentView] in
+      guard let contentView = contentView else { return }
+      $0.size.equalTo(CGSize(width: 200, height: 50))
+      $0.center.equalTo(contentView.slr_snp.center)
+    }
+  }
+}
+

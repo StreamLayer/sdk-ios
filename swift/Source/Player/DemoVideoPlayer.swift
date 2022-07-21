@@ -16,14 +16,13 @@ public class DemoVideoPlayer: UIViewController {
   private let playerController = AVPlayerViewController()
   private var player: AVPlayer!
   
-  private var originalVolume: CGFloat = 0.0
+  private var originalVolume: Float = 0.0
 
   override public func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .clear
 
     playerController.entersFullScreenWhenPlaybackBegins = false
-    playerController.showsPlaybackControls = false
     playerController.videoGravity = .resizeAspect
     playerController.willMove(toParent: self)
     playerController.showsPlaybackControls = true
