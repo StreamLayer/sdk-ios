@@ -22,6 +22,14 @@ class DemoScreenViewController: UIViewController {
   
   private var videoPlayer = DemoVideoPlayer()
   
+  private lazy var twitterButton: UIButton = {
+    let button = UIButton()
+    button.setImage(UIImage(named: "twitter_icon"), for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.addTarget(self, action: #selector(twitterButtonTapped), for: .touchUpInside)
+    return button
+  }()
+  
   // blank reference view
   private let overlayView = UIView()
   
@@ -59,6 +67,13 @@ class DemoScreenViewController: UIViewController {
     view.addSubview(videoPlayer.view)
     videoPlayer.didMove(toParent: self)
     
+    view.addSubview(twitterButton)
+    twitterButton.slr_snp.makeConstraints {
+      $0.height.width.equalTo(32.0)
+      $0.trailing.equalToSuperview().inset(20.0)
+      $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20.0)
+    }
+    
     // add overlay viewcontroller into the hierarchy
     // this is where the UI integration takes place
     overlayVC.willMove(toParent: self)
@@ -76,11 +91,16 @@ class DemoScreenViewController: UIViewController {
   
   private func setupSDK() {
     StreamLayer.createSession(for: Constants.demoEventID, andAddMenuItems: [customMenuItem])
-    StreamLayer.hideLaunchButton(false)
+    StreamLayer.hideLaunchButton(true)
+    StreamLayer.hideLaunchControls(true)
   }
   
   private func startPlayer() {
     videoPlayer.set(url: Constants.demoStreamURL)
+  }
+  
+  @objc func twitterButtonTapped() {
+    StreamLayer.showOverlay(overlayType: .twitter)
   }
   
   // MARK: - Status Bar

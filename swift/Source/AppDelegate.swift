@@ -35,10 +35,10 @@ extension AppDelegate {
   func setupStreamLayer(launchOptions: [UIApplication .LaunchOptionsKey: Any]? = nil) {
     let key = Bundle.main.object(forInfoDictionaryKey: sdkKey) as? String ?? ""
     StreamLayer.initSDK(with: key)
-//    StreamLayer.config = StreamLayerSilentModeConfig()
+    StreamLayer.config = StreamLayerSilentModeConfig()
     StreamLayer.config.phoneContactsSyncEnabled = false
     StreamLayer.config.shouldIncludeTopGestureZone = true
-//    StreamLayer.config.isUserProfileOverlayHidden = true
+    StreamLayer.config.isUserProfileOverlayHidden = true
     StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
   }
 }
