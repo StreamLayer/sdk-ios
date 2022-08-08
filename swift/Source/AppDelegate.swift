@@ -39,6 +39,7 @@ extension AppDelegate {
     StreamLayer.config.phoneContactsSyncEnabled = false
     StreamLayer.config.shouldIncludeTopGestureZone = true
     StreamLayer.config.isUserProfileOverlayHidden = true
+    StreamLayer.config.tooltipsEnabled = false
     StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
   }
 }
