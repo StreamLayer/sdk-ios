@@ -6,6 +6,7 @@
 //
 
 import StreamLayerVendor
+import PromiseKit
 
 internal enum CancellablePromiseError: Swift.Error, CancellableError {
   case cancelled

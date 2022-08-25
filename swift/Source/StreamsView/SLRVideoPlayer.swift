@@ -9,8 +9,12 @@ import AVFoundation
 import CoreMedia
 import StreamLayer
 import StreamLayerVendor
-import SwiftGRPC
+import RxSwift
+import PromiseKit
+import GRPC
 import NIOConcurrencyHelpers
+import slVendorObjc
+import XCDYouTubeKit
 
 #if os(iOS)
 import AVKit
@@ -137,7 +141,7 @@ public class SLRVideoPlayer: UIViewController {
     view.backgroundColor = .clear
 
     UIApplication.shared
-      .slr_rx.applicationDidBecomeActive
+      .rx.applicationDidBecomeActive
       .subscribe(onNext: { [weak self] _ in
         if self?.player?.timeControlStatus == .paused {
           self?.playVideo()
@@ -155,14 +159,14 @@ public class SLRVideoPlayer: UIViewController {
     view.addSubview(playerController.view)
     playerController.didMove(toParent: self)
 
-    onTap = view.slr_rx
+    onTap = view.rx
       .tapGesture { tap, _ in
         tap.cancelsTouchesInView = false
       }
       .when(.recognized)
 
     view
-      .slr_rx
+      .rx
       .tapGesture { tap, _ in
         tap.numberOfTapsRequired = 2
         tap.cancelsTouchesInView = false

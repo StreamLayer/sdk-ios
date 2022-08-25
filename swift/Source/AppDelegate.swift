@@ -4,10 +4,8 @@
 
 import UIKit
 import UserNotifications
-
-import StreamLayer
+import StreamLayerSDK
 import StreamLayerVendor
-
 import RxSwift
 
 /// SDK key can be created in the StreamLayer admin panel. Check the official documentation for the relevant link.

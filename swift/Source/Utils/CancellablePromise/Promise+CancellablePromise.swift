@@ -6,6 +6,7 @@
 //
 
 import StreamLayerVendor
+import PromiseKit
 
 extension Promise {
   /**

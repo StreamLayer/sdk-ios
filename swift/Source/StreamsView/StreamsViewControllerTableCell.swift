@@ -4,6 +4,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 import StreamLayer
 
 class StreamsViewControllerTableCell: UITableViewCell {
@@ -77,8 +78,8 @@ class StreamsViewControllerTableCell: UITableViewCell {
   }
 
   func setupViewModel(viewModel: StreamsViewControllerTableCellViewModel) {
-    thumbnailImage.pin_setImage(from: URL(string: viewModel.eventImageUrlString),
-                                placeholderImage: UIImage(named: "Placeholder"))
+    thumbnailImage.kf.setImage(with: URL(string: viewModel.eventImageUrlString),
+                                placeholder: UIImage(named: "Placeholder"))
     liveIconImage.alpha = viewModel.isLive ? 1 : 0
     setMainTitleLabelText(string: viewModel.titleText)
     setSubTitleLabelText(string: viewModel.subTitleText)

@@ -30,7 +30,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   }()
   
   // inlined rxswift dispose bag
-  let s_disposeBag = StreamLayerVendor.DisposeBag()
+  let s_disposeBag = DisposeBag()
   
   // sample stream selector
   private let streamsViewController = StreamsViewController()
