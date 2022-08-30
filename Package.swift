@@ -13,12 +13,14 @@ let package = Package(
     ],
     dependencies: [
 //        .package(url: "git@github.com:mxcl/PromiseKit.git", from: "6.0.0"),
+      .package(url: "git@github.com:StreamLayer/SLRGPUImage.git", from: "0.0.8"),
     ],
     targets: [
         .target(
             name: "StreamLayer",
             dependencies: [
-              .target(name: "StreamLayerSDKWrapper")
+              .target(name: "StreamLayerSDKWrapper"),
+              .product(name: "GPUImage", package: "SLRGPUImage"),
             ]),
         .target(
           name: "StreamLayerSDKWrapper",
