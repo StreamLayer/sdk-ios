@@ -6,6 +6,9 @@ import PackageDescription
 
 let package = Package(
     name: "StreamLayer",
+    platforms: [
+        .iOS(.v15),
+    ],
     products: [
         .library(
             name: "StreamLayer",
