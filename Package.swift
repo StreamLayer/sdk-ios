@@ -17,6 +17,7 @@ let package = Package(
     dependencies: [
 //        .package(url: "git@github.com:mxcl/PromiseKit.git", from: "6.0.0"),
       .package(url: "git@github.com:StreamLayer/SLRGPUImage.git", from: "0.0.8"),
+      .package(url: "git@github.com:voximplant/ios-sdk-releases-bitcode.git", from: "2.0.0"),
     ],
     targets: [
         .target(
