@@ -25,6 +25,7 @@ let package = Package(
             dependencies: [
               .target(name: "StreamLayerSDKWrapper"),
               .product(name: "GPUImage", package: "SLRGPUImage"),
+              .product(name: "VoximplantSDK", package: "ios-sdk-releases-bitcode"),
             ]),
         .target(
           name: "StreamLayerSDKWrapper",
