@@ -19,6 +19,7 @@ let package = Package(
       .package(url: "git@github.com:voximplant/ios-sdk-releases-bitcode.git", from: "2.0.0"),
       .package(url: "git@github.com:ReSwift/ReSwift.git", from: "5.0.0"),
       .package(url: "git@github.com:ReSwift/ReSwift-Router.git", from: "0.7.0"),
+      .package(url: "git@github.com:ReactiveX/RxSwift.git", from: "6.0.0"),
     ],
     targets: [
         .target(
@@ -27,6 +28,7 @@ let package = Package(
               .target(name: "StreamLayerSDKWrapper"),
               .product(name: "GPUImage", package: "SLRGPUImage"),
               .product(name: "VoximplantSDK", package: "ios-sdk-releases-bitcode"),
+              .product(name: "RxSwift", package: "RxSwift"),
               .product(name: "ReSwift", package: "ReSwift"),
               .product(name: "ReSwift-Router", package: "ReSwift-Router"),
             ]),
