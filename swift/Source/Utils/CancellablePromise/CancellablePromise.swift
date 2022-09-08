@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import StreamLayerVendor
 import PromiseKit
 
 internal class CancellablePromise<T> {

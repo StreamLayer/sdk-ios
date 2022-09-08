@@ -10,8 +10,7 @@ import RxSwift
 import RxCocoa
 
 // these must be imported
-import StreamLayer
-import StreamLayerVendor
+import StreamLayerSDK
 
 class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneViewModel> {
   
@@ -23,9 +22,8 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   
   // Implement custom menu item
   private var customMenuItem: SLRCustomMenuItem = {
-    let menuItem = SLRCustomMenuItem()
+    let menuItem = SLRCustomMenuItem(viewController: MyCustomOverlayViewController())
     menuItem.iconImage = UIImage(named: "customMenuIcon")
-    menuItem.viewController = MyCustomOverlayViewController()
     return menuItem
   }()
   
@@ -48,9 +46,10 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    SLRStateMachine.onOrientationChange(s_disposeBag) { [weak self] state in
-      self?.setupConstraints(state)
-    }
+    //DTODO:
+//    SLRStateMachine.onOrientationChange(s_disposeBag) { [weak self] state in
+    setupConstraints(.vertical)
+//    }
   }
   
   deinit {

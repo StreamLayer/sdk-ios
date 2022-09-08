@@ -5,7 +5,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
-import StreamLayer
+import StreamLayerSDK
 
 class StreamsViewControllerTableCell: UITableViewCell {
   private let thumbnailImage: UIImageView = UIImageView()

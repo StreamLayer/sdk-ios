@@ -7,14 +7,10 @@ import Foundation
 import UIKit
 import AVFoundation
 import CoreMedia
-import StreamLayer
-import StreamLayerVendor
+import StreamLayerSDK
 import RxSwift
 import PromiseKit
-import GRPC
-import NIOConcurrencyHelpers
-import slVendorObjc
-import XCDYouTubeKit
+import RxGesture
 
 #if os(iOS)
 import AVKit
@@ -33,7 +29,7 @@ public class SLRVideoPlayer: UIViewController {
   private var playerLayer = AVPlayerLayer()
   #endif
 
-  private let lock = Lock()
+//  private let lock = Lock()
   private let disposeBag = DisposeBag()
   private var player: AVPlayer!
   private var notificationManager: NotificationManager?
@@ -73,23 +69,25 @@ public class SLRVideoPlayer: UIViewController {
       self.video.cancel()
       self.video = nil
     }
-    switch providerType {
-    case .vimeo:
-      self.video = Promise { seal in
-        YTVimeoExtractor.shared().fetchVideo(withIdentifier: self.contentVideoIdString, withReferer: nil) {
-          seal.resolve($0?.httpLiveStreamURL ?? $0?.highestQualityStreamURL() ?? $0?.lowestQualityStreamURL(), $1)
-        }
-      }.asCancellable()
-    case .youtube:
-      self.video = Promise { seal in
-        XCDYouTubeClient.default().getVideoWithIdentifier(self.contentVideoIdString, completionHandler: {
-          seal.resolve(
-              $0?.streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ?? $0?.streamURLs[XCDYouTubeVideoQuality.HD720
-                  .rawValue],
-              $1)
-        })
-      }.asCancellable()
-    }
+//    switch providerType {
+//    case .vimeo:
+      //DTODO:
+//      self.video = Promise { seal in
+//        YTVimeoExtractor.shared().fetchVideo(withIdentifier: self.contentVideoIdString, withReferer: nil) {
+//          seal.resolve($0?.httpLiveStreamURL ?? $0?.highestQualityStreamURL() ?? $0?.lowestQualityStreamURL(), $1)
+//        }
+//      }.asCancellable()
+//    case .youtube:
+//      self.video = Promise { seal in
+        //DTODO:
+//        XCDYouTubeClient.default().getVideoWithIdentifier(self.contentVideoIdString, completionHandler: {
+//          seal.resolve(
+//              $0?.streamURLs[XCDYouTubeVideoQualityHTTPLiveStreaming] ?? $0?.streamURLs[XCDYouTubeVideoQuality.HD720
+//                  .rawValue],
+//              $1)
+//        })
+//      }.asCancellable()
+//    }
   }
 
   public func deactivate() {
@@ -97,7 +95,7 @@ public class SLRVideoPlayer: UIViewController {
   }
 
   private func processVideoResolution() {
-    video.done {
+    video?.done {
       if self.player == nil {
         self.loopVideo(in: AVPlayer(url: $0))
       } else {
@@ -140,14 +138,15 @@ public class SLRVideoPlayer: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .clear
 
-    UIApplication.shared
-      .rx.applicationDidBecomeActive
-      .subscribe(onNext: { [weak self] _ in
-        if self?.player?.timeControlStatus == .paused {
-          self?.playVideo()
-        }
-      })
-      .disposed(by: disposeBag)
+    //DTODO:
+//    UIApplication.shared
+//      .rx.applicationDidBecomeActive
+//      .subscribe(onNext: { [weak self] _ in
+//        if self?.player?.timeControlStatus == .paused {
+//          self?.playVideo()
+//        }
+//      })
+//      .disposed(by: disposeBag)
 
     #if os(iOS)
     playerController.entersFullScreenWhenPlaybackBegins = false
@@ -274,31 +273,34 @@ extension SLRVideoPlayer: SLROverlayDelegate {
   }
 
   public func requestAudioDucking() {
-    lock.withLockVoid {
-      volumeReductionRequests += 1
-      if volumeReductionRequests == 1, let player = player {
-        playerVolumeOriginal = player.volume
-        player.volume = volumeReduceRate * player.volume
-        print("[ducking] on: \(player.volume))")
-      }
-    }
+    //DTODO:
+    //    lock.withLockVoid {
+//      volumeReductionRequests += 1
+//      if volumeReductionRequests == 1, let player = player {
+//        playerVolumeOriginal = player.volume
+//        player.volume = volumeReduceRate * player.volume
+//        print("[ducking] on: \(player.volume))")
+//      }
+//    }
   }
 
   public func disableAudioDucking() {
-    lock.withLockVoid {
-      volumeReductionRequests -= 1
-      if volumeReductionRequests == 0, let player = player {
-        player.volume = playerVolumeOriginal
-        print("[ducking] off: \(player.volume)")
-      }
-    }
+  //DTODO:
+    //    lock.withLockVoid {
+//      volumeReductionRequests -= 1
+//      if volumeReductionRequests == 0, let player = player {
+//        player.volume = playerVolumeOriginal
+//        print("[ducking] off: \(player.volume)")
+//      }
+//    }
   }
 
   public func disableAudioSession(for type: SLRAudioSessionType) {
-    lock.lock()
+    //DTODO:
+//    lock.lock()
     defer {
       print("[AudioSession] disable kVoiceSessions: \(kVoiceSessions), kGenericSessions: \(kGenericSessions)")
-      lock.unlock()
+//      lock.unlock()
     }
 
     switch type {
@@ -332,10 +334,11 @@ extension SLRVideoPlayer: SLROverlayDelegate {
   }
 
   public func prepareAudioSession(for type: SLRAudioSessionType) {
-    lock.lock()
+    //DTODO:
+//    lock.lock()
     defer {
       print("[AudioSession] prepare kVoiceSessions: \(kVoiceSessions), kGenericSessions: \(kGenericSessions)")
-      lock.unlock()
+//      lock.unlock()
     }
 
     switch type {

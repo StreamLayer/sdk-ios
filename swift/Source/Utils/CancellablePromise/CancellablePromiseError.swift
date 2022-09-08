@@ -5,7 +5,6 @@
 //  Created by Johannes Dörr on 18.05.18.
 //
 
-import StreamLayerVendor
 import PromiseKit
 
 internal enum CancellablePromiseError: Swift.Error, CancellableError {
