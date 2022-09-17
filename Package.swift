@@ -35,12 +35,12 @@ let package = Package(
         .target(
           name: "StreamLayerSDKWrapper",
           dependencies: [
-            .target(name: "StreamLayer"),
+            .target(name: "StreamLayerSDK"),
             .target(name: "SLProtofiles"),
             .target(name: "PromiseKit_34A278A94EE8AA11_PackageProduct"),
           ]),
         .binaryTarget(
-            name: "StreamLayer",
+            name: "StreamLayerSDK",
             url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.34/StreamLayer.xcframework.zip",
             checksum: "f0f13603a1b740e161fde263639f7d7b02e84a77bc78e2b4911a2cbff48f9cd5"
         ),
