@@ -12,7 +12,7 @@ let package = Package(
     products: [
         .library(
             name: "StreamLayer",
-            targets: ["StreamLayer"]),
+            targets: ["StreamLayerWrapper"]),
     ],
     dependencies: [
       .package(url: "git@github.com:StreamLayer/SLRGPUImage.git", from: "0.0.8"),
@@ -23,7 +23,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "StreamLayer",
+            name: "StreamLayerWrapper",
             dependencies: [
               .target(name: "StreamLayerSDKWrapper"),
               .product(name: "GPUImage", package: "SLRGPUImage"),
@@ -35,12 +35,12 @@ let package = Package(
         .target(
           name: "StreamLayerSDKWrapper",
           dependencies: [
-            .target(name: "StreamLayerSDK"),
+            .target(name: "StreamLayer"),
             .target(name: "SLProtofiles"),
             .target(name: "PromiseKit_34A278A94EE8AA11_PackageProduct"),
           ]),
         .binaryTarget(
-            name: "StreamLayerSDK",
+            name: "StreamLayer",
             url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.34/StreamLayer.xcframework.zip",
             checksum: "f0f13603a1b740e161fde263639f7d7b02e84a77bc78e2b4911a2cbff48f9cd5"
         ),
