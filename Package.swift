@@ -5,13 +5,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "StreamLayerSDK",
+    name: "StreamLayer",
     platforms: [
         .iOS(.v15),
     ],
     products: [
         .library(
-            name: "StreamLayerSDK",
+            name: "StreamLayer",
             targets: ["StreamLayer"]),
     ],
     dependencies: [
@@ -25,7 +25,7 @@ let package = Package(
         .target(
             name: "StreamLayer",
             dependencies: [
-              .target(name: "StreamLayerSDKWrapper"),
+              .target(name: "StreamLayerWrapper"),
               .product(name: "GPUImage", package: "SLRGPUImage"),
               .product(name: "VoximplantSDK", package: "ios-sdk-releases-bitcode"),
               .product(name: "RxSwift", package: "RxSwift"),
@@ -35,14 +35,14 @@ let package = Package(
         .target(
           name: "StreamLayerWrapper",
           dependencies: [
-            .target(name: "StreamLayer"),
+            .target(name: "StreamLayerSDK"),
             .target(name: "SLProtofiles"),
             .target(name: "PromiseKit_34A278A94EE8AA11_PackageProduct"),
           ]),
         .binaryTarget(
             name: "StreamLayerSDK",
             url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.43/StreamLayerSDK.xcframework.zip",
-            checksum: ""
+            checksum: "51a5eae9c67e7407e007660b0e71f82da1de2c018184fd9725b6df70b96dd00c"
         ),
         .binaryTarget(
             name: "SLProtofiles",
