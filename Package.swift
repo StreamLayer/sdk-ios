@@ -12,7 +12,7 @@ let package = Package(
     products: [
         .library(
             name: "StreamLayer",
-            targets: ["StreamLayerWrapper"]),
+            targets: ["StreamLayerSDK"]),
     ],
     dependencies: [
       .package(url: "git@github.com:StreamLayer/SLRGPUImage.git", from: "0.0.8"),
@@ -23,7 +23,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "StreamLayerWrapper",
+            name: "StreamLayerSDK",
             dependencies: [
               .target(name: "StreamLayerSDKWrapper"),
               .product(name: "GPUImage", package: "SLRGPUImage"),
@@ -41,18 +41,18 @@ let package = Package(
           ]),
         .binaryTarget(
             name: "StreamLayer",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.41/StreamLayer.xcframework.zip",
-            checksum: "f597da55a4802b5bee7ddd4d0f4a5002b1a30cbce2baaf4755a3845abd215f7e"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.42/StreamLayer.xcframework.zip",
+            checksum: "b432eedf0b18f0501cc264badcde4c6ecc8db5f5d2916e44e57fe7aa34089721"
         ),
         .binaryTarget(
             name: "SLProtofiles",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.41/SLProtofiles.xcframework.zip",
-            checksum: "50e606a276b4692b8ba30f13e727630549ed3c3075c4d266a9a11dc4d2e09c08"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.42/SLProtofiles.xcframework.zip",
+            checksum: "27d95c47e50ae71e218b543161f2f405498b1b9681908856e1a7f212cedc80eb"
         ),
         .binaryTarget(
             name: "PromiseKit_34A278A94EE8AA11_PackageProduct",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.41/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
-            checksum: "5599bfb04da9e255d9da8dab90bbc0225b360043b3ec30ab3911586dfa51b8b0"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.1.42/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
+            checksum: "4f85be7a9f6879769603e75de8baeff134d73f4a16c931b95dcf714f14a86df5"
         ),
     ]
 )
