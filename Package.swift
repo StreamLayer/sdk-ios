@@ -5,13 +5,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "StreamLayer",
+    name: "StreamLayerSDK",
     platforms: [
         .iOS(.v15),
     ],
     products: [
         .library(
-            name: "StreamLayer",
+            name: "StreamLayerSDK",
             targets: ["StreamLayerWrapper"]),
     ],
     dependencies: [
