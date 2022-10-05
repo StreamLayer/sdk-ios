@@ -5,13 +5,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "StreamLayer",
+    name: "StreamLayerSDK",
     platforms: [
         .iOS(.v15),
     ],
     products: [
         .library(
-            name: "StreamLayer",
+            name: "StreamLayerSDK",
             targets: ["StreamLayer"]),
     ],
     dependencies: [
@@ -41,18 +41,18 @@ let package = Package(
           ]),
         .binaryTarget(
             name: "StreamLayerSDK",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.16/StreamLayerSDK.xcframework.zip",
-            checksum: "fff5f89b29bd0c0ebd8f7e063208a818014e5204a7c9f55423fafcab8a6bc174"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.17/StreamLayerSDK.xcframework.zip",
+            checksum: "8dd5ab8cb1872af4458a9b28b87b2ff869e789e7138feb98f27251a99be1b36c"
         ),
         .binaryTarget(
             name: "SLProtofiles",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.16/SLProtofiles.xcframework.zip",
-            checksum: "09af664ec89386182b53472cd5700aee24f4d7d74a75e1f42b2514a83208079d"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.17/SLProtofiles.xcframework.zip",
+            checksum: "a765e97d75df2452be508f289f5a380605fe902c5c0144005c52598ce5837c99"
         ),
         .binaryTarget(
             name: "PromiseKit_34A278A94EE8AA11_PackageProduct",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.16/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
-            checksum: "f4c554770fba1ea6df0e37c3c2dd480ee806df6faf0b63c29a674f9105536379"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.17/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
+            checksum: "2dfd79026e117058f282c542d4add29fc9891b16aa12b05796e4c8fe87f77797"
         ),
     ]
 )
