@@ -41,18 +41,18 @@ let package = Package(
           ]),
         .binaryTarget(
             name: "StreamLayerSDK",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.18/StreamLayerSDK.xcframework.zip",
-            checksum: "eacab8f5dfc2b40229aecf2e3a5ab98fa5813915ab28e5a745636197142103fd"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.19/StreamLayerSDK.xcframework.zip",
+            checksum: "ef5ac0eb6c77c915111fd381a50ca32089f43679fb033dd8071ffd80e6b6e84c"
         ),
         .binaryTarget(
             name: "SLProtofiles",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.18/SLProtofiles.xcframework.zip",
-            checksum: "b986fdb2be6eca6236f23e6589f1a3f205cc27baa76eba8be30fd47bca4fc583"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.19/SLProtofiles.xcframework.zip",
+            checksum: "0647124528f27ccc48cdc2f999f101e6fc333071af9b1576a514e647f07c8d9b"
         ),
         .binaryTarget(
             name: "PromiseKit_34A278A94EE8AA11_PackageProduct",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.18/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
-            checksum: "fa4c3c72b1dc9f905a97720a9d57460add9369a4ebfb66ef52d4e57eeb04f0c5"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.19/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
+            checksum: "a45009d78b74fc12b5932ffa6804209f1b9ca94ff34c66d349c3c52403ef3762"
         ),
     ]
 )
