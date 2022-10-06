@@ -5,13 +5,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "StreamLayerSDK",
+    name: "StreamLayer",
     platforms: [
         .iOS(.v15),
     ],
     products: [
         .library(
-            name: "StreamLayerSDK",
+            name: "StreamLayer",
             targets: ["StreamLayer"]),
     ],
     dependencies: [
@@ -22,8 +22,6 @@ let package = Package(
       .package(url: "git@github.com:ReactiveX/RxSwift.git", from: "6.0.0"),
     ],
     targets: [
-        .target(
-            name: "StreamLayerSDK")
         .target(
             name: "StreamLayer",
             dependencies: [
@@ -43,18 +41,18 @@ let package = Package(
           ]),
         .binaryTarget(
             name: "StreamLayerSDK",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.20/StreamLayerSDK.xcframework.zip",
-            checksum: "3bf09b6dc434e34f51c57c5eac2b49135035865d238626df7ac80c2ae9f104f0"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.21/StreamLayerSDK.xcframework.zip",
+            checksum: "173f940c63437ede1c6c5cd25cf2d3803c4d37f2cb78af3284642dcd094f1ae0"
         ),
         .binaryTarget(
             name: "SLProtofiles",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.20/SLProtofiles.xcframework.zip",
-            checksum: "c7bb3b026700e3cc52fa73a4d7c788594de561e3c0c4b9c86e8fc4af66965e12"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.21/SLProtofiles.xcframework.zip",
+            checksum: "e823eea99a4952049498972ebcb6c3cf63f99b796777d3f8f9a75e8c8f8daacf"
         ),
         .binaryTarget(
             name: "PromiseKit_34A278A94EE8AA11_PackageProduct",
-            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.20/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
-            checksum: "bd408834f083693eb60b8a449ad3de79c89ed2564d0d708b083f0e791679f383"
+            url: "https://storage.googleapis.com/ios.streamlayer.io/v8.2.21/PromiseKit_34A278A94EE8AA11_PackageProduct.xcframework.zip",
+            checksum: "2176aa8357403cf227cdc5313a2d1c4de13bfb294b07ca30f7e13724b8f35f50"
         ),
     ]
 )
