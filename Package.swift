@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "StreamLayer", targets: ["StreamLayer"])
     ],
     dependencies: [
+        .package(url: "https://github.com/ReSwift/ReSwift.git", from: "6.0.0"),
         .package(url: "https://github.com/voximplant/ios-sdk-releases-bitcode.git", exact: "2.46.6")
     ],
     targets: [
@@ -20,14 +21,15 @@ let package = Package(
           name: "StreamLayer",
           dependencies: [
             .target(name: "StreamLayerSDK"),
+            .product(name: "ReSwift", package: "ReSwift"),
             .product(name: "VoximplantSDK", package: "ios-sdk-releases-bitcode")
           ],
           path: "SwiftPM-PlatformExclude/StreamLayer"
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.3.55/StreamLayerSDK.xcframework.zip",
-          checksum: "7deedcc302c49b2aeaeb9c73a7bdd9315dc36ff00d94df360f16ca8ca91db70a"
+          url: "https://storage.googleapis.com/ios.streamlayer.io//StreamLayerSDK.xcframework.zip",
+          checksum: ""
       ),
     ]
 )
