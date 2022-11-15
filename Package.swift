@@ -13,8 +13,6 @@ let package = Package(
         .library(name: "StreamLayer", targets: ["StreamLayer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/ReSwift/ReSwift.git", from: "6.0.0"),
-        .package(url: "https://github.com/ReSwift/ReSwift-Router.git", revision: "a915f67704ca5a0cf439723f7c4f7c26ef7809ba"),
         .package(url: "https://github.com/voximplant/ios-sdk-releases-bitcode.git", exact: "2.46.6")
     ],
     targets: [
@@ -22,8 +20,6 @@ let package = Package(
           name: "StreamLayer",
           dependencies: [
             .target(name: "StreamLayerSDK"),
-            .product(name: "ReSwift", package: "ReSwift"),
-            .product(name: "ReSwiftRouter", package: "ReSwift-Router"),
             .product(name: "VoximplantSDK", package: "ios-sdk-releases-bitcode")
           ],
           path: "SwiftPM-PlatformExclude/StreamLayer"
