@@ -12,22 +12,24 @@ let package = Package(
     products: [
         .library(name: "StreamLayer", targets: ["StreamLayer"])
     ],
-    dependencies: [
-        .package(url: "https://github.com/voximplant/ios-sdk-releases-bitcode.git", exact: "2.46.6")
-    ],
     targets: [
       .target(
           name: "StreamLayer",
           dependencies: [
             .target(name: "StreamLayerSDK"),
-            .product(name: "VoximplantSDK", package: "ios-sdk-releases-bitcode")
+            .target(name: "OpenTok"),
           ],
           path: "SwiftPM-PlatformExclude/StreamLayer"
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
           url: "https://storage.googleapis.com/ios.streamlayer.io/v8.6.28/StreamLayerSDK.xcframework.zip",
-          checksum: "c0a8f5f6b4dfe4240451e30c06bb53f86b9070e3ad2957243c1f7e69be05b908"
+          checksum: "8dfe419573014928ae5683ee4d719942eeab454c4e2375265daf5e56598a714a"
+      ),
+      .binaryTarget(
+          name: "OpenTok",
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.6.28/OpenTok.xcframework.zip",
+          checksum: "b9b8ba4d28802acf3061b5e09f3a32928ecd068f866ad46d010a8e1528aed8ad"
       ),
     ]
 )
