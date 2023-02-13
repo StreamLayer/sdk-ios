@@ -18,27 +18,18 @@ let package = Package(
           dependencies: [
             .target(name: "StreamLayerSDK"),
             .target(name: "OpenTok"),
-            .target(name: "VonageWebRTC")
           ],
-          path: "SwiftPM-PlatformExclude/StreamLayer",
-          linkerSettings: [
-            .linkedFramework("VideoToolbox")
-          ]
+          path: "SwiftPM-PlatformExclude/StreamLayer"
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
           url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.1/StreamLayerSDK.xcframework.zip",
-          checksum: "c3fd244f9c108e1d4c8ce02c5d0bef4a1bfe65000ed0b3edd09976968c322d42"
+          checksum: "aea6960670c2f1b4da194b7a7efedac7e5b1675ab6c6ffd9c55f54a06ecc385a"
       ),
       .binaryTarget(
           name: "OpenTok",
           url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.1/OpenTok.xcframework.zip",
-          checksum: "1e957a1447a56e2df1570f78f54633e1643412fe11794b8b0bbb8284f3045f79"
-      ),
-      .binaryTarget(
-          name: "VonageWebRTC",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.1/VonageWebRTC.xcframework.zip",
-          checksum: "376f0e13ec5187a12f5be1554012a23dcc13f11b477c81beb1005a500dac6363"
+          checksum: "b9b8ba4d28802acf3061b5e09f3a32928ecd068f866ad46d010a8e1528aed8ad"
       ),
     ]
 )
