@@ -23,12 +23,12 @@ let package = Package(
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.87/StreamLayerSDK.xcframework.zip",
-          checksum: "88336fc7e20cbbb65850d70fc29d5e112705c7b3879a3a4b67b642f9d52066ab"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.89/StreamLayerSDK.xcframework.zip",
+          checksum: "b7ccddbd458f7a2fb8bca51d99184991c139a6c90fd8dd757394933fe41525cc"
       ),
       .binaryTarget(
           name: "OpenTok",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.87/OpenTok.xcframework.zip",
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.89/OpenTok.xcframework.zip",
           checksum: "b9b8ba4d28802acf3061b5e09f3a32928ecd068f866ad46d010a8e1528aed8ad"
       ),
     ]
