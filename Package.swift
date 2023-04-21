@@ -17,19 +17,25 @@ let package = Package(
           name: "StreamLayer",
           dependencies: [
             .target(name: "StreamLayerSDK"),
-            .target(name: "OpenTok"),
+            .target(name: "StreamLayerSDK"),
+            .target(name: "VonageWebRTC"),
           ],
           path: "SwiftPM-PlatformExclude/StreamLayer"
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.144/StreamLayerSDK.xcframework.zip",
-          checksum: "a2ed7b64c0c264f9ef4c783d5f7ff83ef5d31fe719f572832fc5110d9b6e405d"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.10.1/StreamLayerSDK.xcframework.zip",
+          checksum: "eb9eb27146db6e6da4a48622dccbdf3e5d2cbb0bdd2ad61453417abf5a524808"
       ),
       .binaryTarget(
           name: "OpenTok",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.9.144/OpenTok.xcframework.zip",
-          checksum: "b9b8ba4d28802acf3061b5e09f3a32928ecd068f866ad46d010a8e1528aed8ad"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.10.1/OpenTok.xcframework.zip",
+          checksum: "c55d5eb963843c74056603c84aa9a7a0615b24daa3494ddae34909bd08ec2d26"
+      ),
+      .binaryTarget(
+          name: "VonageWebRTC",
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.10.1/VonageWebRTC.xcframework.zip",
+          checksum: "b53fc32d65dcd583885209a77e05477d63333b0f78d6bc6c0fcd60c0ce175c5d"
       ),
     ]
 )
