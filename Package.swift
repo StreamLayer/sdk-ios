@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "StreamLayer", targets: ["StreamLayer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StreamLayer/sl-opentok-ios-sdk-spm.git", from: "2.25.1"),
+        .package(url: "https://github.com/StreamLayer/sl-opentok-ios-sdk-spm.git", from: "2.25.2"),
     ],
     targets: [
       .target(
