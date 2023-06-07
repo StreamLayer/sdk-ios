@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 import AVKit
 import StreamLayer
-import StreamLayerVendor
 
 public class DemoVideoPlayer: UIViewController {
   private let playerController = AVPlayerViewController()

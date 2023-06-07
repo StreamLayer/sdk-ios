@@ -7,9 +7,10 @@
 
 import Foundation
 import UIKit
+import SnapKit
+import RxSwift
 // these must be imported
 import StreamLayer
-import StreamLayerVendor
 
 class DemoScreenViewController: UIViewController {
   
@@ -19,6 +20,8 @@ class DemoScreenViewController: UIViewController {
   }
   
   private var disposeBag = DisposeBag()
+  
+  var onPlayerVolumeChange: (() -> Void)?
   
   private var videoPlayer = DemoVideoPlayer()
   
@@ -66,7 +69,7 @@ class DemoScreenViewController: UIViewController {
     view.addSubview(overlayVC.view)
     overlayVC.didMove(toParent: self)
     
-    SLRStateMachine.onOrientationChange(disposeBag) { [weak self] state in
+    SLRStateMachine.onOrientationChange { [weak self] state in
       self?.setupConstraints(state)
     }
     
@@ -116,21 +119,21 @@ private extension DemoScreenViewController {
   /// Roughly 1/3 of the screen is taken up by video player, remainder is useful content + overlay button
   /// Overlays slide from the bottom
   func verticalOrientation() {
-    videoPlayer.view.slr_snp.remakeConstraints { [weak view] in
+    videoPlayer.view.snp.remakeConstraints { [weak view] in
       guard let view = view else { return }
       $0.top.equalTo(view.safeAreaLayoutGuide)
       $0.left.right.equalTo(0)
       $0.height.equalTo(ceil(screenWidth * (9/16)))
     }
     
-    overlayView.slr_snp.remakeConstraints {
+    overlayView.snp.remakeConstraints {
       $0.bottom.left.right.equalToSuperview()
-      $0.top.equalTo(videoPlayer.view.slr_snp.bottom).offset(-40)
+      $0.top.equalTo(videoPlayer.view.snp.bottom).offset(-40)
     }
     
-    overlayVC.view.slr_snp.remakeConstraints { [weak videoPlayer] in
+    overlayVC.view.snp.remakeConstraints { [weak videoPlayer] in
       guard let videoPlayer = videoPlayer else { return }
-      $0.top.equalTo(videoPlayer.view.slr_snp.bottom).offset(-40)
+      $0.top.equalTo(videoPlayer.view.snp.bottom).offset(-40)
       $0.left.right.bottom.equalTo(0)
     }
   }
@@ -139,23 +142,23 @@ private extension DemoScreenViewController {
   /// Everything is taken up by video player & button is visible
   /// Overlays slide from the left
   func horizontalOrientation() {
-    videoPlayer.view.slr_snp.remakeConstraints { [weak view] in
+    videoPlayer.view.snp.remakeConstraints { [weak view] in
       guard let view = view else { return }
       $0.edges.equalTo(view)
     }
     
-    overlayView.slr_snp.remakeConstraints { [weak view] make in
+    overlayView.snp.remakeConstraints { [weak view] make in
       guard let view = view else { return }
       make.left.top.bottom.equalToSuperview()
       
       if #available(iOS 11, *) {
-        make.right.equalTo(view.safeAreaLayoutGuide.slr_snp.left).offset(300 + 40)
+        make.right.equalTo(view.safeAreaLayoutGuide.snp.left).offset(300 + 40)
       } else {
-        make.right.equalTo(view.slr_snp.left).offset(300 + 40)
+        make.right.equalTo(view.snp.left).offset(300 + 40)
       }
     }
     
-    overlayVC.view.slr_snp.remakeConstraints { [weak view] make in
+    overlayVC.view.snp.remakeConstraints { [weak view] make in
       guard let view = view else { return }
       make.edges.equalTo(view)
     }
@@ -163,6 +166,26 @@ private extension DemoScreenViewController {
 }
 
 extension DemoScreenViewController: SLROverlayDelegate {
+  func pauseVideo(_ userInitiated: Bool) {
+    
+  }
+  
+  func playVideo(_ userInitiated: Bool) {
+    
+  }
+  
+  func setPlayerVolume(_ volume: Float) {
+    
+  }
+  
+  func getPlayerVolume() -> Float {
+    return 1.0
+  }
+  
+  func currentPresentingViewController() -> UIViewController? {
+    return nil
+  }
+  
   
   func overlayOpened() {
     
@@ -202,14 +225,6 @@ extension DemoScreenViewController: SLROverlayDelegate {
     
   }
   
-  func playVideo() {
-    
-  }
-  
-  func pauseVideo() {
-    
-  }
-  
   func getVideoPlayerContainer() -> SLRVideoPlayerOverlayContainer? {
     return nil
   }
@@ -237,7 +252,7 @@ class MyCustomOverlayViewController: UIViewController {
     super.viewDidLoad()
     
     view.addSubview(contentView)
-    contentView.slr_snp.makeConstraints { [weak view] in
+    contentView.snp.makeConstraints { [weak view] in
       guard let view = view else { return }
       $0.edges.equalTo(view.safeAreaLayoutGuide)
     }
@@ -245,10 +260,10 @@ class MyCustomOverlayViewController: UIViewController {
     
     contentView.addSubview(customLabel)
     
-    customLabel.slr_snp.makeConstraints { [weak contentView] in
+    customLabel.snp.makeConstraints { [weak contentView] in
       guard let contentView = contentView else { return }
       $0.size.equalTo(CGSize(width: 200, height: 50))
-      $0.center.equalTo(contentView.slr_snp.center)
+      $0.center.equalTo(contentView.snp.center)
     }
   }
 }
