@@ -6,6 +6,5 @@
 //
 
 import UIKit
-import RealmSwift
 
 struct ESPNSceneModel {}

@@ -17,38 +17,64 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.streamlayer.swift-demo
         ENABLE_BITCODE: NO
     dependencies:
-      - carthage: StreamLayer
-      - carthage: StreamLayerVendor
-      - carthage: VoxImplant
-      - carthage: WebRTC
-      - carthage: Realm
-      - carthage: RealmSwift
-      - carthage: SLProtofiles
-      - carthage: Logging
-      - carthage: NIO
-      - carthage: NIOConcurrencyHelpers
-      - carthage: NIOFoundationCompat
-      - carthage: NIOHPACK
-      - carthage: NIOHTTP1
-      - carthage: NIOHTTP2
-      - carthage: NIOSSL
-      - carthage: NIOTLS
-      - carthage: NIOTransportServices
-      - carthage: SwiftProtobuf
-      - carthage: NIOExtras
-      - carthage: SwiftGRPC
-      - carthage: CGRPCZlib
-      - carthage: CNIOAtomics
-      - carthage: CNIOBoringSSL
-      - carthage: CNIOBoringSSLShims
-      - carthage: CNIODarwin
-      - carthage: CNIOWindows
-      - carthage: CNIOHTTPParser
-      - carthage: CNIOLinux
-      - carthage: Lottie
-      - carthage: SwiftDraw
-      - carthage: Branch
-      - carthage: NIOCore
-      - carthage: NIOPosix
-      - carthage: NIOEmbedded
-      - carthage: _NIODataStructures
+      - package: StreamLayer
+      - package: Action
+      - package: SnapKit
+      - package: RxSwift
+      - package: RxBlocking
+      - package: RxCocoa
+      - package: RxRelay
+      - package: RxSwiftExt
+      - package: RxGesture
+      - package: RxAppState
+      - package: RxDataSources
+      - package: NIOConcurrencyHelpers
+      - package: PromiseKit
+      - package: XCDYouTubeKit
+      - package: Kingfisher
+packages:
+  StreamLayer:
+    url: https://github.com/StreamLayer/sdk-ios.git
+    minorVersion: 8.10.4
+  RxDataSources:
+    github: RxSwiftCommunity/RxDataSources
+    from: 5.0.0
+  Action:
+    github: RxSwiftCommunity/Action
+    from: 5.0.0
+  SnapKit:
+    github: SnapKit/SnapKit
+    from: 5.0.0
+  RxSwift:
+    github: ReactiveX/RxSwift
+    from: 6.0.0
+  RxBlocking:
+    github: ReactiveX/RxSwift
+    from: 6.0.0
+  RxCocoa:
+    github: ReactiveX/RxSwift
+    from: 6.0.0
+  RxRelay:
+    github: ReactiveX/RxSwift
+    from: 6.0.0
+  NIOConcurrencyHelpers:
+    github: apple/swift-nio.git
+    from: 2.0.0
+  PromiseKit:
+    github: mxcl/PromiseKit
+    from: 6.0.0
+  XCDYouTubeKit:
+    github: 0xced/XCDYouTubeKit
+    from: 2.0.0
+  RxSwiftExt:
+    github: RxSwiftCommunity/RxSwiftExt
+    from: 6.1.0
+  RxGesture:
+    github: RxSwiftCommunity/RxGesture
+    from: 4.0.0
+  RxAppState:
+    github: pixeldock/RxAppState
+    from: 1.7.1
+  Kingfisher:
+    github: onevcat/Kingfisher
+    from: 7.0.0

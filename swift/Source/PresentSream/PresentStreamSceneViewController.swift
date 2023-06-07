@@ -8,10 +8,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
-
 // these must be imported
 import StreamLayer
-import StreamLayerVendor
 
 class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneViewModel> {
   
@@ -29,7 +27,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   }()
   
   // inlined rxswift dispose bag
-  let s_disposeBag = StreamLayerVendor.DisposeBag()
+  let s_disposeBag = DisposeBag()
   
   // sample stream selector
   private let streamsViewController = StreamsViewController()
@@ -47,7 +45,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    SLRStateMachine.onOrientationChange(s_disposeBag) { [weak self] state in
+    SLRStateMachine.onOrientationChange { [weak self] state in
       self?.setupConstraints(state)
     }
   }
@@ -184,6 +182,7 @@ class PresentStreamSceneViewController: BaseViewController<PresentStreamSceneVie
       guard let self = self else { return }
       
       videoPlayer.setNewStreamURL(withURL: streamURLString,
+                                  startTime: 0.0,
                                   providerType: Int(streamURLString) != nil ? .vimeo : .youtube)
       
       StreamLayer.createSession(for: String(eventId), andAddMenuItems: [self.customMenuItem])

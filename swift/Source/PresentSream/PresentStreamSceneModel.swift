@@ -6,13 +6,12 @@
 //
 
 import UIKit
-import RealmSwift
 
-final class PresentStreamSceneModel: Object {
+final class PresentStreamSceneModel: NSObject {
     
     @objc dynamic public var id = 0
     
-    override static func primaryKey() -> String? {
+    static func primaryKey() -> String? {
         return "id"
     }
 }
