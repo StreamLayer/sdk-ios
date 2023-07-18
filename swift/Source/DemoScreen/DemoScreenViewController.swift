@@ -15,7 +15,7 @@ import StreamLayer
 class DemoScreenViewController: UIViewController {
   
   enum Constants {
-    static let demoStreamURL: URL = URL(string: "https://hls.next.streamlayer.io/live/index.m3u8")!
+    static let demoStreamURL: URL = URL(string: "https://owncast.next.streamlayer.io/hls/stream.m3u8")!
     static let demoEventID: String = "512"
   }
   
