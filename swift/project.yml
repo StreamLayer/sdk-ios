@@ -7,7 +7,7 @@ targets:
   Demo:
     platform: iOS
     deploymentTarget:
-      iOS: 13.0
+      iOS: 15.0
     type: application
     sources:
       - path: Source
@@ -23,7 +23,7 @@ targets:
 packages:
   StreamLayer:
     url: https://github.com/StreamLayer/sdk-ios.git
-    minorVersion: 8.10.4
+    minorVersion: 8.14.3
   SnapKit:
     github: SnapKit/SnapKit
     from: 5.0.0

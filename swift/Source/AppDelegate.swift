@@ -38,7 +38,12 @@ extension AppDelegate {
     StreamLayer.config.shouldIncludeTopGestureZone = true
     StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
     Task {
-      try? await StreamLayer.useAnonymousAuth()
+      do {
+        try await StreamLayer.useAnonymousAuth()
+      } catch {
+        print("[ANONYMOUS_AUTH] error: \(error)")
+      }
+      
     }
   }
 }
