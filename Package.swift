@@ -24,18 +24,18 @@ let package = Package(
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.12/StreamLayerSDK.xcframework.zip",
-          checksum: "8ec951275881b9a24032c6774c7344c500d0186c211534deddf5fbadae786246"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.14/StreamLayerSDK.xcframework.zip",
+          checksum: "95582c410e51f5894155b5400086c35084ee9a60ff49f8f07edb4d223aa49737"
       ),
       .binaryTarget(
           name: "SLRStorageFramework",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.12/SLRStorageFramework.xcframework.zip",
-          checksum: "434dffa1a0e5d9efd1fe9fca04b44dc065f46d5f2877bc7f5d6717bfe3c1a7cd"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.14/SLRStorageFramework.xcframework.zip",
+          checksum: "4f95b5a80ff50f83de42eb20d32ad6f44af2e6c02fe58cb0b4deccf57f8f454b"
       ),
       .binaryTarget(
           name: "SLRUtilsFramework",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.12/SLRUtilsFramework.xcframework.zip",
-          checksum: "9f67d727745b185a1fe8969ba70af94804b51a07bc8dca47eb30c65bfa09a0d7"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.14/SLRUtilsFramework.xcframework.zip",
+          checksum: "13ae1ba58e13f17b09483cc323e9e4b09a7636fc3f5abeddb4bf29f12df5d8e8"
       ),
     ]
 )
