@@ -33,9 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 extension AppDelegate {
   func setupStreamLayer(launchOptions: [UIApplication .LaunchOptionsKey: Any]? = nil) {
     let key = Bundle.main.object(forInfoDictionaryKey: sdkKey) as? String ?? ""
-    StreamLayer.initSDK(with: key)
+    StreamLayer.initSDK(with: key, delegate: self)
     StreamLayer.config.phoneContactsSyncEnabled = false
-    StreamLayer.config.shouldIncludeTopGestureZone = true
+    StreamLayer.config.shouldIncludeTopGestureZone = false
+    StreamLayer.config.whoIsWatchingEnabled = false
     StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
     Task {
       do {
@@ -47,3 +48,43 @@ extension AppDelegate {
     }
   }
 }
+
+extension AppDelegate: StreamLayerDelegate {
+  func watchPartyInviteOpened(invite: SLRInviteData, completion: @escaping (Bool) -> Void) {
+    // do nothing
+  }
+  
+  func requireAuthentication(completion: @escaping (Bool) -> Void) {
+    guard let vc = window.topViewController else { return }
+
+    let provider = StreamLayerProvider()
+    let authFlow = SLRAuthFlow(authProvider: provider)
+
+    authFlow.show(from: vc) { _ in
+      completion(false)
+    }
+  }
+  
+  func requireNameInput(completion: @escaping (Bool) -> Void) {
+    guard let vc = window.topViewController else { return }
+
+    let provider = StreamLayerProvider()
+    let authFlow = SLRAuthFlow(authProvider: provider)
+
+    authFlow.showNameInput(from: vc) { res in
+      completion(res != nil)
+    }
+  }
+}
+
+
+extension UIWindow {
+  var topViewController: UIViewController? {
+    var topMostViewController = self.rootViewController
+    while let presentedViewController = topMostViewController?.presentedViewController {
+      topMostViewController = presentedViewController
+    }
+    return topMostViewController
+  }
+}
+
