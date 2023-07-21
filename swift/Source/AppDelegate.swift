@@ -4,7 +4,7 @@
 
 import UIKit
 import UserNotifications
-import StreamLayer
+import StreamLayerSDK
 import RxSwift
 
 /// SDK key can be created in the StreamLayer admin panel. Check the official documentation for the relevant link.
@@ -34,17 +34,16 @@ extension AppDelegate {
   func setupStreamLayer(launchOptions: [UIApplication .LaunchOptionsKey: Any]? = nil) {
     let key = Bundle.main.object(forInfoDictionaryKey: sdkKey) as? String ?? ""
     StreamLayer.initSDK(with: key, delegate: self)
-    StreamLayer.config.phoneContactsSyncEnabled = false
-    StreamLayer.config.shouldIncludeTopGestureZone = false
-    StreamLayer.config.whoIsWatchingEnabled = false
-    StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
+      StreamLayer.config.phoneContactsSyncEnabled = false
+      StreamLayer.config.shouldIncludeTopGestureZone = false
+      StreamLayer.config.whoIsWatchingEnabled = false
+      StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
     Task {
       do {
         try await StreamLayer.useAnonymousAuth()
       } catch {
         print("[ANONYMOUS_AUTH] error: \(error)")
       }
-      
     }
   }
 }

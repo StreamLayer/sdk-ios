@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import StreamLayer
+import StreamLayerSDK
 import UIKit
 
 enum TestError: Error {

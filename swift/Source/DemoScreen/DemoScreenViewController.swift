@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 // these must be imported
-import StreamLayer
+import StreamLayerSDK
 
 class DemoScreenViewController: UIViewController {
   
