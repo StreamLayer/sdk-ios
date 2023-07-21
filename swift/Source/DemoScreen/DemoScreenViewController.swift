@@ -36,11 +36,12 @@ class DemoScreenViewController: UIViewController {
     overlayDelegate: self
   )
   
-  // Implement custom menu item
-  private var customMenuItem: SLRCustomMenuItem = {
-    let menuItem = SLRCustomMenuItem(viewController: MyCustomOverlayViewController())
-    menuItem.iconImage = UIImage(named: "customMenuIcon")
-    return menuItem
+  private lazy var gameButton: UIButton = {
+    let button = UIButton()
+    button.setImage(UIImage(named: "games_icon"), for: .normal) // use your image or we can provide one
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.addTarget(self, action: #selector(gameButtonTapped), for: .touchUpInside)
+    return button
   }()
   
   deinit {
@@ -65,12 +66,22 @@ class DemoScreenViewController: UIViewController {
     containerView.addSubview(videoPlayer.view)
     videoPlayer.didMove(toParent: self)
     
+    view.addSubview(gameButton)
+    
     // add overlay viewcontroller into the hierarchy
     // this is where the UI integration takes place
     overlayVC.willMove(toParent: self)
     addChild(overlayVC)
     view.addSubview(overlayVC.view)
     overlayVC.didMove(toParent: self)
+    
+    
+    gameButton.snp.makeConstraints {
+      // you can change this to your desired settings
+      $0.height.width.equalTo(32.0)
+      $0.trailing.equalToSuperview().inset(20.0)
+      $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(20.0)
+    }
     
     SLRStateMachine.onOrientationChange { [weak self] state in
       self?.setupConstraints(state)
@@ -82,11 +93,16 @@ class DemoScreenViewController: UIViewController {
   
   private func setupSDK() {
     StreamLayer.createSession(for: Constants.demoEventID, andAddMenuItems: [])
-    StreamLayer.hideLaunchButton(false)
+    StreamLayer.hideLaunchButton(true)
+    StreamLayer.hideLaunchControls(true)
   }
   
   private func startPlayer() {
     videoPlayer.set(url: Constants.demoStreamURL)
+  }
+  
+  @objc func gameButtonTapped() {
+    StreamLayer.showOverlay(overlayType: .games)
   }
   
   // MARK: - Status Bar
@@ -100,7 +116,7 @@ class DemoScreenViewController: UIViewController {
 private extension DemoScreenViewController {
   
   var screenWidth: CGFloat {
-    let statusBarOrientation = UIApplication.shared.statusBarOrientation
+    let statusBarOrientation = UIApplication.shared.delegate?.window??.windowScene?.interfaceOrientation ?? .portrait
     // it is important to do this after presentModalViewController:animated:
     if statusBarOrientation != .portrait && statusBarOrientation != .portraitUpsideDown {
       return UIScreen.main.bounds.size.height
@@ -243,42 +259,5 @@ extension DemoScreenViewController: SLROverlayDelegate {
     return containerPlayer
   }
   
-}
-
-
-
-// Implement custom overlay for menu
-class MyCustomOverlayViewController: UIViewController {
-  private var contentView: UIView = {
-    let contentView = UIView()
-    return contentView
-  }()
-  
-  private var customLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Custom overlay"
-    label.textColor = .white
-    label.textAlignment = .center
-    return label
-  }()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    view.addSubview(contentView)
-    contentView.snp.makeConstraints { [weak view] in
-      guard let view = view else { return }
-      $0.edges.equalTo(view.safeAreaLayoutGuide)
-    }
-    contentView.clipsToBounds = true
-    
-    contentView.addSubview(customLabel)
-    
-    customLabel.snp.makeConstraints { [weak contentView] in
-      guard let contentView = contentView else { return }
-      $0.size.equalTo(CGSize(width: 200, height: 50))
-      $0.center.equalTo(contentView.snp.center)
-    }
-  }
 }
 
