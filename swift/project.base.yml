@@ -13,8 +13,8 @@ options:
   transitivelyLinkDependencies: false
   groupSortPosition: top
   deploymentTarget:
-    iOS: "13.0"
-  postGenCommand: open SwiftDemo.xcodeproj
+    iOS: "15.0"
+  postGenCommand: open SwiftDemo.xcworkspace
 
 settings:
   base:

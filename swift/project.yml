@@ -18,15 +18,7 @@ targets:
         ENABLE_BITCODE: NO
     dependencies:
       - package: StreamLayer
-      - package: SnapKit
-      - package: RxSwift
 packages:
   StreamLayer:
     url: https://github.com/StreamLayer/sdk-ios.git
-    minorVersion: 8.14.12
-  SnapKit:
-    github: SnapKit/SnapKit
-    from: 5.0.0
-  RxSwift:
-    github: ReactiveX/RxSwift
-    from: 6.0.0
+    minorVersion: 8.14.16

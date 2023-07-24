@@ -1,0 +1,6 @@
+platform :ios, '15.0'
+
+target 'SwiftDemo' do
+    pod 'RxSwift'
+    pod 'SnapKit'
+end
