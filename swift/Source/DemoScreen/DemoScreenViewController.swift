@@ -25,8 +25,6 @@ class DemoScreenViewController: UIViewController {
   
   private var videoPlayer = DemoVideoPlayer()
   
-  private let containerView = UIView()
-  
   // blank reference view
   private let overlayView = UIView()
   
@@ -58,12 +56,11 @@ class DemoScreenViewController: UIViewController {
     
     // reference view that is added to view hierarcy, must be on the same level with overlayVC
     view.addSubview(overlayView)
-    view.addSubview(containerView)
     
     // add player
     videoPlayer.willMove(toParent: self)
     addChild(videoPlayer)
-    containerView.addSubview(videoPlayer.view)
+    view.addSubview(videoPlayer.view)
     videoPlayer.didMove(toParent: self)
     
     view.addSubview(gameButton)
@@ -140,14 +137,10 @@ private extension DemoScreenViewController {
   func verticalOrientation() {
     let offset = StreamLayer.config.shouldIncludeTopGestureZone ? -40 : 0
     
-    containerView.snp.remakeConstraints {
-      $0.top.equalTo(view.safeAreaLayoutGuide)
-      $0.left.right.bottom.equalToSuperview()
-    }
     
-    videoPlayer.view.snp.remakeConstraints { [weak containerView] in
-      guard let containerView = containerView else { return }
-      $0.top.equalTo(containerView)
+    videoPlayer.view.snp.remakeConstraints { [weak self] in
+      guard let containerView = self?.view else { return }
+      $0.top.equalTo(containerView.safeAreaLayoutGuide)
       $0.left.right.equalTo(0)
       $0.height.equalTo(ceil(screenWidth * (9/16)))
     }
@@ -168,13 +161,9 @@ private extension DemoScreenViewController {
   /// Everything is taken up by video player & button is visible
   /// Overlays slide from the left
   func horizontalOrientation() {
-    containerView.snp.remakeConstraints {
-      $0.edges.equalToSuperview()
-    }
-    
-    videoPlayer.view.snp.remakeConstraints { [weak containerView] in
-      guard let containerView = containerView else { return }
-      $0.edges.equalTo(containerView)
+    videoPlayer.view.snp.remakeConstraints { [weak view] in
+      guard let view = view else { return }
+      $0.edges.equalTo(view)
     }
     
     overlayView.snp.remakeConstraints { [weak view] make in

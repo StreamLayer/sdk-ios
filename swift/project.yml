@@ -14,7 +14,7 @@ targets:
     requiresObjCLinking: true
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.streamlayer.swift-demo
+        PRODUCT_BUNDLE_IDENTIFIER: com.streamlayer.demo-games
         ENABLE_BITCODE: NO
     dependencies:
       - package: StreamLayer
