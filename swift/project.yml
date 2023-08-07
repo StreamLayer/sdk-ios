@@ -23,7 +23,7 @@ targets:
 packages:
   StreamLayer:
     url: https://github.com/StreamLayer/sdk-ios.git
-    minorVersion: 8.14.12
+    minorVersion: 8.14.22
   SnapKit:
     github: SnapKit/SnapKit
     from: 5.0.0

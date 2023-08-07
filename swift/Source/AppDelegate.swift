@@ -38,6 +38,7 @@ extension AppDelegate {
     StreamLayer.config.shouldIncludeTopGestureZone = false
     StreamLayer.config.whoIsWatchingEnabled = false
     StreamLayer.config.notificationsMode = [.vote, .promotion, .twitter]
+    StreamLayer.config.gamificationOptions = SLRGamificationOptions(globalLeaderBoardEnabled: true, invitesEnabled: false)
     Task {
       do {
         try await StreamLayer.useAnonymousAuth()
