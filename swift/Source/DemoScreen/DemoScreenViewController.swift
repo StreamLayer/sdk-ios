@@ -24,7 +24,8 @@ class DemoScreenViewController: UIViewController {
   var onPlayerVolumeChange: (() -> Void)?
   
   private var videoPlayer = DemoVideoPlayer()
-  
+  private let appStatusDebugView: AppStatusDebugView = AppStatusDebugView()
+
   // blank reference view
   private let overlayView = UIView()
   
@@ -62,7 +63,8 @@ class DemoScreenViewController: UIViewController {
     addChild(videoPlayer)
     view.addSubview(videoPlayer.view)
     videoPlayer.didMove(toParent: self)
-    
+    videoPlayer.view.addSubview(appStatusDebugView)
+
     view.addSubview(gameButton)
     
     // add overlay viewcontroller into the hierarchy
@@ -137,7 +139,11 @@ private extension DemoScreenViewController {
   func verticalOrientation() {
     let offset = StreamLayer.config.shouldIncludeTopGestureZone ? -40 : 0
     
-    
+    appStatusDebugView.snp.remakeConstraints {
+      $0.left.top.equalToSuperview().inset(12)
+      $0.right.lessThanOrEqualToSuperview().inset(12)
+    }
+
     videoPlayer.view.snp.remakeConstraints { [weak self] in
       guard let containerView = self?.view else { return }
       $0.top.equalTo(containerView.safeAreaLayoutGuide)
@@ -161,6 +167,12 @@ private extension DemoScreenViewController {
   /// Everything is taken up by video player & button is visible
   /// Overlays slide from the left
   func horizontalOrientation() {
+    appStatusDebugView.snp.remakeConstraints {
+      $0.left.equalToSuperview().offset(40)
+      $0.top.equalToSuperview().offset(12)
+      $0.right.lessThanOrEqualToSuperview().inset(12)
+    }
+
     videoPlayer.view.snp.remakeConstraints { [weak view] in
       guard let view = view else { return }
       $0.edges.equalTo(view)
@@ -201,8 +213,8 @@ extension DemoScreenViewController: SLROverlayDelegate {
     return 1.0
   }
   
-  func currentPresentingViewController() -> UIViewController? {
-    return nil
+  func currentPresentingViewController() -> UIViewController {
+    return self
   }
   
   
