@@ -25,22 +25,23 @@ let package = Package(
             .linkedFramework("AVFAudio"),
             .linkedFramework("AudioToolbox"),
             .linkedFramework("AVFoundation"),
+            .linkedLibrary("c++")
           ]
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.25/StreamLayerSDK.xcframework.zip",
-          checksum: "49facbb6d72936badbf103895f3a15641d39e2e580b81b22680e7fc860b395ee"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.26/StreamLayerSDK.xcframework.zip",
+          checksum: "4c439c35a5a91775d3ced75db3ec0e8f2f0852f925442c37d97137f88339c61f"
       ),
       .binaryTarget(
           name: "SLRStorageFramework",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.25/SLRStorageFramework.xcframework.zip",
-          checksum: "a006969bd979d33fdb2b879d0d103a49662bc432ea0a17984e2de72c9dbd5511"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.26/SLRStorageFramework.xcframework.zip",
+          checksum: "a9451282459113e9741e621a9ef60c37b668203aeee7d58ea018459abe4a0f79"
       ),
       .binaryTarget(
           name: "SLRUtilsFramework",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.25/SLRUtilsFramework.xcframework.zip",
-          checksum: "429e19c2d0bf23974072df485ce56f784240c091a10b74f8c5e3d3e8f07850c2"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.26/SLRUtilsFramework.xcframework.zip",
+          checksum: "3bf1ae460d1c4a3a6b1110efd6007c6c4c9f1ed709ebd5be03f4cca7e297cf3a"
       ),
     ]
 )
