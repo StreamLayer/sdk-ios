@@ -1,6 +1,7 @@
 // swift-tools-version: 5.8
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 // swift-module-flags: -target arm64-apple-ios15.0
+// OTHER_LDFLAGS = -weak_framework AVFAudio
 
 import PackageDescription
 
@@ -10,7 +11,7 @@ let package = Package(
         .iOS(.v15)
     ],
     products: [
-        .library(name: "StreamLayer", type: .dynamic, targets: ["StreamLayer"])
+        .library(name: "StreamLayer", targets: ["StreamLayer"])
     ],
     targets: [
       .target(
@@ -30,18 +31,18 @@ let package = Package(
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.30/StreamLayerSDK.xcframework.zip",
-          checksum: "5de998099f3d3f92c1641b758cd9b8fc617e4d65c9df5680ff54a86fb2c4ab0f"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.31/StreamLayerSDK.xcframework.zip",
+          checksum: "ad8970188b2595252b5315a1dff3d0dbb54253ec30bb4fbb64c3ebad63738dcf"
       ),
       .binaryTarget(
           name: "SLRStorageFramework",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.30/SLRStorageFramework.xcframework.zip",
-          checksum: "c9a210ba25af51130ae41c6fa34d7123b1d43dc71e30b65fd8eb67ebb7374fc0"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.31/SLRStorageFramework.xcframework.zip",
+          checksum: "af2cea344e575497eb68acc5e1d757fce47271272172087d6badc543861b2c95"
       ),
       .binaryTarget(
           name: "SLRUtilsFramework",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.30/SLRUtilsFramework.xcframework.zip",
-          checksum: "754354dbb91a9f30de15096ef915390f4feb8047686ffadd89d5acc08442551f"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.31/SLRUtilsFramework.xcframework.zip",
+          checksum: "2d1f67ad8d8ccfe746ae8cc13c2c0b4c6d11e97d4e3cc50fd0588b2e855639b9"
       ),
     ]
 )
