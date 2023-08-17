@@ -25,6 +25,7 @@ class DemoScreenViewController: UIViewController {
   
   private var videoPlayer = DemoVideoPlayer()
   private let appStatusDebugView: AppStatusDebugView = AppStatusDebugView()
+  private let containerView = OutOfBoundsTouchView()
 
   // blank reference view
   private let overlayView = UIView()
@@ -57,11 +58,12 @@ class DemoScreenViewController: UIViewController {
     
     // reference view that is added to view hierarcy, must be on the same level with overlayVC
     view.addSubview(overlayView)
-    
+    view.addSubview(containerView)
+
     // add player
     videoPlayer.willMove(toParent: self)
     addChild(videoPlayer)
-    view.addSubview(videoPlayer.view)
+    containerView.addSubview(videoPlayer.view)
     videoPlayer.didMove(toParent: self)
     videoPlayer.view.addSubview(appStatusDebugView)
 
@@ -144,11 +146,15 @@ private extension DemoScreenViewController {
       $0.right.lessThanOrEqualToSuperview().inset(12)
     }
 
-    videoPlayer.view.snp.remakeConstraints { [weak self] in
+    containerView.snp.remakeConstraints { [weak self] in
       guard let containerView = self?.view else { return }
       $0.top.equalTo(containerView.safeAreaLayoutGuide)
       $0.left.right.equalTo(0)
       $0.height.equalTo(ceil(screenWidth * (9/16)))
+    }
+    
+    videoPlayer.view.snp.remakeConstraints {
+      $0.edges.equalToSuperview()
     }
     
     overlayView.snp.remakeConstraints {
@@ -173,9 +179,13 @@ private extension DemoScreenViewController {
       $0.right.lessThanOrEqualToSuperview().inset(12)
     }
 
-    videoPlayer.view.snp.remakeConstraints { [weak view] in
+    containerView.snp.remakeConstraints { [weak view] in
       guard let view = view else { return }
       $0.edges.equalTo(view)
+    }
+    
+    videoPlayer.view.snp.remakeConstraints {
+      $0.edges.equalToSuperview()
     }
     
     overlayView.snp.remakeConstraints { [weak view] make in
