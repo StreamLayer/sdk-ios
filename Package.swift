@@ -22,8 +22,8 @@ let package = Package(
       ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.43/StreamLayerSDK.xcframework.zip",
-          checksum: "151c5cafb04396f21c893b950b5f5b26a007965f2cfbac898c8e01bc844eadc7"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.14.44/StreamLayerSDK.xcframework.zip",
+          checksum: "9db9edd707e5526ae8d09dcce40485abd262ab509494e8ed1c7a6fd6f7bf328c"
       )
     ]
 )
