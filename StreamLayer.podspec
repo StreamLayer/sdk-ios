@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.license          = { :type => 'Proprietary', :text => 'StreamLayer License' }
     s.author           = { 'Kirill Kunst' => 'kirill@streamlayer.io' }
     s.homepage     = "https://github.com/StreamLayer/sdk-ios.git"
-    s.source           = { :http => 'https://storage.googleapis.com/ios.streamlayer.io/32135/StreamLayerSDK.xcframework.zip', :flatten => false }
+    s.source           = { :http => 'https://storage.googleapis.com/ios.streamlayer.io/32135/StreamLayerSDK.xcframework.zip' }
     s.vendored_frameworks = 'StreamLayerSDK.xcframework'
     s.platform = :ios
     s.swift_version = "5.7"
