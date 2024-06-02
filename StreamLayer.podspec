@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
     s.name         = "StreamLayer"
     s.version      = "8.22.31"
     s.summary      = "StreamLayer SDK"
-    s.description  = "StreamLayer SDK"
+    s.description  = "StreamLayer SDK public repo"
     s.license          = { :type => 'Proprietary', :text => 'StreamLayer License' }
     s.author           = { 'Kirill Kunst' => 'kirill@streamlayer.io' }
     s.homepage     = "https://github.com/StreamLayer/sdk-ios.git"
