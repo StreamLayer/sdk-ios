@@ -1,29 +1,37 @@
-// swift-tools-version: 5.7
+// swift-tools-version: 5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 // swift-module-flags: -target arm64-apple-ios14.0
 
 import PackageDescription
 
 let package = Package(
-    name: "StreamLayer",
+    name: "StreamLayerSDK",
     platforms: [
         .iOS(.v14)
     ],
     products: [
-        .library(name: "StreamLayer", targets: ["StreamLayer"])
+        .library(name: "StreamLayerSDK", targets: ["StreamLayerSDK"]),
+        .library(name: "StreamLayerSDKWatchParty", targets: ["StreamLayerSDKWatchParty"])
     ],
     targets: [
       .target(
-          name: "StreamLayer",
+          name: "StreamLayerSDK",
           dependencies: [
             .target(name: "StreamLayerSDK")
           ],
           path: "SwiftPM-PlatformExclude/StreamLayer"
       ),
+      .target(
+          name: "StreamLayerSDKWatchParty",
+          dependencies: [
+            .target(name: "StreamLayerSDKWatchParty")
+          ],
+          path: "SwiftPM-PlatformExclude/StreamLayer"
+      ),
       .binaryTarget(
           name: "StreamLayerSDK",
-          url: "https://storage.googleapis.com/ios.streamlayer.io/v8.22.28/StreamLayerSDK.xcframework.zip",
-          checksum: "43fd5e0a44dc488460a630041c08583075fee0cd55afae81087966e299ca8e54"
+          url: "https://storage.googleapis.com/ios.streamlayer.io/33309/StreamLayerSDK.xcframework.zip",
+          checksum: "4150562198d26eec68edf84ac8aaf708f77847af1573412076ef3c9562a294ec"
       )
     ]
 )
