@@ -1,0 +1,33 @@
+{
+  "originHash" : "3f88a024f584fa0d4ba0b0dd8fa5034adc7ae569b7d909ca157f6c40cfebfc40",
+  "pins" : [
+    {
+      "identity" : "sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/StreamLayer/sdk-ios",
+      "state" : {
+        "revision" : "b23bb7459f867adcaf41eb1f17dd5eba5a68e553",
+        "version" : "8.22.134"
+      }
+    },
+    {
+      "identity" : "sdk-ios-plugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/StreamLayer/sdk-ios-plugins",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8f7f7fa2e936fcda26ee58d947c60b77601b30c4"
+      }
+    },
+    {
+      "identity" : "swift-package-manager-google-programmatic-access-library-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/googleads/swift-package-manager-google-programmatic-access-library-ios",
+      "state" : {
+        "revision" : "82856c401fb8046428d517f04f8980fb443d605e",
+        "version" : "2.8.1"
+      }
+    }
+  ],
+  "version" : 3
+}
