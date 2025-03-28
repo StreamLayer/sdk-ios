@@ -284,7 +284,8 @@ class ViewController: UIViewController {
     }()
 
     private func setup() {
-        // Disable controlls and add showOverlayButton
+        // Disable controlls and add showOverlayButton.
+        // For hide launchButton configure StreamLayer.config.isAlwaysOpened = true
         widgetsViewController.hideControls = true
         ...
     }
