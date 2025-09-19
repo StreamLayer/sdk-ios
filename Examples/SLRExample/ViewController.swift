@@ -50,7 +50,7 @@ class ViewController: UIViewController {
       mainContainerViewController: self,
       overlayDelegate: self,
       overlayDataSource: self,
-      lbarDelegate: self
+      sideBarDelegate: self
     )
     viewController.view.translatesAutoresizingMaskIntoConstraints = false
     return viewController
@@ -74,9 +74,11 @@ class ViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     return button
   }()
-  
-  private var trailingContstraint: NSLayoutConstraint?
+
+  private var topConstraint: NSLayoutConstraint?
   private var bottomConstraint: NSLayoutConstraint?
+  private var trailingConstraint: NSLayoutConstraint?
+  private var leadingConstraint: NSLayoutConstraint?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -122,24 +124,28 @@ class ViewController: UIViewController {
     addChild(widgetsViewController)
     view.addSubview(widgetsViewControllerView)
     widgetsViewController.didMove(toParent: self)
-    
-    let trailingContstraint = containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    let bottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    self.trailingContstraint = trailingContstraint
+
+    let topConstraint = containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+    let leadingConstraint = containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+    let trailingConstraint = containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+    let bottomConstraint = containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+    self.topConstraint = topConstraint
+    self.leadingConstraint = leadingConstraint
+    self.trailingConstraint = trailingConstraint
     self.bottomConstraint = bottomConstraint
     
     NSLayoutConstraint.activate([
-      containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      trailingContstraint,
+      topConstraint,
+      leadingConstraint,
+      trailingConstraint,
       bottomConstraint
     ])
     
     NSLayoutConstraint.activate([
-      widgetsViewControllerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      widgetsViewControllerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      widgetsViewControllerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      widgetsViewControllerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      widgetsViewControllerView.topAnchor.constraint(equalTo: containerView.topAnchor),
+      widgetsViewControllerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+      widgetsViewControllerView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+      widgetsViewControllerView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
     ])
     
     updateLayout()
@@ -297,7 +303,7 @@ class ViewController: UIViewController {
         overlayType: .games,
         mainContainerViewController: self,
         overlayDataSource: self,
-        lbarDelegate: self,
+        sideBarDelegate: self,
         dataOptions: ["eventId": ""]
       )
     } catch {
@@ -320,15 +326,24 @@ extension ViewController: SLROverlayDataSource {
 
 extension ViewController: SLROverlayDelegate {}
 
-// Changes right and bottom constraint
+// Changes constraints
 // Also, any other layout method could be used
-extension ViewController: SLRLBarDelegate {
-  func moveRightSide(for points: CGFloat) {
-    trailingContstraint?.constant = -points
+extension ViewController: SLRSideBarDelegate {
+  func sideBarApplyContainerFrame(_ frame: CGRect, cornerRadius: CGFloat) {
+    containerView.clipsToBounds = true
+    containerView.layer.masksToBounds = true
+    containerView.layer.cornerRadius = cornerRadius
+    topConstraint?.constant = frame.minY
+    leadingConstraint?.constant = frame.minX
+    trailingConstraint?.constant = -(view.frame.width - (frame.minX + frame.width))
+    bottomConstraint?.constant = -(view.frame.height - (frame.minY + frame.height))
   }
-  
-  func moveBottomSide(for points: CGFloat) {
-    bottomConstraint?.constant = -points
+
+  func sideBarReset() {
+    topConstraint?.constant = 0
+    leadingConstraint?.constant = 0
+    trailingConstraint?.constant = 0
+    bottomConstraint?.constant = 0
   }
 }
 

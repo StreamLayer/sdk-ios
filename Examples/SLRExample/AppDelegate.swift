@@ -50,16 +50,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// A boolean value that determines whether tutorials should appear or not. Default: true
     StreamLayer.config.tooltipsEnabled = true
     
-    /// Determine if LBar feature enabled to show overlays in LBar by default
-    /// `mainContainerViewController` and `lbarDelegate` must be passed in the `createOverlay` or `showOverlay` methods in order to enable other features to apper in the LBar
-    /// even if `isLBarEnabled == false`
-    var isLBarEnabled = true
-    
-    /// Lbar modes:
-    /// – full - all sides of lbar will appear
-    /// – fullFlexible - bottom side will appear only if there is content in it
-    StreamLayer.config.lbarMode = .full
-    
+    /// Sidebar modes:
+    /// – overlay - always show overlays
+    /// – sidebar - always show sidebar
+    StreamLayer.config.overlayMode = .sidebar
+
+    /// Should safe areas for sidebar be enabled
+    /// Adds more insets on the sides
+    StreamLayer.config.isSideBarSafeAreasEnabled = false
+
     /// Is ability to expand overlay enabled
     StreamLayer.config.isExpandableOverlayEnabled = true
     
