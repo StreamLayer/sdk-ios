@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/StreamLayer/sdk-ios",
       "state" : {
-        "revision" : "20494259f952d0bd550ad95becb21b3b49296752",
-        "version" : "8.22.164"
+        "revision" : "a4b9635a9acaa67225ea11f3230754d4e8a0acd6",
+        "version" : "8.22.169"
       }
     },
     {

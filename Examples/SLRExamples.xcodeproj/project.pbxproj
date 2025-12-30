@@ -12,10 +12,13 @@
 		8EB82ED92D93E87F00752A5B /* StreamLayerWatchParty in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82ED82D93E87F00752A5B /* StreamLayerWatchParty */; };
 		8EB82EDB2D93E87F00752A5B /* StreamLayerSDKPluginsGooglePAL in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82EDA2D93E87F00752A5B /* StreamLayerSDKPluginsGooglePAL */; };
 		8EB82EDD2D93E87F00752A5B /* StreamLayerSDKPluginsWatchParty in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82EDC2D93E87F00752A5B /* StreamLayerSDKPluginsWatchParty */; };
+		CC517B2D2F04518800729FC2 /* StreamLayerTVOS in Frameworks */ = {isa = PBXBuildFile; productRef = CC517B2C2F04518800729FC2 /* StreamLayerTVOS */; };
+		CC517B2F2F04518C00729FC2 /* StreamLayerGooglePAL in Frameworks */ = {isa = PBXBuildFile; productRef = CC517B2E2F04518C00729FC2 /* StreamLayerGooglePAL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E5EC89D2D7058E70007CBBA /* SLRExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLRExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC517AFB2F044DE700729FC2 /* SLRTVExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SLRTVExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -25,6 +28,15 @@
 				Info.plist,
 			);
 			target = 8E5EC89C2D7058E70007CBBA /* SLRExample */;
+		};
+		CC517B292F044E0100729FC2 /* Exceptions for "SLRTVExample" folder in "SLRTVExample" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AppDelegate.swift,
+				Assets.xcassets,
+				ViewController.swift,
+			);
+			target = CC517AFA2F044DE700729FC2 /* SLRTVExample */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -38,6 +50,14 @@
 			sourceTree = "<group>";
 		};
 		8EDB63DB2E27B1EB00207178 /* SLRTVExample */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CC517B292F044E0100729FC2 /* Exceptions for "SLRTVExample" folder in "SLRTVExample" target */,
+			);
+			path = SLRTVExample;
+			sourceTree = "<group>";
+		};
+		CC517AFC2F044DE700729FC2 /* SLRTVExample */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SLRTVExample;
 			sourceTree = "<group>";
@@ -57,6 +77,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CC517AF82F044DE700729FC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC517B2D2F04518800729FC2 /* StreamLayerTVOS in Frameworks */,
+				CC517B2F2F04518C00729FC2 /* StreamLayerGooglePAL in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +94,7 @@
 			children = (
 				8E5EC89F2D7058E70007CBBA /* SLRExample */,
 				8EDB63DB2E27B1EB00207178 /* SLRTVExample */,
+				CC517AFC2F044DE700729FC2 /* SLRTVExample */,
 				8EB82ED32D93E87F00752A5B /* Frameworks */,
 				8E5EC89E2D7058E70007CBBA /* Products */,
 			);
@@ -74,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				8E5EC89D2D7058E70007CBBA /* SLRExample.app */,
+				CC517AFB2F044DE700729FC2 /* SLRTVExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +146,30 @@
 			productReference = 8E5EC89D2D7058E70007CBBA /* SLRExample.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CC517AFA2F044DE700729FC2 /* SLRTVExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC517B1F2F044DEA00729FC2 /* Build configuration list for PBXNativeTarget "SLRTVExample" */;
+			buildPhases = (
+				CC517AF72F044DE700729FC2 /* Sources */,
+				CC517AF82F044DE700729FC2 /* Frameworks */,
+				CC517AF92F044DE700729FC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				CC517AFC2F044DE700729FC2 /* SLRTVExample */,
+			);
+			name = SLRTVExample;
+			packageProductDependencies = (
+				CC517B2C2F04518800729FC2 /* StreamLayerTVOS */,
+				CC517B2E2F04518C00729FC2 /* StreamLayerGooglePAL */,
+			);
+			productName = SLRTVExample;
+			productReference = CC517AFB2F044DE700729FC2 /* SLRTVExample.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -122,11 +177,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 2600;
 				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					8E5EC89C2D7058E70007CBBA = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					CC517AFA2F044DE700729FC2 = {
+						CreatedOnToolsVersion = 26.0.1;
 					};
 				};
 			};
@@ -149,6 +207,7 @@
 			projectRoot = "";
 			targets = (
 				8E5EC89C2D7058E70007CBBA /* SLRExample */,
+				CC517AFA2F044DE700729FC2 /* SLRTVExample */,
 			);
 		};
 /* End PBXProject section */
@@ -161,10 +220,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CC517AF92F044DE700729FC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E5EC8992D7058E70007CBBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC517AF72F044DE700729FC2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,6 +436,68 @@
 			};
 			name = Release;
 		};
+		CC517B202F044DEA00729FC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GURKN8N75N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sl.SLRTVExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Debug;
+		};
+		CC517B212F044DEA00729FC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GURKN8N75N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sl.SLRTVExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 26.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -384,6 +519,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CC517B1F2F044DEA00729FC2 /* Build configuration list for PBXNativeTarget "SLRTVExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC517B202F044DEA00729FC2 /* Debug */,
+				CC517B212F044DEA00729FC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -392,7 +536,7 @@
 			repositoryURL = "https://github.com/StreamLayer/sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.22.157;
+				minimumVersion = 8.22.168;
 			};
 		};
 		8EB82ED22D93E73400752A5B /* XCRemoteSwiftPackageReference "sdk-ios-plugins" */ = {
@@ -430,6 +574,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8EB82ED22D93E73400752A5B /* XCRemoteSwiftPackageReference "sdk-ios-plugins" */;
 			productName = StreamLayerSDKPluginsWatchParty;
+		};
+		CC517B2C2F04518800729FC2 /* StreamLayerTVOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EB82ECB2D93E6E400752A5B /* XCRemoteSwiftPackageReference "sdk-ios" */;
+			productName = StreamLayerTVOS;
+		};
+		CC517B2E2F04518C00729FC2 /* StreamLayerGooglePAL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EB82ECB2D93E6E400752A5B /* XCRemoteSwiftPackageReference "sdk-ios" */;
+			productName = StreamLayerGooglePAL;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
