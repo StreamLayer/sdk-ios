@@ -392,15 +392,15 @@
 			repositoryURL = "https://github.com/StreamLayer/sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 8.22.157;
+				minimumVersion = 8.22.174;
 			};
 		};
 		8EB82ED22D93E73400752A5B /* XCRemoteSwiftPackageReference "sdk-ios-plugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/StreamLayer/sdk-ios-plugins";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
