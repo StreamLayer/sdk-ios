@@ -382,6 +382,48 @@ class ViewController: UIViewController {
 }
 ```
 
+#### Permissions Plugin
+
+Handles privacy-sensitive operations (Camera, Microphone, Contacts, Photo Library) on behalf of the SDK. Required if your integration uses Chat photo/camera input, WatchParty audio/video sessions, Addressbook, or WhosWatching features.
+
+Steps to integrate Permissions plugin into the app:
+
+– Install latest version of [StreamLayer Plugins package](https://github.com/StreamLayer/sdk-ios-plugins) and add into your project
+
+– Add `StreamLayerSDKPluginsPermissions` framework in your project settings under `General` tab in `Frameworks, Libraries and Embedded Content` section
+
+– Add the following usage-description keys to your app's `Info.plist` (only those your integration needs):
+
+| Key | When required |
+|-|-|
+| `NSCameraUsageDescription` | Chat camera input, WatchParty video |
+| `NSMicrophoneUsageDescription` | WatchParty audio/video |
+| `NSContactsUsageDescription` | Addressbook, WatchParty invites, WhosWatching |
+| `NSPhotoLibraryUsageDescription` | Chat photo picker |
+
+– Make changes in your code before SDK configuration:
+
+```Swift
+import StreamLayerSDKPluginsPermissions
+
+class ViewController: UIViewController {
+
+    ...
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureSLPermissionsPlugin()
+    }
+
+    ...
+
+    private func configureSLPermissionsPlugin() {
+        let plugin = SLRPermissionsPlugin()
+        StreamLayer.registerPermissionsPlugin(plugin)
+    }
+}
+```
+
 ### SDK Configuration Options
 
 #### StreamLayer.config general
