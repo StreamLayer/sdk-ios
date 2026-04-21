@@ -10,6 +10,7 @@ import UIKit
 import StreamLayerSDK
 import StreamLayerSDKPluginsWatchParty
 import StreamLayerSDKPluginsGooglePAL
+import StreamLayerSDKPluginsPermissions
 
 
 class ViewController: UIViewController {
@@ -84,6 +85,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     configureSLWatchPartyPlugin()
     configureSLGooglePALPlugin()
+    configureSLPermissionsPlugin()
     setup()
     StreamLayer.createSession(for: "YOUR_SESSION_ID")
   }
@@ -294,6 +296,11 @@ class ViewController: UIViewController {
   private func configureSLGooglePALPlugin() {
     let plugin = SLRGooglePALPlugin()
     StreamLayer.registerPALPlugin(plugin)
+  }
+
+  private func configureSLPermissionsPlugin() {
+    let plugin = SLRPermissionsPlugin()
+    StreamLayer.registerPermissionsPlugin(plugin)
   }
   
   @objc

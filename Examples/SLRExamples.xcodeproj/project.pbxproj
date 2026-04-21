@@ -12,6 +12,7 @@
 		8EB82ED92D93E87F00752A5B /* StreamLayerWatchParty in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82ED82D93E87F00752A5B /* StreamLayerWatchParty */; };
 		8EB82EDB2D93E87F00752A5B /* StreamLayerSDKPluginsGooglePAL in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82EDA2D93E87F00752A5B /* StreamLayerSDKPluginsGooglePAL */; };
 		8EB82EDD2D93E87F00752A5B /* StreamLayerSDKPluginsWatchParty in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82EDC2D93E87F00752A5B /* StreamLayerSDKPluginsWatchParty */; };
+		8EB82EDF2D93E87F00752A5B /* StreamLayerSDKPluginsPermissions in Frameworks */ = {isa = PBXBuildFile; productRef = 8EB82EDE2D93E87F00752A5B /* StreamLayerSDKPluginsPermissions */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 				8EB82ED52D93E87F00752A5B /* StreamLayer in Frameworks */,
 				8EB82ED72D93E87F00752A5B /* StreamLayerGooglePAL in Frameworks */,
 				8EB82EDD2D93E87F00752A5B /* StreamLayerSDKPluginsWatchParty in Frameworks */,
+				8EB82EDF2D93E87F00752A5B /* StreamLayerSDKPluginsPermissions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +112,7 @@
 				8EB82ED82D93E87F00752A5B /* StreamLayerWatchParty */,
 				8EB82EDA2D93E87F00752A5B /* StreamLayerSDKPluginsGooglePAL */,
 				8EB82EDC2D93E87F00752A5B /* StreamLayerSDKPluginsWatchParty */,
+				8EB82EDE2D93E87F00752A5B /* StreamLayerSDKPluginsPermissions */,
 			);
 			productName = SLRExamples;
 			productReference = 8E5EC89D2D7058E70007CBBA /* SLRExample.app */;
@@ -400,7 +403,7 @@
 			repositoryURL = "https://github.com/StreamLayer/sdk-ios-plugins";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -430,6 +433,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8EB82ED22D93E73400752A5B /* XCRemoteSwiftPackageReference "sdk-ios-plugins" */;
 			productName = StreamLayerSDKPluginsWatchParty;
+		};
+		8EB82EDE2D93E87F00752A5B /* StreamLayerSDKPluginsPermissions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EB82ED22D93E73400752A5B /* XCRemoteSwiftPackageReference "sdk-ios-plugins" */;
+			productName = StreamLayerSDKPluginsPermissions;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
