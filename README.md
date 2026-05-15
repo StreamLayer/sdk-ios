@@ -424,6 +424,43 @@ class ViewController: UIViewController {
 }
 ```
 
+#### Public Chat Plugin
+
+Wraps the GetStream Chat SDK (`stream-chat-swift`) and exposes the in-stream chat overlay. The main SDK no longer links `StreamChat` / `StreamChatUI` — those frameworks are only added to your binary when this plugin is installed.
+
+Steps to integrate the Public Chat plugin into the app:
+
+– Install latest version of [StreamLayer Plugins package](https://github.com/StreamLayer/sdk-ios-plugins) and add into your project
+
+– Add `StreamLayerPublicChat` framework in your project settings under `General` tab in `Frameworks, Libraries and Embedded Content` section
+
+– Add `StreamLayerSDKPluginsPublicChat` framework in your project settings under `General` tab in `Frameworks, Libraries and Embedded Content` section
+
+– Make changes in your code before SDK configuration:
+
+```Swift
+import StreamLayerSDKPluginsPublicChat
+
+class ViewController: UIViewController {
+
+    ...
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureSLPublicChatPlugin()
+    }
+
+    ...
+
+    private func configureSLPublicChatPlugin() {
+        let plugin = SLRPublicChatPlugin()
+        StreamLayer.registerPublicChatPlugin(plugin)
+    }
+}
+```
+
+When the plugin is not registered, the SDK silently hides the chat menu item and short-circuits any chat overlay routes — no crash, no warning at the UI layer. Theming is exposed via `SLRPublicChatAppearance.default` (declared in `StreamLayerSDKPublicChat`); customize it before calling `setupSDK`.
+
 ### SDK Configuration Options
 
 #### StreamLayer.config general
